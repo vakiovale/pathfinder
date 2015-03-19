@@ -1,6 +1,6 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 PROJECT(pathfinder)
 
-ADD_DEFINITIONS(-std=c++11)
+ADD_DEFINITIONS(-std=c++0x)
 
 ADD_EXECUTABLE(pathfinder main.cpp)

@@ -3,7 +3,7 @@ project(pathfinder)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
-add_definitions(-std=c++11)
+add_definitions(-std=c++0x)
 
 include_directories("${PROJECT_SOURCE_DIR}/src/")
 include_directories("${PROJECT_SOURCE_DIR}/include/")
