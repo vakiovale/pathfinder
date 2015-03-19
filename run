@@ -1,0 +1,10 @@
+#!/bin/bash
+
+## Run cmake and build if there's no build directory
+if [ ! -f "pathfinder-build/pathfinder" ]; then
+    ./runcmake
+    ./build
+fi
+
+## Run program
+pathfinder-build/pathfinder
