@@ -1,2 +1,4 @@
 build/
+pathfinder-build/
+CMakeLists.txt.user
 *~
