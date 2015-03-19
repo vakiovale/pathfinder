@@ -8,7 +8,7 @@ add_definitions(-std=c++11)
 include_directories("${PROJECT_SOURCE_DIR}/src/")
 include_directories("${PROJECT_SOURCE_DIR}/include/")
 
-add_subdirectory(test)
+add_subdirectory(tests)
 
 set(SOURCES ${SOURCES} src/main.cpp)
 message(STATUS "Found sources: " ${SOURCES})
