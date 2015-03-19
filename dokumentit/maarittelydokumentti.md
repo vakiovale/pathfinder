@@ -26,4 +26,5 @@ Käyttöliittymästä riippumatta algoritmien tulee toimia sillä tavalla, että
 Työn toteutuksessa käytetään apuna ainakin seuraavia lähteitä:
 
 [Introduction to A\*](http://theory.stanford.edu/~amitp/GameProgramming/AStarComparison.html)
+
 [A\* Pathfinding for Beginner](http://www.policyalmanac.org/games/aStarTutorial.htm)
