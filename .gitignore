@@ -1,4 +1,5 @@
 build/
+doxygen/
 pathfinder-build/
 CMakeLists.txt.user
 *~
