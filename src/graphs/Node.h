@@ -30,6 +30,7 @@ namespace pathfinder {
              *
              * @param x coordinate
              * @param y coordinate
+             * @throws invalid_argument
              */
             Node(int x, int y);
 
@@ -58,7 +59,8 @@ namespace pathfinder {
              * value is used as a parameter, the function will throw an
              * invalid_argument exception.
              *
-             * @param newMovementCostFactor new value for movement cost factor             *
+             * @param newMovementCostFactor new value for movement cost factor
+             * @throws invalid_argument
              */
             void setMovementCostFactor(float newMovementCostFactor);
 
