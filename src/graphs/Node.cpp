@@ -29,4 +29,12 @@ namespace pathfinder {
         movementCostFactor = newMovementCostFactor;
     }
 
+    bool operator==(const Node& lhs, const Node& rhs) {
+        return lhs.getX() == rhs.getX() && lhs.getY() == rhs.getY();
+    }
+
+    bool operator!=(const Node& lhs, const Node& rhs) {
+        return !(lhs == rhs);
+    }
+
 }

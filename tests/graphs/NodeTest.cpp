@@ -121,3 +121,113 @@ SCENARIO("Nodes have a changable movement cost factor", "[node]") {
 
     }
 }
+
+SCENARIO("Two nodes are same if their position is same") {
+
+    GIVEN("Two nodes at the same positions (10, 10)") {
+
+        pathfinder::Node firstNode(10, 10);
+        pathfinder::Node secondNode(10, 10);
+
+        WHEN("Nothing is changed in these nodes") {
+
+            THEN("Two nodes equals as same") {
+                REQUIRE(firstNode == secondNode);
+            }
+        }
+
+        WHEN("Other node's movement cost factor is changed") {
+            firstNode.setMovementCostFactor(2.0f);
+
+            THEN("Two nodes still equals as same") {
+                REQUIRE(firstNode == secondNode);
+            }
+        }
+
+    }
+
+    GIVEN("Two nodes at the same positions (2, 18)") {
+
+        pathfinder::Node firstNode(2, 18);
+        pathfinder::Node secondNode(2, 18);
+
+        WHEN("Nothing is changed in these nodes") {
+
+            THEN("Two nodes equals as same") {
+                REQUIRE(firstNode == secondNode);
+            }
+        }
+
+        WHEN("Other node's movement cost factor is changed") {
+            secondNode.setMovementCostFactor(22.0f);
+
+            THEN("Two nodes still equals as same") {
+                REQUIRE(firstNode == secondNode);
+            }
+        }
+
+        WHEN("Other node is changed to a different position") {
+
+            secondNode = pathfinder::Node(12, 19);
+
+            THEN("Two nodes should not be the same") {
+                REQUIRE(secondNode != firstNode);
+            }
+        }
+
+    }
+
+    GIVEN("Two nodes at different positions") {
+
+        pathfinder::Node firstNode(0, 0);
+        pathfinder::Node secondNode(1, 2);
+
+        WHEN("Nothing is changed in these nodes") {
+
+            THEN("Two nodes should not be the same") {
+                REQUIRE(firstNode != secondNode);
+            }
+        }
+
+        WHEN("Other node's movement cost factor is changed") {
+            firstNode.setMovementCostFactor(18.0f);
+
+            THEN("Two nodes should still not be the same") {
+                REQUIRE(firstNode != secondNode);
+            }
+        }
+
+        WHEN("First node will be initialized again to the same position"
+             "as the second node") {
+
+            firstNode = pathfinder::Node(1, 2);
+
+            THEN("Two nodes should be the same") {
+                REQUIRE(firstNode == secondNode);
+            }
+        }
+    }
+
+    GIVEN("Two nodes that share the same x or y position") {
+
+        WHEN("X position is same, but y position is different") {
+
+            pathfinder::Node firstNode(8, 7);
+            pathfinder::Node secondNode(8, 6);
+
+            THEN("Nodes should not be the same") {
+                REQUIRE(firstNode != secondNode);
+            }
+        }
+
+        WHEN("X position is different, but y position is same") {
+
+            pathfinder::Node firstNode(10, 11);
+            pathfinder::Node secondNode(12, 11);
+
+            THEN("Nodes should not be the same") {
+                REQUIRE(firstNode != secondNode);
+            }
+        }
+    }
+}

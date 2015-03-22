@@ -18,7 +18,7 @@ namespace pathfinder {
         private:
             int x; /*< x coordinate */
             int y; /*< y coordinate */
-            float movementCostFactor; /*< how expensive is to move to the node */
+            float movementCostFactor; /*< how expensive is visiting this node */
 
         public:
             /**
@@ -33,6 +33,28 @@ namespace pathfinder {
              * @throws invalid_argument
              */
             Node(int x, int y);
+
+            /**
+             * @brief Compare two Nodes
+             *
+             * Nodes will be equal if both positions are the same.
+             *
+             * @param lhs
+             * @param rhs
+             * @return true if both Nodes have the same position
+             */
+            friend bool operator==(const Node& lhs, const Node& rhs);
+
+            /**
+             * @brief Compare two Nodes
+             *
+             * Nodes will not be equal if both positions are different.
+             *
+             * @param lhs
+             * @param rhs
+             * @return true if both Nodes have different positions
+             */
+            friend bool operator!=(const Node& lhs, const Node& rhs);
 
             /**
              * @brief Get x coordinate
