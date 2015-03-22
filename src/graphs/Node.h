@@ -31,16 +31,14 @@ namespace pathfinder {
              */
             Node(int x, int y);
 
-            ~Node();
-
             /**
-             * @brief Get x coordinate of the Node
+             * @brief Get x coordinate
              * @return x coordinate
              */
             int getX() const;
 
             /**
-             * @brief Get y coordinate of the Node
+             * @brief Get y coordinate
              * @return y coordinate
              */
             int getY() const;

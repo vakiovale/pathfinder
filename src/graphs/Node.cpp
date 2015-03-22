@@ -10,10 +10,6 @@ namespace pathfinder {
         this->y = y;
     }
 
-    Node::~Node() {
-        // do nothing special
-    }
-
     int Node::getX() const {
         return x;
     }

@@ -31,7 +31,7 @@ SCENARIO("Nodes have a certain position", "[node]") {
 
     GIVEN("A node with negative coordinates") {
 
-        WHEN("Coordinates are -2,-1") {
+        WHEN("Both coordinates are negative -2, -1") {
 
             bool exceptionHasBeenThrown = false;
             try {
@@ -45,7 +45,7 @@ SCENARIO("Nodes have a certain position", "[node]") {
             }
         }
 
-        WHEN("Coordinates are -1,2") {
+        WHEN("X coordinate is negative -1, 2") {
 
             bool exceptionHasBeenThrown = false;
             try {
@@ -59,7 +59,7 @@ SCENARIO("Nodes have a certain position", "[node]") {
             }
         }
 
-        WHEN("Coordinates are 2,-1") {
+        WHEN("Y coordinate is negative 2, -1") {
 
             bool exceptionHasBeenThrown = false;
             try {
