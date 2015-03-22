@@ -16,15 +16,17 @@ namespace pathfinder {
     class Node {
 
         private:
-            int x;
-            int y;
+            int x; /*< x coordinate */
+            int y; /*< y coordinate */
+            float movementCostFactor; /*< how expensive is to move to the node */
 
         public:
             /**
              * @brief Node
              *
-             * Construct Node with x and y coordinates. Coordinates can't be
-             * negative numbers or invalid_argument exception will be thrown.
+             * Construct Node with x and y coordinates. Movement cost factor
+             * will be set to 1.0f. Coordinates can't be negative numbers or
+             * invalid_argument exception will be thrown.
              *
              * @param x coordinate
              * @param y coordinate

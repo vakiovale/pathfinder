@@ -5,7 +5,6 @@ SCENARIO("Nodes have a certain position", "[node]") {
     GIVEN("A node with positive coordinates") {
 
         WHEN("Coordinates are 0,0") {
-
             pathfinder::Node node(0, 0);
 
             THEN("Node should be in a position where x is 0 and y is 0") {
@@ -13,12 +12,6 @@ SCENARIO("Nodes have a certain position", "[node]") {
                 int yPosition = node.getY();
                 REQUIRE(xPosition == 0);
                 REQUIRE(yPosition == 0);
-            }
-            AND_THEN("Node should not throw an invalid_argument exception") {
-                bool exceptionHasBeenThrown =
-                        checkIfNodeConstructorThrowsAnException(0, 0);
-
-                REQUIRE(!exceptionHasBeenThrown);
             }
         }
 
@@ -34,62 +27,50 @@ SCENARIO("Nodes have a certain position", "[node]") {
             }
         }
 
-        WHEN("Coordinates are 8, 11") {
-
-            bool exceptionHasBeenThrown =
-                    checkIfNodeConstructorThrowsAnException(8, 11);
-
-            THEN("Node should not throw an invalid_argument exception") {
-                REQUIRE(!exceptionHasBeenThrown);
-            }
-        }
     }
 
     GIVEN("A node with negative coordinates") {
 
         WHEN("Both coordinates are negative -2, -1") {
 
-            bool exceptionHasBeenThrown =
-                    checkIfNodeConstructorThrowsAnException(-2, -1);
-
             THEN("There should be an invalid argument exception") {
-                REQUIRE(exceptionHasBeenThrown);
+                REQUIRE_THROWS_AS(pathfinder::Node node(-2, -1),
+                                  std::invalid_argument);
             }
         }
 
         WHEN("X coordinate is negative -1, 2") {
 
-            bool exceptionHasBeenThrown =
-                    checkIfNodeConstructorThrowsAnException(-1, 2);
-
             THEN("There should be an invalid argument exception") {
-                REQUIRE(exceptionHasBeenThrown);
+                REQUIRE_THROWS_AS(pathfinder::Node node(-1, 2),
+                                  std::invalid_argument);
             }
         }
 
         WHEN("Y coordinate is negative 2, -1") {
 
-            bool exceptionHasBeenThrown =
-                    checkIfNodeConstructorThrowsAnException(2, -1);
-
             THEN("There should be an invalid argument exception") {
-                REQUIRE(exceptionHasBeenThrown);
+                REQUIRE_THROWS_AS(pathfinder::Node node(2, -1),
+                                  std::invalid_argument);
             }
         }
 
     }
 }
 
-/**
- * Creates a Node with parameters x and y which will be used
- * in a Node's constructor. Exception will be catched if
- * Node throws it.
- */
-bool checkIfNodeConstructorThrowsAnException(int x, int y) {
-    try {
-        pathfinder::Node node(x, y);
-    } catch (std::invalid_argument& exception) {
-        return true;
+SCENARIO("Nodes have a movement cost factor", "[node]") {
+
+    GIVEN("A new node") {
+
+        pathfinder::Node node(1.0f, 1.0f);
+
+        WHEN("Movement cost factor is not changed") {
+
+            THEN("Movement cost factor is 1.0f as default") {
+               // REQUIRE(node.getMovementFactor == 1.0f, 0.01f);
+            }
+
+        }
+
     }
-    return false;
 }

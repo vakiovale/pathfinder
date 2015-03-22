@@ -2,7 +2,7 @@
 
 namespace pathfinder {
 
-    Node::Node(int x, int y) {
+    Node::Node(int x, int y) : movementCostFactor(1.0f) {
         if(x < 0 || y < 0) {
             throw std::invalid_argument("Negative coordinates not allowed.");
         }
