@@ -71,7 +71,7 @@ SCENARIO("Nodes have a certain position", "[node]") {
  */
 bool checkIfNodeConstructorThrowsAnException(int x, int y) {
     try {
-        pathfinder::Node node(-2, -1);
+        pathfinder::Node node(x, y);
     } catch (std::invalid_argument& exception) {
         return true;
     }
