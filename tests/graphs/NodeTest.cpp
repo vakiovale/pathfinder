@@ -64,14 +64,16 @@ SCENARIO("Nodes have a certain position", "[node]") {
     }
 }
 
+/**
+ * Create a Node with parameters x and y which will be used
+ * in a Node's constructor. Exception will be catched if
+ * Node throws it.
+ */
 bool checkIfNodeConstructorThrowsAnException(int x, int y) {
-
-    bool exceptionHasBeenThrown = false;
     try {
         pathfinder::Node node(-2, -1);
     } catch (std::invalid_argument& exception) {
-        exceptionHasBeenThrown = true;
+        return true;
     }
-    return exceptionHasBeenThrown;
-
+    return false;
 }
