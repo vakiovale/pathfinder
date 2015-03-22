@@ -1,0 +1,10 @@
+#!/bin/bash
+
+## Run cmake and build if there's no executable for TestAll
+if [ ! -f "pathfinder-build/TestAll" ]; then
+    ./runcmake
+    ./build
+fi
+
+## Run tests
+pathfinder-build/TestAll
