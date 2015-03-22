@@ -12,7 +12,9 @@
 namespace pathfinder {
 
     class AStarPathFinder {
-        // empty
+        public:
+            AStarPathFinder();
+            ~AStarPathFinder();
     };
 
 }
