@@ -33,12 +33,8 @@ SCENARIO("Nodes have a certain position", "[node]") {
 
         WHEN("Both coordinates are negative -2, -1") {
 
-            bool exceptionHasBeenThrown = false;
-            try {
-                pathfinder::Node node(-2, -1);
-            } catch (std::invalid_argument& exception) {
-                exceptionHasBeenThrown = true;
-            }
+            bool exceptionHasBeenThrown =
+                    checkIfNodeConstructorThrowsAnException(-2, -1);
 
             THEN("There should be an invalid argument exception") {
                 REQUIRE(exceptionHasBeenThrown);
@@ -47,12 +43,8 @@ SCENARIO("Nodes have a certain position", "[node]") {
 
         WHEN("X coordinate is negative -1, 2") {
 
-            bool exceptionHasBeenThrown = false;
-            try {
-                pathfinder::Node node(-1, 2);
-            } catch (std::invalid_argument& exception) {
-                exceptionHasBeenThrown = true;
-            }
+            bool exceptionHasBeenThrown =
+                    checkIfNodeConstructorThrowsAnException(-1, 2);
 
             THEN("There should be an invalid argument exception") {
                 REQUIRE(exceptionHasBeenThrown);
@@ -61,12 +53,8 @@ SCENARIO("Nodes have a certain position", "[node]") {
 
         WHEN("Y coordinate is negative 2, -1") {
 
-            bool exceptionHasBeenThrown = false;
-            try {
-                pathfinder::Node node(2, -1);
-            } catch (std::invalid_argument& exception) {
-                exceptionHasBeenThrown = true;
-            }
+            bool exceptionHasBeenThrown =
+                    checkIfNodeConstructorThrowsAnException(2, -1);
 
             THEN("There should be an invalid argument exception") {
                 REQUIRE(exceptionHasBeenThrown);
@@ -74,4 +62,16 @@ SCENARIO("Nodes have a certain position", "[node]") {
         }
 
     }
+}
+
+bool checkIfNodeConstructorThrowsAnException(int x, int y) {
+
+    bool exceptionHasBeenThrown = false;
+    try {
+        pathfinder::Node node(-2, -1);
+    } catch (std::invalid_argument& exception) {
+        exceptionHasBeenThrown = true;
+    }
+    return exceptionHasBeenThrown;
+
 }
