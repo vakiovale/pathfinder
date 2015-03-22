@@ -14,6 +14,12 @@ SCENARIO("Nodes have a certain position", "[node]") {
                 REQUIRE(xPosition == 0);
                 REQUIRE(yPosition == 0);
             }
+            AND_THEN("Node should not throw an invalid_argument exception") {
+                bool exceptionHasBeenThrown =
+                        checkIfNodeConstructorThrowsAnException(0, 0);
+
+                REQUIRE(!exceptionHasBeenThrown);
+            }
         }
 
         WHEN("Coordinates are 5,7") {
@@ -25,6 +31,16 @@ SCENARIO("Nodes have a certain position", "[node]") {
                 int yPosition = node.getY();
                 REQUIRE(xPosition == 5);
                 REQUIRE(yPosition == 7);
+            }
+        }
+
+        WHEN("Coordinates are 8, 11") {
+
+            bool exceptionHasBeenThrown =
+                    checkIfNodeConstructorThrowsAnException(8, 11);
+
+            THEN("Node should not throw an invalid_argument exception") {
+                REQUIRE(!exceptionHasBeenThrown);
             }
         }
     }
@@ -65,7 +81,7 @@ SCENARIO("Nodes have a certain position", "[node]") {
 }
 
 /**
- * Create a Node with parameters x and y which will be used
+ * Creates a Node with parameters x and y which will be used
  * in a Node's constructor. Exception will be catched if
  * Node throws it.
  */
