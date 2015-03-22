@@ -1,6 +1,6 @@
 #include "NodeTest.h"
 
-SCENARIO("Nodes has a certain position", "[node]") {
+SCENARIO("Nodes have a certain position", "[node]") {
 
     GIVEN("A node with positive coordinates") {
 
