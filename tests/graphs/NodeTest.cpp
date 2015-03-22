@@ -58,18 +58,65 @@ SCENARIO("Nodes have a certain position", "[node]") {
     }
 }
 
-SCENARIO("Nodes have a movement cost factor", "[node]") {
+SCENARIO("Nodes have a changable movement cost factor", "[node]") {
 
-    GIVEN("A new node") {
+    GIVEN("A new node with position (1, 1)") {
 
-        pathfinder::Node node(1.0f, 1.0f);
+        pathfinder::Node node(1, 1);
 
         WHEN("Movement cost factor is not changed") {
 
+            Approx approximationOfCostFactor(
+                        (double)node.getMovementCostFactor());
+
             THEN("Movement cost factor is 1.0f as default") {
-               // REQUIRE(node.getMovementFactor == 1.0f, 0.01f);
+                REQUIRE(1.0 == approximationOfCostFactor);
             }
 
+        }
+
+        WHEN("Movement cost factor is changed to 1.5f") {
+
+            node.setMovementCostFactor(1.5f);
+
+            Approx approximationOfCostFactor(
+                        (double)node.getMovementCostFactor());
+
+            THEN("Movement cost factor is 1.5f") {
+                REQUIRE(1.5 == approximationOfCostFactor);
+            }
+
+        }
+
+        WHEN("Movement cost factor is changed to 0.0f") {
+
+            node.setMovementCostFactor(0.0f);
+
+            Approx approximationOfCostFactor(
+                        (double)node.getMovementCostFactor());
+
+            THEN("Movement cost factor is 0.0f") {
+                REQUIRE(0 == approximationOfCostFactor);
+            }
+
+        }
+
+        WHEN("Movement cost factor is changed to negative value -1.0f") {
+
+            THEN("There should be an invalid_argument exception") {
+                REQUIRE_THROWS_AS(node.setMovementCostFactor(-1.0f),
+                                  std::invalid_argument);
+            }
+
+        }
+
+        WHEN("Movement cost factor is changed to negative "
+             "value close to 0.0f") {
+
+            THEN("There should be an invalid_argument_exception") {
+                REQUIRE_THROWS_AS(node.setMovementCostFactor(-0.001f),
+                                  std::invalid_argument);
+            }
         }
 
     }

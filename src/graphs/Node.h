@@ -45,6 +45,23 @@ namespace pathfinder {
              */
             int getY() const;
 
+            /**
+             * @brief Get node's movement cost factor
+             * @return movement cost factor
+             */
+            float getMovementCostFactor() const;
+
+            /**
+             * @brief Set movement cost factor to new value
+             *
+             * Movement cost factor cannot be lower than 0.0f. If negative
+             * value is used as a parameter, the function will throw an
+             * invalid_argument exception.
+             *
+             * @param newMovementCostFactor new value for movement cost factor             *
+             */
+            void setMovementCostFactor(float newMovementCostFactor);
+
     };
 
 }

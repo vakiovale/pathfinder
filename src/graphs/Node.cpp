@@ -18,4 +18,15 @@ namespace pathfinder {
         return y;
     }
 
+    float Node::getMovementCostFactor() const {
+        return movementCostFactor;
+    }
+
+    void Node::setMovementCostFactor(float newMovementCostFactor) {
+        if(newMovementCostFactor < 0.0f) {
+            throw std::invalid_argument("Negative cost factor is not allowed.");
+        }
+        movementCostFactor = newMovementCostFactor;
+    }
+
 }
