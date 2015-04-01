@@ -59,10 +59,6 @@ namespace pathfinder {
              */
             int getNumberOfNodes() const;
 
-            /**
-             * @brief Prints nodes
-             */
-            void printNodes() const;
     };
 
 }
