@@ -29,6 +29,21 @@ SCENARIO("Graph has number of Nodes") {
             }
         }
 
+        WHEN("Initializing the graph with a negative side length and getting"
+             "nodes from the graph") {
+
+            graph.create2DGridMap(-3);
+            std::vector<std::vector<pathfinder::Node>> nodes =
+                    graph.getAllNodes();
+
+            THEN("There should be zero nodes in the graph") {
+                REQUIRE(graph.getNumberOfNodes() == 0);
+            }
+            AND_THEN("The vector of nodes should be empty") {
+                REQUIRE(nodes.empty());
+            }
+        }
+
         WHEN("Initializing the graph to a 2D "
              "grid map with 10x10 nodes") {
 
@@ -41,6 +56,21 @@ SCENARIO("Graph has number of Nodes") {
             }
             AND_THEN("There should be 100 nodes in the graph") {
                 REQUIRE(graph.getNumberOfNodes() == 100);
+            }
+        }
+
+        WHEN("Initializing the graph to a 2D "
+             "grid map with 6x6 nodes") {
+
+            graph.create2DGridMap(6);
+            std::vector<std::vector<pathfinder::Node>> nodes =
+                    graph.getAllNodes();
+
+            THEN("The vector with nodes should have a size of 6") {
+                REQUIRE(nodes.size() == 6);
+            }
+            AND_THEN("There should be 36 nodes in the graph") {
+                REQUIRE(graph.getNumberOfNodes() == 36);
             }
         }
     }
@@ -149,6 +179,42 @@ SCENARIO("Graph has number of Nodes") {
         WHEN("Checking if there is a node in position (2, 9)") {
 
             bool nodeExists = graph.nodeExistsInPosition(2, 9);
+
+            THEN("There should not be a node in that position") {
+                REQUIRE_FALSE(nodeExists);
+            }
+        }
+
+        WHEN("Checking if there is a node in position (-1, 0)") {
+
+            bool nodeExists = graph.nodeExistsInPosition(-1, 0);
+
+            THEN("There should not be a node in that position") {
+                REQUIRE_FALSE(nodeExists);
+            }
+        }
+
+        WHEN("Checking if there is a node in position (0, -1)") {
+
+            bool nodeExists = graph.nodeExistsInPosition(0, -1);
+
+            THEN("There should not be a node in that position") {
+                REQUIRE_FALSE(nodeExists);
+            }
+        }
+
+        WHEN("Checking if there is a node in position (-1, 8)") {
+
+            bool nodeExists = graph.nodeExistsInPosition(-1, 8);
+
+            THEN("There should not be a node in that position") {
+                REQUIRE_FALSE(nodeExists);
+            }
+        }
+
+        WHEN("Checking if there is a node in position (-9, -9)") {
+
+            bool nodeExists = graph.nodeExistsInPosition(-9, -9);
 
             THEN("There should not be a node in that position") {
                 REQUIRE_FALSE(nodeExists);
