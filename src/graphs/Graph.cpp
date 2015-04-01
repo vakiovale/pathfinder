@@ -35,13 +35,13 @@ namespace pathfinder {
     }
 
     bool Graph::nodeExistsInPosition(int x, int y) const {
+        const int ROWS = nodes.size();
+        const int COLUMNS = (nodes[0]).size();
         if(x < 0 || y < 0) {
             return false;
         }
-        if(y <= nodes.size()) {
-            if(x <= (nodes[y]).size()) {
-                return true;
-            }
+        if(y < ROWS && x < COLUMNS) {
+            return true;
         }
         return false;
     }
