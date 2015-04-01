@@ -21,7 +21,6 @@ namespace pathfinder {
     }
 
     const Node* Graph::getNodeFromPosition(int x, int y) {
-
         return &(nodes[y][x]);
     }
 
@@ -36,8 +35,11 @@ namespace pathfinder {
     }
 
     bool Graph::nodeExistsInPosition(int x, int y) const {
-        if(nodes.size() <= y) {
-            if((nodes[y]).size() <= x) {
+        if(x < 0 || y < 0) {
+            return false;
+        }
+        if(y <= nodes.size()) {
+            if(x <= (nodes[y]).size()) {
                 return true;
             }
         }

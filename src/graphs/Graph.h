@@ -8,6 +8,7 @@
 #define GRAPH_H
 
 #include <vector>
+#include <stdexcept>
 #include "Node.h"
 
 namespace pathfinder {

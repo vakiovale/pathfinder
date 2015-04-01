@@ -92,54 +92,6 @@ SCENARIO("Graph has number of Nodes") {
 
         }
 
-        WHEN("Getting a single node from position (-1, 0)") {
-
-            THEN("There should be an invalid_argument exception") {
-                REQUIRE_THROWS_AS(graph.getNodeFromPosition(-1, 0),
-                                  std::invalid_argument);
-            }
-        }
-
-        WHEN("Getting a single node from position (1, -1)") {
-
-            THEN("There should be an invalid_argument exception") {
-                REQUIRE_THROWS_AS(graph.getNodeFromPosition(1, -1),
-                                  std::invalid_argument);
-            }
-        }
-
-        WHEN("Getting a single node from position (8, 9)") {
-
-            THEN("There should be an invalid_argument exception") {
-                REQUIRE_THROWS_AS(graph.getNodeFromPosition(8, 9),
-                                  std::invalid_argument);
-            }
-        }
-
-        WHEN("Getting a single node from position (9, 8)") {
-
-            THEN("There should be an invalid_argument exception") {
-                REQUIRE_THROWS_AS(graph.getNodeFromPosition(9, 8),
-                                  std::invalid_argument);
-            }
-        }
-
-        WHEN("Getting a single node from position (12, 12)") {
-
-            THEN("There should be an invalid_argument exception") {
-                REQUIRE_THROWS_AS(graph.getNodeFromPosition(12, 12),
-                                  std::invalid_argument);
-            }
-        }
-
-        WHEN("Getting a single node from position (8, 8)") {
-
-            THEN("There should be an invalid_argument exception") {
-                REQUIRE_THROWS_AS(graph.getNodeFromPosition(8, 8),
-                                  std::invalid_argument);
-            }
-        }
-
         WHEN("Checking if there is a node in position (4, 5)") {
 
             bool nodeExists = graph.nodeExistsInPosition(4, 5);
