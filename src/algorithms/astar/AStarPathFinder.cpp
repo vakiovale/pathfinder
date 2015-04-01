@@ -2,8 +2,8 @@
 
 namespace pathfinder {
 
-    AStarPathFinder::AStarPathFinder() {
-        // do nothing
+    AStarPathFinder::AStarPathFinder(Graph* graph) : PathFinder(graph) {
+        // nothing more to be done
     }
 
     AStarPathFinder::~AStarPathFinder() {
