@@ -7,6 +7,7 @@ namespace pathfinder {
     }
 
     void Graph::create2DGridMap(int lengthOfSide) {
+        nodes.clear();
         for(int i = 0; i < lengthOfSide; i++) {
             std::vector<Node> rowOfVectors;
             for(int j = 0; j < lengthOfSide; j++) {

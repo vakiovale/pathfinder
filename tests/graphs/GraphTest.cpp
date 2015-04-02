@@ -80,6 +80,20 @@ SCENARIO("Graph has number of Nodes") {
         pathfinder::Graph graph;
         graph.create2DGridMap(8);
 
+        WHEN("Initializing graph again to 3x3 2D grid map") {
+
+            graph.create2DGridMap(3);
+            std::vector<std::vector<pathfinder::Node>> nodes =
+                    graph.getAllNodes();
+
+            THEN("The vector with nodes should have a size of 3") {
+                REQUIRE(nodes.size() == 3);
+            }
+            AND_THEN("There should be 9 nodes in the graph") {
+                REQUIRE(graph.getNumberOfNodes() == 9);
+            }
+        }
+
         WHEN("Getting a single node from position (2, 3)") {
 
             const pathfinder::Node* node = graph.getNodeFromPosition(2, 3);
