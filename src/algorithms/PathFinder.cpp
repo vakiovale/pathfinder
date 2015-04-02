@@ -6,4 +6,7 @@ namespace pathfinder {
         // nothing more to be done
     }
 
+    int PathFinder::getNumberOfNodes() const {
+        return GRAPH->getNumberOfNodes();
+    }
 }

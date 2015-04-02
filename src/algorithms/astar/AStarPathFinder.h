@@ -15,9 +15,14 @@
 namespace pathfinder {
 
     class AStarPathFinder : public PathFinder {
+
         public:
+            /**
+             * @brief AStarPathFinder
+             * @param graph to be used in path finding
+             */
             AStarPathFinder(Graph* graph);
-            ~AStarPathFinder();
+
     };
 
 }

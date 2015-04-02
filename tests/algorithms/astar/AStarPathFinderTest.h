@@ -2,6 +2,7 @@
 #define ASTAR_TEST_H
 
 #include "catch.hpp"
+#include "Graph.h"
 #include "AStarPathFinder.h"
 
 #endif
