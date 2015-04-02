@@ -10,11 +10,11 @@ Työskentelyn helpottamiseksi ja nopeuttamiseksi tein itselleni myös muutamia h
 
 ## Projektin edistyminen
 
-Välillä on tuntunut hieman turhauttavalta, koska monien uusien asioiden keskellä projekti tuntuu etenevän hitaasti. Paljon ajasti kuluu asioiden selvittämiseen ja eri lähteiden ja kirjojen lukemiseen. Toivon kuitenkin, että projektin edetessä jää enemmän aikaa itse ohjelmoinnille ja tulosten tekemiselle.
+Välillä on tuntunut hieman turhauttavalta, koska monien uusien asioiden keskellä projekti tuntuu etenevän hitaasti. Paljon ajasta kuluu asioiden selvittämiseen ja eri lähteiden ja kirjojen lukemiseen. Toivon kuitenkin, että projektin edetessä jää enemmän aikaa itse ohjelmoinnille ja tulosten tekemiselle.
 
 ## Ongelmat
 
-Mitään ylitsepääseviä ongelmia ei ole tullut tähän asti vielä vastaan. Ratkaisu ongelmiin on aina lopulta löytynyt ja projekti on edistynyt. Itse toteuttavan algoritmin logiikan ohjelmointiin asti en ole vielä edennyt.
+Mitään ylitsepääseviä ongelmia ei ole tullut tähän asti vielä vastaan. Ratkaisu ongelmiin on aina lopulta löytynyt ja projekti on edistynyt. Itse toteutettavan algoritmin ohjelmointiin asti en ole vielä edennyt.
 
 ## Mitä seuraavaksi?
 
