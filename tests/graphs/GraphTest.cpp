@@ -77,17 +77,6 @@ SCENARIO("Graph can be initialized and contain number of nodes", "[graph]") {
 
 SCENARIO("Nodes can be retrieved from graphs", "[graph][node]") {
 
-    GIVEN("A graph initialized to 3x3 2D grid map") {
-
-        pathfinder::Graph graph;
-        graph.create2DGridMap(3);
-
-        WHEN("Getting a reference to node from position") {
-
-        }
-
-    }
-
     GIVEN("A graph initialized to 8x8 2D grid map") {
 
         pathfinder::Graph graph;
