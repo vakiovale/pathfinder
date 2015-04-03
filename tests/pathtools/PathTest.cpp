@@ -112,6 +112,17 @@ SCENARIO("Nodes can be accessed from path") {
 
         }
 
+        WHEN("Removing last node and adding a new node") {
+
+            path.removeLastNode();
+            path.addNode(pathfinder::Node(1,1));
+
+            THEN("The third Node should be in position (1,1)") {
+
+                pathfinder::Node node = path[2];
+                REQUIRE(node == pathfinder::Node(1,1));
+            }
+        }
     }
 
 }
