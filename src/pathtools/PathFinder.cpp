@@ -9,4 +9,9 @@ namespace pathfinder {
     int PathFinder::getNumberOfNodes() const {
         return GRAPH->getNumberOfNodes();
     }
+
+    Path PathFinder::findAndGetShortestPath(Node startNode, Node endNode) {
+        pathfinder::Path shortestPath;
+        return shortestPath;
+    }
 }

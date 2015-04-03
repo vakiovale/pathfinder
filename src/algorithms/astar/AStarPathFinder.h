@@ -9,8 +9,8 @@
 #ifndef A_STAR_PATH_FINDER_H
 #define A_STAR_PATH_FINDER_H
 
-#include "../../graphs/Graph.h"
-#include "../PathFinder.h"
+#include "Graph.h"
+#include "PathFinder.h"
 
 namespace pathfinder {
 
