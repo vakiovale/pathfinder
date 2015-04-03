@@ -4,4 +4,6 @@
 #include "catch.hpp"
 #include "Path.h"
 
+void addNumberOfNodesToPath(pathfinder::Path& path, int numberOfNodes);
+
 #endif

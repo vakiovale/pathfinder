@@ -3,19 +3,27 @@
 namespace pathfinder {
 
     Path::Path() {
-        // do nothing yet
+        numberOfNodesInPath = 0;
     }
 
     bool Path::pathExists() const {
         return !this->path.empty();
     }
 
+    int Path::getPathLength() const {
+        return numberOfNodesInPath;
+    }
+
     void Path::addNode(Node nodeToBeAddedToPath) {
         this->path.push_back(nodeToBeAddedToPath);
+        numberOfNodesInPath++;
     }
 
     void Path::removeLastNode() {
-        this->path.pop_back();
+        if(pathExists()) {
+            this->path.pop_back();
+            numberOfNodesInPath--;
+        }
     }
 
     const Node& Path::operator[](std::size_t index) const {

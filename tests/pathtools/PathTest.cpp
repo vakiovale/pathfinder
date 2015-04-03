@@ -142,3 +142,118 @@ SCENARIO("Nodes can be accessed from path") {
     }
 
 }
+
+SCENARIO("Path has a length") {
+
+    GIVEN("An empty path") {
+
+        pathfinder::Path path;
+
+        WHEN("There's zero nodes in the path") {
+
+            THEN("Path's length is zero") {
+                REQUIRE(path.getPathLength() == 0);
+            }
+
+        }
+
+        WHEN("There's 3 nodes in the path") {
+
+            addNumberOfNodesToPath(path, 3);
+
+            THEN("The path's length is 3") {
+                REQUIRE(path.getPathLength() == 3);
+            }
+
+        }
+
+        WHEN("There's 1 node in the path") {
+
+            addNumberOfNodesToPath(path, 1);
+
+            THEN("The path's length is 1") {
+                REQUIRE(path.getPathLength() == 1);
+            }
+        }
+
+    }
+
+    GIVEN("A path with 3 nodes") {
+
+        pathfinder::Path path;
+        addNumberOfNodesToPath(path, 3);
+
+        WHEN("Removing one node from the path") {
+
+            path.removeLastNode();
+
+            THEN("The path's length is 2") {
+                REQUIRE(path.getPathLength() == 2);
+            }
+
+        }
+
+        WHEN("Removing all nodes from the path") {
+            path.removeLastNode();
+            path.removeLastNode();
+            path.removeLastNode();
+
+            THEN("The path's length is zero") {
+                REQUIRE(path.getPathLength() == 0);
+            }
+        }
+
+        WHEN("Removing two nodes and adding three nodes") {
+
+            path.removeLastNode();
+            path.removeLastNode();
+
+            addNumberOfNodesToPath(path, 3);
+
+            THEN("The path's length is 4") {
+                REQUIRE(path.getPathLength() == 4);
+            }
+
+        }
+
+        WHEN("Removing two nodes and adding one node") {
+
+            path.removeLastNode();
+            path.removeLastNode();
+            addNumberOfNodesToPath(path, 1);
+
+            THEN("The path's length is 2") {
+                REQUIRE(path.getPathLength() == 2);
+            }
+        }
+
+        WHEN("Adding one node and removing 10 nodes") {
+
+            addNumberOfNodesToPath(path, 1);
+            for(int i = 0; i < 10; i++) {
+                path.removeLastNode();
+            }
+
+            THEN("The path's length is 0") {
+                REQUIRE(path.getPathLength() == 0);
+            }
+
+            AND_WHEN("Adding one more node to the path") {
+
+                addNumberOfNodesToPath(path, 1);
+
+                THEN("The path's length is 1") {
+                    REQUIRE(path.getPathLength() == 1);
+                }
+            }
+
+        }
+    }
+
+}
+
+void addNumberOfNodesToPath(pathfinder::Path& path, int numberOfNodes) {
+    for(int i = 0; i < numberOfNodes; i++) {
+        path.addNode(pathfinder::Node(i,0));
+    }
+}
