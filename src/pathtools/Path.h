@@ -39,6 +39,13 @@ namespace pathfinder {
              */
             void addNode(Node nodeToBeAddedToPath);
 
+            /**
+             * @brief Removes last existing node from the path
+             */
+            void removeLastNode();
+
+            const Node& operator[](std::size_t index) const;
+
     };
 
 }

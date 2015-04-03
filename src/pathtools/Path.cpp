@@ -14,4 +14,12 @@ namespace pathfinder {
         this->path.push_back(nodeToBeAddedToPath);
     }
 
+    void Path::removeLastNode() {
+        this->path.pop_back();
+    }
+
+    const Node& Path::operator[](std::size_t index) const {
+        return (this->path)[index];
+    }
+
 }
