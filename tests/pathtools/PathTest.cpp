@@ -123,6 +123,22 @@ SCENARIO("Nodes can be accessed from path") {
                 REQUIRE(node == pathfinder::Node(1,1));
             }
         }
+
+        WHEN("Trying to change accessed Node from the path") {
+
+            pathfinder::Node node = path[2];
+            node.setMovementCostFactor(1010);
+
+            THEN("The changes should not affect the node in the path") {
+
+                pathfinder::Node nodeFromPath = path[2];
+                Approx realValue((double)nodeFromPath.getMovementCostFactor());
+
+                REQUIRE(1010 != realValue);
+
+            }
+
+        }
     }
 
 }
