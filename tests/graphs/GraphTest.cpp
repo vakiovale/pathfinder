@@ -1,6 +1,6 @@
 #include "GraphTest.h"
 
-SCENARIO("Graph has number of Nodes", "[graph]") {
+SCENARIO("Graph can be initialized and contain number of nodes", "[graph]") {
 
     GIVEN("An empty graph with nothing in it") {
 
@@ -17,7 +17,6 @@ SCENARIO("Graph has number of Nodes", "[graph]") {
             AND_THEN("There should be zero nodes in the graph") {
                 REQUIRE(graph.getNumberOfNodes() == 0);
             }
-
         }
 
         WHEN("Initializing the graph to a 2D grid map with side length of 0") {
@@ -74,8 +73,22 @@ SCENARIO("Graph has number of Nodes", "[graph]") {
             }
         }
     }
+}
 
-    GIVEN("An graph initialized to 8x8 2D grid map") {
+SCENARIO("Nodes can be retrieved from graphs", "[graph][node]") {
+
+    GIVEN("A graph initialized to 3x3 2D grid map") {
+
+        pathfinder::Graph graph;
+        graph.create2DGridMap(3);
+
+        WHEN("Getting a reference to node from position") {
+
+        }
+
+    }
+
+    GIVEN("A graph initialized to 8x8 2D grid map") {
 
         pathfinder::Graph graph;
         graph.create2DGridMap(8);
@@ -96,7 +109,8 @@ SCENARIO("Graph has number of Nodes", "[graph]") {
 
         WHEN("Getting a single node from position (2, 3)") {
 
-            const pathfinder::Node* node = graph.getNodeFromPosition(2, 3);
+            pathfinder::Node* node = graph.getNodeFromPosition(2, 3);
+            node->setMovementCostFactor(10101);
 
             THEN("The requested node should be the same as other"
                  "node in a position (2, 3)") {

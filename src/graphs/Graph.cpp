@@ -21,7 +21,7 @@ namespace pathfinder {
         return nodes;
     }
 
-    const Node* Graph::getNodeFromPosition(int x, int y) {
+    Node* Graph::getNodeFromPosition(int x, int y) {
         return &(nodes[y][x]);
     }
 

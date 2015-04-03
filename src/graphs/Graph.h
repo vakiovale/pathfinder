@@ -41,7 +41,7 @@ namespace pathfinder {
              * @param y position
              * @return pointer to Node
              */
-            const Node* getNodeFromPosition(int x, int y);
+            Node* getNodeFromPosition(int x, int y);
 
             /**
              * @brief Check if Node exists in a specific position
