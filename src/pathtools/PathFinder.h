@@ -35,7 +35,7 @@ namespace pathfinder {
              * @param endNode
              * @return shortest Path between two nodes
              */
-            virtual Path findAndGetShortestPath(Node startNode, Node endNode);
+            virtual Path findAndGetShortestPath(Node startNode, Node endNode) = 0;
 
             /**
              * @brief Return number of nodes in the graph

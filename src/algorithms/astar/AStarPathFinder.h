@@ -10,6 +10,7 @@
 #define A_STAR_PATH_FINDER_H
 
 #include "Graph.h"
+#include "Path.h"
 #include "PathFinder.h"
 
 namespace pathfinder {
@@ -22,6 +23,8 @@ namespace pathfinder {
              * @param graph to be used in path finding
              */
             AStarPathFinder(Graph* graph);
+
+            Path findAndGetShortestPath(Node startNode, Node endNode);
 
     };
 
