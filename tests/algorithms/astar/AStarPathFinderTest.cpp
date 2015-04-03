@@ -1,6 +1,6 @@
 #include "AStarPathFinderTest.h"
 
-SCENARIO("Pathfinder can be initialized with a graph") {
+SCENARIO("Pathfinder can be initialized with a graph", "[pathfinder][astar]") {
 
     GIVEN("A 5x5 graph") {
 
@@ -43,7 +43,7 @@ SCENARIO("Pathfinder can be initialized with a graph") {
     }
 }
 
-SCENARIO("Pathfinder finds shortest paths") {
+SCENARIO("Pathfinder finds shortest paths", "[pathfinder][astar]") {
 
     GIVEN("A AStarPathfinder initialized with empty 5x5 2D grid map") {
 

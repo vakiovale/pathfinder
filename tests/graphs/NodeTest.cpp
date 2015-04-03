@@ -122,7 +122,7 @@ SCENARIO("Nodes have a changable movement cost factor", "[node]") {
     }
 }
 
-SCENARIO("Two nodes are same if their position is same") {
+SCENARIO("Two nodes are same if their position is same", "[node]") {
 
     GIVEN("Two nodes at the same positions (10, 10)") {
 

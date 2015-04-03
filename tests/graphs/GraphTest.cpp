@@ -1,6 +1,6 @@
 #include "GraphTest.h"
 
-SCENARIO("Graph has number of Nodes") {
+SCENARIO("Graph has number of Nodes", "[graph]") {
 
     GIVEN("An empty graph with nothing in it") {
 

@@ -1,6 +1,6 @@
 #include "PathTest.h"
 
-SCENARIO("Nodes can be added and removed from a path") {
+SCENARIO("Nodes can be added and removed from a path", "[path][node]") {
 
     GIVEN("An empty path") {
 
@@ -73,7 +73,7 @@ SCENARIO("Nodes can be added and removed from a path") {
 
 }
 
-SCENARIO("Nodes can be accessed from path") {
+SCENARIO("Nodes can be accessed from path", "[path][node]") {
 
     GIVEN("A simple path") {
 
@@ -143,7 +143,7 @@ SCENARIO("Nodes can be accessed from path") {
 
 }
 
-SCENARIO("Path has a length") {
+SCENARIO("Path has a length", "[path]") {
 
     GIVEN("An empty path") {
 
