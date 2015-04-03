@@ -10,7 +10,7 @@ namespace pathfinder {
         return !this->path.empty();
     }
 
-    int Path::getPathLength() const {
+    unsigned int Path::getPathLength() const {
         return numberOfNodesInPath;
     }
 

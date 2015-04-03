@@ -36,7 +36,7 @@ namespace pathfinder {
              *
              * @return length of path
              */
-            int getPathLength() const;
+            unsigned int getPathLength() const;
 
             /**
              * @brief Add next node to the path
