@@ -15,6 +15,17 @@ SCENARIO("Path holds nodes which belong to a specific path") {
             }
         }
 
+        WHEN("Adding a node to the path") {
+
+            pathfinder::Node node(2,7);
+            path.addNode(node);
+
+            THEN("There should be a path (although it's very short)") {
+                REQUIRE(path.pathExists());
+            }
+
+        }
+
     }
 
 }

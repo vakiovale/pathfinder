@@ -7,7 +7,11 @@ namespace pathfinder {
     }
 
     bool Path::pathExists() const {
-        return false;
+        return !this->path.empty();
+    }
+
+    void Path::addNode(Node nodeToBeAddedToPath) {
+        this->path.push_back(nodeToBeAddedToPath);
     }
 
 }
