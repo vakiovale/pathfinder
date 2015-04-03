@@ -7,4 +7,4 @@ if [ ! -f "pathfinder-build/TestAll" ]; then
 fi
 
 ## Run tests
-pathfinder-build/TestAll
+pathfinder-build/TestAll $@
