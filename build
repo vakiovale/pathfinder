@@ -9,3 +9,8 @@ cd pathfinder-build
 
 ## Build
 make
+
+## Run tests after build
+if [ -f "TestAll" ]; then
+    ./TestAll
+fi
