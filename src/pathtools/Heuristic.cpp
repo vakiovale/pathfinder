@@ -27,7 +27,7 @@ namespace pathfinder {
     }
 
     float Heuristic::calculateNonDiagonalMovementCost(int firstDelta, int secondDelta) const {
-        nonDiagonalMovementCost * (firstDelta + secondDelta);
+        return nonDiagonalMovementCost * (firstDelta + secondDelta);
     }
 
     float Heuristic::calculateDiagonalMovementSave() const {
@@ -38,6 +38,7 @@ namespace pathfinder {
                                               int secondDelta) const {
         float nonDiagonalMovementCost =
                 calculateNonDiagonalMovementCost(firstDelta, secondDelta);
+
         float diagonalMovementSave = calculateDiagonalMovementSave();
         float smallerDelta = std::min(firstDelta, secondDelta);
 
