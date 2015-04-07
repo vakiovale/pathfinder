@@ -8,6 +8,9 @@ namespace pathfinder {
 
     Path AStarPathFinder::findAndGetShortestPath(Node startNode, Node endNode) {
         pathfinder::Path path;
+        // TODO: algorithm for shortest path
+        // Returning dummy path
+        path.addNode(Node(0,0));
         return path;
     }
 }
