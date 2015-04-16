@@ -1,6 +1,6 @@
 #include "HeuristicTest.h"
 
-SCENARIO("Estimates distance between two Nodes") {
+SCENARIO("Estimates distance between two Nodes", "[heuristic][pathfinder]") {
 
     GIVEN("Heuristic with diagonal movement cost factor 1.4") {
 
