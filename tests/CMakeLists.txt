@@ -1,6 +1,7 @@
 include_directories("${PROJECT_SOURCE_DIR}/src/graphs/")
 include_directories("${PROJECT_SOURCE_DIR}/src/algorithms/astar/")
 include_directories("${PROJECT_SOURCE_DIR}/src/pathtools/")
+include_directories("${PROJECT_SOURCE_DIR}/src/utilities/")
 include_directories("${PROJECT_SOURCE_DIR}/include/")
 
 file(GLOB_RECURSE TEST_SOURCES *.cpp *.h)
