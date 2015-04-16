@@ -18,6 +18,8 @@ Olen aloittanut myös algoritmissa tarvittavan prioriteettijonon toteuttamista. 
 
 Projektissa ei ole ollut suurempia ongelmia. Melko paljon aikaa menee suunnitteluun ja pohdiskeluun, jotta turhaa koodia ei tulisi kirjoitettua. Hieman on ollut vaikeuksia hahmottaa minkälaisia solmuja ja verkkoja tässä työssä kannattaisi käyttää, joita voisi hyödyntää mahdollisimman monilla eri polunetsintäalgoritmeilla. Esimerkiksi Primin ja Kruskalin toteutus tuntuu jotenkin hankalalta verkon kanssa, jota olen nyt käyttänyt. Lopullisen deadlinen lähestyessä päätinkin, että otan tavoitteeksi aluksi toteuttaa vain A\*-algoritmin ja Dijkstran.
 
+Ongelmia on tullut hieman myös dokumenttien kirjoittamisessa. Etenkin testaus- ja toteutusdokumenttien kirjoittaminen on hankalaa, sillä tällä hetkellä ei ole ollut vielä toimivaa algoritmia, jonka suorituskyvystä voisi kirjoittaa tai algoritmeja verrata keskenään. Myös testausdokumentti on jäänyt erittäin vajaaksi, sillä algoritmit eivät ole vielä toiminnassa. Toisaalta testit on pyritty kirjoittamaan sellaiseksi, jotta niitä voisi lukea ja käyttäjä niistä nähdä, kuinka ohjelmaa/funktioita on tarkoitus käyttää.
+
 ## Mitä seuraavaksi?
 
 Seuraavaksi jatkan ExtendedNode-luokan toteutusta, jota voin hyödyntää algoritmissa prioriteettijonossa. Luokan on tarkoitus tarjota apumuuttujia, joita erityisesti A\*-algoritmi tarvitsee.
