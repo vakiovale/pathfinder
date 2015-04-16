@@ -9,7 +9,8 @@
 #ifndef PRIORITY_QUEUE_H
 #define PRIORITY_QUEUE_H
 
-#include <queue>
+#include <vector>
+#include <algorithm>
 
 namespace pathfinder {
 
@@ -24,7 +25,7 @@ namespace pathfinder {
              * @return reference to top element in the priority queue
              */
             const T& top() const {
-                return priorityQueue.top();
+                return priorityQueue.front();
             }
 
             /**
@@ -35,7 +36,8 @@ namespace pathfinder {
              * @param element to be pushed to the priority queue
              */
             void push(const T& element) {
-                priorityQueue.push(element);
+                priorityQueue.push_back(element);
+                std::push_heap(priorityQueue.begin(), priorityQueue.end());
             }
 
             /**
@@ -44,7 +46,8 @@ namespace pathfinder {
              * Removes an element from the priority queue
              */
             void pop() {
-                priorityQueue.pop();
+                std::pop_heap(priorityQueue.begin(), priorityQueue.end());
+                priorityQueue.pop_back();
             }
 
             /**
@@ -55,8 +58,17 @@ namespace pathfinder {
                 return priorityQueue.empty();
             }
 
+            /**
+             * @brief Updates PriorityQueue
+             *
+             * Fixes priority queue by reorganizing its elements
+             */
+            void update() {
+                std::make_heap(priorityQueue.begin(), priorityQueue.end());
+            }
+
         private:
-            std::priority_queue<T> priorityQueue;
+            std::vector<T> priorityQueue;
 
     };
 

@@ -26,7 +26,7 @@ SCENARIO("Priority queue can be initialized with different types",
 
 }
 
-SCENARIO("Elements can be pushed and popped to priority queue",
+SCENARIO("Elements can be pushed and popped to/from priority queue",
          "[priorityqueue]") {
 
     GIVEN("An empty PriorityQueue initialized with ints") {
@@ -106,6 +106,54 @@ SCENARIO("Elements can be pushed and popped to priority queue",
 
             THEN("PriorityQueue is empty") {
                 REQUIRE(pq.isEmpty());
+            }
+        }
+
+        WHEN("Adding 2, -1, 2, 4, 0, 7, 1, 2, 8, 5, 7, 3, -1, 0 to PriorityQueue") {
+            pq.push(2);
+            pq.push(-1);
+            pq.push(2);
+            pq.push(4);
+            pq.push(0);
+            pq.push(7);
+            pq.push(1);
+            pq.push(2);
+            pq.push(8);
+            pq.push(5);
+            pq.push(7);
+            pq.push(3);
+            pq.push(-1);
+            pq.push(0);
+
+            THEN("Elements should be removed starting with the greatest int") {
+                REQUIRE(pq.top() == 8);
+                pq.pop();
+                REQUIRE(pq.top() == 7);
+                pq.pop();
+                REQUIRE(pq.top() == 7);
+                pq.pop();
+                REQUIRE(pq.top() == 5);
+                pq.pop();
+                REQUIRE(pq.top() == 4);
+                pq.pop();
+                REQUIRE(pq.top() == 3);
+                pq.pop();
+                REQUIRE(pq.top() == 2);
+                pq.pop();
+                REQUIRE(pq.top() == 2);
+                pq.pop();
+                REQUIRE(pq.top() == 2);
+                pq.pop();
+                REQUIRE(pq.top() == 1);
+                pq.pop();
+                REQUIRE(pq.top() == 0);
+                pq.pop();
+                REQUIRE(pq.top() == 0);
+                pq.pop();
+                REQUIRE(pq.top() == -1);
+                pq.pop();
+                REQUIRE(pq.top() == -1);
+                pq.pop();
             }
         }
     }
@@ -261,6 +309,59 @@ SCENARIO("Element in top of the PriorityQueue is always greatest",
                 }
             }
         }
+    }
+
+}
+
+SCENARIO("Elements in PriorityQueue can be updated", "[priorityqueue]") {
+
+    GIVEN("PriorityQueue with three PointerInt (1, 3, 2)") {
+
+        // Creating three PointerInts:
+
+        // First
+        PointerInt firstInt;
+        int firstValue = 1;
+        firstInt.value = &firstValue;
+
+        // Second
+        PointerInt secondInt;
+        int secondValue = 3;
+        secondInt.value = &secondValue;
+
+        // Third
+        PointerInt thirdInt;
+        int thirdValue = 2;
+        thirdInt.value = &thirdValue;
+
+        pathfinder::PriorityQueue<PointerInt> pq;
+
+        pq.push(firstInt);
+        pq.push(secondInt);
+        pq.push(thirdInt);
+
+        WHEN("Nothing is done") {
+
+            THEN("Top element points to second pushed integer (3)") {
+                REQUIRE(*(pq.top().value) == secondValue);
+            }
+
+            AND_WHEN("First value will be changed from 1 -> 4 and PriorityQueue "
+                     "will be updated") {
+
+                firstValue = 4;
+                pq.update();
+
+                THEN("Top element now points to first pushed integer "
+                     "(changed from 1 -> 4)") {
+                    REQUIRE(*(pq.top().value) == firstValue);
+                }
+            }
+
+        }
+
+
+
     }
 
 }

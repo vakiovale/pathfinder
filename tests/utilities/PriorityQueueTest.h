@@ -5,4 +5,15 @@
 #include <string>
 #include "PriorityQueue.h"
 
+class PointerInt {
+
+    public:
+        int* value;
+
+        bool operator<(const PointerInt& other) const {
+            return *(this->value) < *(other.value);
+        }
+
+};
+
 #endif
