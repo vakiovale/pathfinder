@@ -40,7 +40,7 @@ namespace pathfinder {
              */
             int getNumberOfNodes() const;
 
-        private:
+        protected:
             const Graph* const GRAPH; /*< graph to be used in path finding */
 
     };

@@ -9,6 +9,7 @@
 #ifndef A_STAR_PATH_FINDER_H
 #define A_STAR_PATH_FINDER_H
 
+#include <vector>
 #include "Graph.h"
 #include "Path.h"
 #include "PathFinder.h"
@@ -24,7 +25,22 @@ namespace pathfinder {
              */
             AStarPathFinder(Graph* graph);
 
+            /**
+             * @brief Finds a shortest path
+             *
+             * Finds a shortest path between two nodes and returns the path.
+             *
+             * @param startNode
+             * @param endNode
+             * @return shortest path from start to end
+             */
             Path findAndGetShortestPath(Node startNode, Node endNode);
+
+       private:
+            std::vector<std::vector<float>> totalCosts;
+            void initializeTotalCosts();
+            void setTotalCostsToZero();
+
 
     };
 
