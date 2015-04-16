@@ -38,6 +38,23 @@ namespace pathfinder {
                 priorityQueue.push(element);
             }
 
+            /**
+             * @brief Pop an element from priority queue
+             *
+             * Removes an element from the priority queue
+             */
+            void pop() {
+                priorityQueue.pop();
+            }
+
+            /**
+             * @brief Check if priority queue is empty
+             * @return true if priority queue is empty
+             */
+            bool isEmpty() const {
+                return priorityQueue.empty();
+            }
+
         private:
             std::priority_queue<T> priorityQueue;
 
