@@ -15,11 +15,6 @@ namespace pathfinder {
 
     class Node {
 
-        private:
-            int x; /*< x coordinate */
-            int y; /*< y coordinate */
-            float movementCostFactor; /*< how expensive is visiting this node */
-
         public:
             /**
              * @brief Node
@@ -86,6 +81,10 @@ namespace pathfinder {
              */
             void setMovementCostFactor(float newMovementCostFactor);
 
+        private:
+            int x; /*< x coordinate */
+            int y; /*< y coordinate */
+            float movementCostFactor; /*< how expensive is visiting this node */
     };
 
 }

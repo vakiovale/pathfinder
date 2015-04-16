@@ -13,8 +13,7 @@
 namespace pathfinder {
 
     class Graph {
-        private:
-            std::vector<std::vector<Node>> nodes;
+
         public:
             Graph();
 
@@ -58,6 +57,9 @@ namespace pathfinder {
              * @return number of nodes
              */
             int getNumberOfNodes() const;
+
+        private:
+            std::vector<std::vector<Node>> nodes;
 
     };
 

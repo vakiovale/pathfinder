@@ -16,10 +16,6 @@ namespace pathfinder {
 
     class Path {
 
-        private:
-            std::deque<Node> path;
-            unsigned int numberOfNodesInPath;
-
         public:
             Path();
 
@@ -63,6 +59,10 @@ namespace pathfinder {
              * @return Node in a specific position in path
              */
             const Node& operator[](std::size_t index) const;
+
+        private:
+            std::deque<Node> path; /*< the path */
+            unsigned int numberOfNodesInPath; /*< number of nodes in path */
 
     };
 

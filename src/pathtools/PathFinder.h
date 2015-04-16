@@ -17,9 +17,6 @@ namespace pathfinder {
 
     class PathFinder {
 
-        private:
-            const Graph* const GRAPH; /*< graph to be used in path finding */
-
         public:
             /**
              * @brief PathFinder
@@ -42,6 +39,9 @@ namespace pathfinder {
              * @return number of nodes
              */
             int getNumberOfNodes() const;
+
+        private:
+            const Graph* const GRAPH; /*< graph to be used in path finding */
 
     };
 
