@@ -346,8 +346,8 @@ SCENARIO("Elements in PriorityQueue can be updated", "[priorityqueue]") {
                 REQUIRE(*(pq.top().value) == secondValue);
             }
 
-            AND_WHEN("First value will be changed from 1 -> 4 and PriorityQueue "
-                     "will be updated") {
+            AND_WHEN("First value is changed from 1 -> 4 and PriorityQueue "
+                     "is updated") {
 
                 firstValue = 4;
                 pq.update();
@@ -357,11 +357,50 @@ SCENARIO("Elements in PriorityQueue can be updated", "[priorityqueue]") {
                     REQUIRE(*(pq.top().value) == firstValue);
                 }
             }
-
         }
 
+        WHEN("Third value is changed 2 -> 4 and PriorityQueue is updated") {
 
+            thirdValue = 4;
+            pq.update();
 
+            THEN("Top element points to 4") {
+                REQUIRE(*(pq.top().value) == 4);
+            }
+
+            AND_WHEN("Second value is changed 3 -> 5 and PriorityQueue is"
+                     "updated") {
+
+                secondValue = 5;
+                pq.update();
+
+                THEN("Top element points to 5") {
+                    REQUIRE(*(pq.top().value) == 5);
+                }
+                AND_THEN("Top element's value is a pointer to second value") {
+                    REQUIRE(pq.top().value == &secondValue);
+                }
+
+                AND_WHEN("Top element is removend and first value is changed "
+                         "1 -> 5 and PriorityQueue is updated") {
+                    pq.pop();
+                    firstValue = 5;
+                    pq.update();
+
+                    THEN("Top element's value is a pointer to first value") {
+                        REQUIRE(pq.top().value == &firstValue);
+                    }
+
+                    AND_WHEN("Top element is removed") {
+                        pq.pop();
+
+                        THEN("Top element's value is a pointer to third value") {
+                            REQUIRE(pq.top().value == &thirdValue);
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }
