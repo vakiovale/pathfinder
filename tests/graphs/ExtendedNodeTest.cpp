@@ -36,3 +36,69 @@ SCENARIO("ExtendedNode has a pointer to Node", "[extendednode][node]") {
     }
 
 }
+
+SCENARIO("ExtendedNode has total cost value that can be changed") {
+
+    GIVEN("ExtendedNode in position (4,7)") {
+
+        pathfinder::Node innerNode(4, 7);
+        pathfinder::ExtendedNode node(&innerNode);
+
+        WHEN("Getting total cost from node") {
+
+            float totalCost = node.getTotalCost();
+
+            THEN("Total cost is -1") {
+
+                Approx approximationTotalCost((double)totalCost);
+                REQUIRE(approximationTotalCost == -1.0f);
+
+            }
+
+        }
+
+        WHEN("Setting total cost to 24.5f") {
+
+            node.setTotalCost(24.5f);
+
+            THEN("Total cost is 24.5f") {
+
+                float totalCost = node.getTotalCost();
+                Approx approximation((double)totalCost);
+                REQUIRE(approximation == 24.5f);
+
+            }
+
+        }
+
+        WHEN("Setting total cost to 12.12f") {
+
+            node.setTotalCost(12.12f);
+
+            THEN("Total cost is 12.12f") {
+
+                float totalCost = node.getTotalCost();
+                Approx approximation((double)totalCost);
+                REQUIRE(approximation == 12.12f);
+
+            }
+
+        }
+
+        WHEN("Setting total cost to zero") {
+
+            node.setTotalCost(0);
+
+            THEN("Total cost is 0") {
+
+                float totalCost = node.getTotalCost();
+                Approx approximation((double)totalCost);
+                REQUIRE(approximation == 0);
+
+            }
+
+        }
+
+    }
+
+}

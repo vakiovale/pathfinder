@@ -32,8 +32,25 @@ namespace pathfinder {
              */
             const Node& getNode();
 
+            /**
+             * @brief Get total cost
+             *
+             * Total cost is a calculated estimation from this node
+             * to the end node.
+             *
+             * @return total cost
+             */
+            float getTotalCost() const;
+
+            /**
+             * @brief Set total cost to new value
+             * @param new total cost
+             */
+            void setTotalCost(float totalCost);
+
         private:
             const Node* node; /*< binded node */
+            float totalCost;
 
     };
 
