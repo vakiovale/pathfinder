@@ -8,6 +8,7 @@ namespace pathfinder {
         }
         this->x = x;
         this->y = y;
+        this->accessible = true;
     }
 
     int Node::getX() const {
@@ -35,6 +36,14 @@ namespace pathfinder {
 
     bool operator!=(const Node& lhs, const Node& rhs) {
         return !(lhs == rhs);
+    }
+
+    bool Node::isAccessible() const {
+        return accessible;
+    }
+
+    void Node::setAccessible(bool isNodeAccessible) {
+        this->accessible = isNodeAccessible;
     }
 
 }

@@ -231,3 +231,48 @@ SCENARIO("Two nodes are same if their position is same", "[node]") {
         }
     }
 }
+
+SCENARIO("Nodes can be accessible or unaccessible") {
+
+    GIVEN("A single node in position (1, 2)") {
+
+        pathfinder::Node node(1, 2);
+
+        WHEN("Checking if node is accessible") {
+
+            bool accessible = node.isAccessible();
+
+            THEN("Node is accessible") {
+                REQUIRE(accessible);
+            }
+
+            AND_WHEN("Node is set unaccessible") {
+
+                node.setAccessible(false);
+
+                THEN("Node is unaccessible") {
+                    REQUIRE_FALSE(node.isAccessible());
+                }
+            }
+        }
+
+        WHEN("Setting node to be unaccessible") {
+
+            node.setAccessible(false);
+
+            THEN("Node is unaccessible") {
+                REQUIRE_FALSE(node.isAccessible());
+            }
+
+            AND_WHEN("Node is set to accessible") {
+                node.setAccessible(true);
+
+                THEN("Node is accessible") {
+                    REQUIRE(node.isAccessible());
+                }
+            }
+        }
+
+    }
+
+}

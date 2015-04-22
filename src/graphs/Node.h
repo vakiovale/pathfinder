@@ -81,10 +81,23 @@ namespace pathfinder {
              */
             void setMovementCostFactor(float newMovementCostFactor);
 
+            /**
+             * @brief Check if node is accessible
+             * @return true if accessible
+             */
+            bool isAccessible() const;
+
+            /**
+             * @brief Set node to accessible/unaccessible
+             * @param true sets node to accessible, false to unaccessible
+             */
+            void setAccessible(bool isNodeAcccessible);
+
         private:
             int x; /*< x coordinate */
             int y; /*< y coordinate */
             float movementCostFactor; /*< how expensive is visiting this node */
+            bool accessible; /*< true if moving to node is possible */
     };
 
 }
