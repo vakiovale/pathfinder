@@ -420,6 +420,108 @@ SCENARIO("Custom made classes works with PriorityQueue", "[priorityqueue][extend
 
         pathfinder::PriorityQueue<pathfinder::ExtendedNode> pq;
 
+        WHEN("Pushing ExtendedNodes with total costs 1.0, 2.0, 1.0 to priority queue") {
+
+            pathfinder::Node innerNode(0,0);
+            pathfinder::ExtendedNode node1(&innerNode);
+            pathfinder::ExtendedNode node2(&innerNode);
+            pathfinder::ExtendedNode node3(&innerNode);
+
+            node1.setTotalCost(1.0);
+            node2.setTotalCost(2.0);
+            node3.setTotalCost(1.0);
+
+            pq.push(node1);
+            pq.push(node2);
+            pq.push(node3);
+
+            THEN("Top node has total cost of 1.0") {
+
+                Approx approximation(
+                            (double)pq.top().getTotalCost());
+
+                REQUIRE(approximation == 1.0);
+
+            }
+
+            AND_WHEN("Pushing node with total cost 1.5 and popping on node out") {
+
+                pathfinder::ExtendedNode node4(&innerNode);
+                node4.setTotalCost(1.5);
+                pq.push(node4);
+                pq.pop();
+
+                THEN("Top node has total cost 1.0") {
+
+                    Approx approximation(
+                                (double)pq.top().getTotalCost());
+
+                    REQUIRE(approximation == 1.0);
+                }
+
+                AND_WHEN("Popping top node out") {
+
+                    pq.pop();
+
+                    THEN("Top node has total cost 1.5") {
+
+                        Approx approximation(
+                                    (double)pq.top().getTotalCost());
+
+                        REQUIRE(approximation == 1.5);
+                    }
+
+                    AND_WHEN("Popping top node out") {
+
+                        pq.pop();
+
+                        THEN("Last node has total cost 2.0") {
+
+                            Approx approximation(
+                                        (double)pq.top().getTotalCost());
+
+                            REQUIRE(approximation == 2.0);
+                        }
+
+                        AND_WHEN("Popping one node out and pushing nodes with "
+                                 "total costs 0.8 and 100.0") {
+
+                            pathfinder::ExtendedNode node5(&innerNode);
+                            pathfinder::ExtendedNode node6(&innerNode);
+
+                            node5.setTotalCost(0.8);
+                            node6.setTotalCost(100.0);
+
+                            pq.pop();
+                            pq.push(node5);
+                            pq.push(node6);
+
+                            THEN("Top node has total cost 0.8") {
+
+                                Approx approximation(
+                                            (double)pq.top().getTotalCost());
+
+                                REQUIRE(approximation == 0.8);
+                            }
+
+                            AND_WHEN("Popping one node out") {
+
+                                pq.pop();
+
+                                THEN("Last node has total cost 100.0") {
+
+                                    Approx approximation(
+                                                (double)pq.top().getTotalCost());
+
+                                    REQUIRE(approximation == 100.0);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         WHEN("Pushing ExtendedNodes with total costs of 5.0, 2.0, 3.0 to priority queue") {
 
             pathfinder::Node innerNode(0,0);
@@ -466,5 +568,4 @@ SCENARIO("Custom made classes works with PriorityQueue", "[priorityqueue][extend
             }
         }
     }
-
 }
