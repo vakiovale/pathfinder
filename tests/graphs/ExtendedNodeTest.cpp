@@ -112,8 +112,8 @@ SCENARIO("ExtendedNodes can be compared by total cost", "[extendednode][node]") 
 
             second.setTotalCost(1.0f);
 
-            THEN("second < first") {
-                REQUIRE(second < first);
+            THEN("first < second") {
+                REQUIRE(first < second);
             }
 
         }
@@ -122,8 +122,8 @@ SCENARIO("ExtendedNodes can be compared by total cost", "[extendednode][node]") 
 
             second.setTotalCost(16.5);
 
-            THEN("second !< first") {
-                REQUIRE_FALSE(second < first);
+            THEN("first !< second") {
+                REQUIRE_FALSE(first < second);
             }
         }
 
@@ -131,8 +131,8 @@ SCENARIO("ExtendedNodes can be compared by total cost", "[extendednode][node]") 
 
             second.setTotalCost(15.00001);
 
-            THEN("first < second") {
-                REQUIRE(first < second);
+            THEN("second < first") {
+                REQUIRE(second < first);
             }
 
         }
@@ -141,8 +141,8 @@ SCENARIO("ExtendedNodes can be compared by total cost", "[extendednode][node]") 
 
             second.setTotalCost(14.99991);
 
-            THEN("second < first") {
-                REQUIRE(second < first);
+            THEN("first < second") {
+                REQUIRE(first < second);
             }
         }
 
@@ -151,7 +151,7 @@ SCENARIO("ExtendedNodes can be compared by total cost", "[extendednode][node]") 
             second.setTotalCost(15.0f);
 
             THEN("Result is undefined and will return true or false") {
-                bool alwaysTrue = second < first ? true : true;
+                bool alwaysTrue = first < second ? true : true;
                 REQUIRE(alwaysTrue);
             }
         }
@@ -168,8 +168,8 @@ SCENARIO("ExtendedNodes can be compared by total cost", "[extendednode][node]") 
             first.setTotalCost(0);
             second.setTotalCost(1);
 
-            THEN("first < second") {
-                REQUIRE(first < second);
+            THEN("second < first") {
+                REQUIRE(second < first);
             }
         }
 
@@ -178,8 +178,8 @@ SCENARIO("ExtendedNodes can be compared by total cost", "[extendednode][node]") 
             first.setTotalCost(1);
             second.setTotalCost(0);
 
-            THEN("second < first") {
-                REQUIRE(second < first);
+            THEN("first > second") {
+                REQUIRE(first < second);
             }
         }
 
@@ -188,8 +188,8 @@ SCENARIO("ExtendedNodes can be compared by total cost", "[extendednode][node]") 
             first.setTotalCost(-1);
             second.setTotalCost(1);
 
-            THEN("first < second") {
-                REQUIRE(first < second);
+            THEN("second < first") {
+                REQUIRE(second < first);
             }
         }
 
@@ -198,8 +198,8 @@ SCENARIO("ExtendedNodes can be compared by total cost", "[extendednode][node]") 
             first.setTotalCost(-2.2259);
             second.setTotalCost(-2.2260);
 
-            THEN("second < first") {
-                REQUIRE(second < first);
+            THEN("first < second") {
+                REQUIRE(first < second);
             }
         }
     }

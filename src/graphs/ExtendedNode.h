@@ -36,10 +36,10 @@ namespace pathfinder {
              * @brief Compare two ExtendedNodes
              *
              * Less than operator returns true if total cost
-             * is less than other ExtendedNode's total cost
+             * is greater than other ExtendedNode's total cost
              *
              * @param node to be compared
-             * @return true if total cost is lower
+             * @return true if total cost is greater
              */
             bool operator<(const ExtendedNode& node) const;
 
