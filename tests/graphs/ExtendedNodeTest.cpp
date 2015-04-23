@@ -14,7 +14,6 @@ SCENARIO("ExtendedNode has a pointer to Node", "[extendednode][node]") {
             THEN("Referenced node is the same as the binded node") {
                 REQUIRE(referenceNode == node);
             }
-
         }
 
         WHEN("Changing binded node's inner value") {
@@ -32,12 +31,11 @@ SCENARIO("ExtendedNode has a pointer to Node", "[extendednode][node]") {
 
             }
         }
-
     }
 
 }
 
-SCENARIO("ExtendedNode has total cost value that can be changed") {
+SCENARIO("ExtendedNode has total cost value that can be changed", "[extendednode][node][astar]") {
 
     GIVEN("ExtendedNode in position (4,7)") {
 
@@ -54,7 +52,6 @@ SCENARIO("ExtendedNode has total cost value that can be changed") {
                 REQUIRE(approximationTotalCost == -1.0f);
 
             }
-
         }
 
         WHEN("Setting total cost to 24.5f") {
@@ -68,7 +65,6 @@ SCENARIO("ExtendedNode has total cost value that can be changed") {
                 REQUIRE(approximation == 24.5f);
 
             }
-
         }
 
         WHEN("Setting total cost to 12.12f") {
@@ -82,7 +78,6 @@ SCENARIO("ExtendedNode has total cost value that can be changed") {
                 REQUIRE(approximation == 12.12f);
 
             }
-
         }
 
         WHEN("Setting total cost to zero") {
@@ -98,7 +93,18 @@ SCENARIO("ExtendedNode has total cost value that can be changed") {
             }
 
         }
+    }
+}
+
+SCENARIO("ExtendedNodes can be compared by total cost", "[extendednode][node]") {
+
+    GIVEN("ExtendedNode with position (2,4) and total cost 15.0") {
+
+        pathfinder::Node innerNode(2,4);
+        pathfinder::ExtendedNode node(&innerNode);
+        node.setTotalCost(15.0f);
 
     }
 
 }
+
