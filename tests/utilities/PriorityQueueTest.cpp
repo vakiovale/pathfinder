@@ -22,6 +22,15 @@ SCENARIO("Priority queue can be initialized with different types",
                 REQUIRE(true);
             }
         }
+
+        WHEN("PriorityQueue is initialized with ExtendedNode") {
+
+            pathfinder::PriorityQueue<pathfinder::ExtendedNode> pq;
+
+            THEN("PriorityQueue holds type of ExtendedNodes") {
+                REQUIRE(true);
+            }
+        }
     }
 
 }
@@ -397,6 +406,61 @@ SCENARIO("Elements in PriorityQueue can be updated", "[priorityqueue]") {
                         THEN("Top element's value is a pointer to third value") {
                             REQUIRE(pq.top().value == &thirdValue);
                         }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+SCENARIO("Custom made classes works with PriorityQueue", "[priorityqueue][extendednode]") {
+
+    GIVEN("PriorityQueue initialized with ExtendedNodes") {
+
+        pathfinder::PriorityQueue<pathfinder::ExtendedNode> pq;
+
+        WHEN("Pushing ExtendedNodes with total costs of 5.0, 2.0, 3.0 to priority queue") {
+
+            pathfinder::Node innerNode(0,0);
+            pathfinder::ExtendedNode node1(&innerNode);
+            pathfinder::ExtendedNode node2(&innerNode);
+            pathfinder::ExtendedNode node3(&innerNode);
+
+            node1.setTotalCost(5.0);
+            node2.setTotalCost(2.0);
+            node3.setTotalCost(3.0);
+
+            pq.push(node1);
+            pq.push(node2);
+            pq.push(node3);
+
+            THEN("Top node has total cost of 2.0") {
+
+                Approx approximation(
+                            (double)pq.top().getTotalCost());
+
+                REQUIRE(approximation == 2.0);
+            }
+            AND_WHEN("Top element is popped from priority queue") {
+                pq.pop();
+
+                THEN("Top node has total cost of 3.0") {
+
+                    Approx approximation(
+                                (double)pq.top().getTotalCost());
+
+                    REQUIRE(approximation == 3.0);
+                }
+                AND_WHEN("Top element is popped from priority queue") {
+                    pq.pop();
+
+                    THEN("Last node has total cost of 5.0") {
+
+                        Approx approximation(
+                                    (double)pq.top().getTotalCost());
+
+                        REQUIRE(approximation == 5.0);
                     }
                 }
             }

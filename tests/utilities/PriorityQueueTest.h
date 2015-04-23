@@ -4,6 +4,7 @@
 #include "catch.hpp"
 #include <string>
 #include "PriorityQueue.h"
+#include "ExtendedNode.h"
 
 class PointerInt {
 
