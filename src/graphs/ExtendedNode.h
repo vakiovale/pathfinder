@@ -33,6 +33,17 @@ namespace pathfinder {
             const Node& getNode();
 
             /**
+             * @brief Compare two ExtendedNodes
+             *
+             * Less than operator returns true if total cost
+             * is less than other ExtendedNode's total cost
+             *
+             * @param node to be compared
+             * @return true if total cost is lower
+             */
+            bool operator<(const ExtendedNode& node) const;
+
+            /**
              * @brief Get total cost
              *
              * Total cost is a calculated estimation from this node

@@ -10,6 +10,10 @@ namespace pathfinder {
         return *(this->node);
     }
 
+    bool ExtendedNode::operator<(const ExtendedNode& node) const {
+        return this->totalCost < node.getTotalCost();
+    }
+
     float ExtendedNode::getTotalCost() const {
         return this->totalCost;
     }

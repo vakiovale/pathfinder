@@ -98,13 +98,110 @@ SCENARIO("ExtendedNode has total cost value that can be changed", "[extendednode
 
 SCENARIO("ExtendedNodes can be compared by total cost", "[extendednode][node]") {
 
-    GIVEN("ExtendedNode with position (2,4) and total cost 15.0") {
+    GIVEN("First ExtendedNode with position (2,4) and total cost 15.0 "
+          "AND second ExtendedNode with position (1,0)") {
 
         pathfinder::Node innerNode(2,4);
-        pathfinder::ExtendedNode node(&innerNode);
-        node.setTotalCost(15.0f);
+        pathfinder::ExtendedNode first(&innerNode);
+        first.setTotalCost(15.0f);
 
+        pathfinder::Node otherInnerNode(1,0);
+        pathfinder::ExtendedNode second(&otherInnerNode);
+
+        WHEN("Second node's total cost is set to 1.0") {
+
+            second.setTotalCost(1.0f);
+
+            THEN("second < first") {
+                REQUIRE(second < first);
+            }
+
+        }
+
+        WHEN("Second node's total cost is set to 16.5") {
+
+            second.setTotalCost(16.5);
+
+            THEN("second !< first") {
+                REQUIRE_FALSE(second < first);
+            }
+        }
+
+        WHEN("Second node's total cost is set to 15.00001") {
+
+            second.setTotalCost(15.00001);
+
+            THEN("first < second") {
+                REQUIRE(first < second);
+            }
+
+        }
+
+        WHEN("Second node's total cost is set to 14.99991") {
+
+            second.setTotalCost(14.99991);
+
+            THEN("second < first") {
+                REQUIRE(second < first);
+            }
+        }
+
+        WHEN("Second node's total cost is also 15.0") {
+
+            second.setTotalCost(15.0f);
+
+            THEN("Result is undefined and will return true or false") {
+                bool alwaysTrue = second < first ? true : true;
+                REQUIRE(alwaysTrue);
+            }
+        }
     }
 
+    GIVEN("Two ExtendedNodes with same inner Node)") {
+
+        pathfinder::Node innerNode(1,1);
+        pathfinder::ExtendedNode first(&innerNode);
+        pathfinder::ExtendedNode second(&innerNode);
+
+        WHEN("First total cost is set to 0 and second is set to 1") {
+
+            first.setTotalCost(0);
+            second.setTotalCost(1);
+
+            THEN("first < second") {
+                REQUIRE(first < second);
+            }
+        }
+
+        WHEN("First total cost is set to 1 and second is set to 0") {
+
+            first.setTotalCost(1);
+            second.setTotalCost(0);
+
+            THEN("second < first") {
+                REQUIRE(second < first);
+            }
+        }
+
+        WHEN("First total cost is set to -1 and second is set to 1") {
+
+            first.setTotalCost(-1);
+            second.setTotalCost(1);
+
+            THEN("first < second") {
+                REQUIRE(first < second);
+            }
+        }
+
+        WHEN("First total cost is set to -2.2259 and second is set to -2.2260") {
+
+            first.setTotalCost(-2.2259);
+            second.setTotalCost(-2.2260);
+
+            THEN("second < first") {
+                REQUIRE(second < first);
+            }
+        }
+    }
 }
 
