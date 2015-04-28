@@ -5,6 +5,7 @@
 #include <string>
 #include "PriorityQueue.h"
 #include "ExtendedNode.h"
+#include "ExtendedNodePointer.h"
 
 class PointerInt {
 

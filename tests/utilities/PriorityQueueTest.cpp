@@ -414,7 +414,8 @@ SCENARIO("Elements in PriorityQueue can be updated", "[priorityqueue]") {
 
 }
 
-SCENARIO("Custom made classes works with PriorityQueue", "[priorityqueue][extendednode]") {
+SCENARIO("Custom made classes works with PriorityQueue",
+         "[priorityqueue][extendednode]") {
 
     GIVEN("PriorityQueue initialized with ExtendedNodes") {
 
@@ -568,4 +569,99 @@ SCENARIO("Custom made classes works with PriorityQueue", "[priorityqueue][extend
             }
         }
     }
+
+    GIVEN("PriorityQueue initialized with ExtendedNodePointers and filled"
+          "with three ExtendedNodes with total costs 1, 3 and 2") {
+
+        pathfinder::PriorityQueue<pathfinder::ExtendedNodePointer> pq;
+
+        // create single node
+        pathfinder::Node node(1,0);
+
+        // create three ExtendedNodes
+        pathfinder::ExtendedNode extNode1(&node);
+        pathfinder::ExtendedNode extNode2(&node);
+        pathfinder::ExtendedNode extNode3(&node);
+
+        // setting total costs
+        extNode1.setTotalCost(1);
+        extNode2.setTotalCost(3);
+        extNode3.setTotalCost(2);
+
+        // creating pointers
+        pathfinder::ExtendedNodePointer p1(&extNode1);
+        pathfinder::ExtendedNodePointer p2(&extNode2);
+        pathfinder::ExtendedNodePointer p3(&extNode3);
+
+        // pushing pointers to priority queue
+        pq.push(p1);
+        pq.push(p2);
+        pq.push(p3);
+
+        WHEN("Nothing has been done") {
+
+            THEN("Top element points to node with total cost 1") {
+
+                Approx approximation((double)
+                                     pq.top().getExtendedNode().getTotalCost());
+
+                REQUIRE(approximation == 1);
+
+            }
+
+        }
+
+        WHEN("First ExtendedNode's total cost is changed from 1 -> 4 and"
+             "PriorityQueue is updated") {
+
+            extNode1.setTotalCost(4);
+            pq.update();
+
+            THEN("Top element points to node with total cost 2") {
+
+                Approx approximation((double)
+                                     pq.top().getExtendedNode().getTotalCost());
+
+                REQUIRE(approximation == 2);
+
+            }
+
+            AND_WHEN("Third ExtendedNode's total cost is changed from 2 -> 5"
+                     "and PriorityQueue is updated") {
+
+                extNode3.setTotalCost(5);
+                pq.update();
+
+                THEN("Top element points to node with total cost 3") {
+
+                    Approx approximation((double)
+                                         pq.top().getExtendedNode().getTotalCost());
+
+                    REQUIRE(approximation == 3);
+
+                }
+
+            }
+        }
+
+        WHEN("All ExtendedNode's total costs are changed to 2, 0.5 and 1"
+             "and PriorityQueue is updated") {
+
+            extNode1.setTotalCost(2);
+            extNode2.setTotalCost(0.5);
+            extNode3.setTotalCost(1);
+
+            pq.update();
+
+            THEN("Top element points to node with total cost 0.5") {
+
+                Approx approximation((double)
+                                     pq.top().getExtendedNode().getTotalCost());
+
+                REQUIRE(approximation == 0.5);
+
+            }
+        }
+    }
 }
+
