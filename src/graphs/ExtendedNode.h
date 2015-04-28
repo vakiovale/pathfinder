@@ -27,7 +27,7 @@ namespace pathfinder {
             ExtendedNode(const Node* node);
 
             /**
-             * @brief Get a reference to binded Node
+             * @brief Get reference to binded Node
              * @return reference to binded node
              */
             const Node& getNode() const;
