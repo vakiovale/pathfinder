@@ -10,6 +10,14 @@ namespace pathfinder {
         return *(this->node);
     }
 
+    bool operator==(const ExtendedNode& lhs, const ExtendedNode& rhs) {
+        return lhs.getNode() == rhs.getNode();
+    }
+
+    bool operator!=(const ExtendedNode& lhs, const ExtendedNode& rhs) {
+        return !(lhs == rhs);
+    }
+
     bool ExtendedNode::operator<(const ExtendedNode& node) const {
         return this->totalCost > node.getTotalCost();
     }

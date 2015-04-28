@@ -33,6 +33,24 @@ namespace pathfinder {
             const Node& getNode() const;
 
             /**
+             * @brief operator ==
+             * @param lhs
+             * @param rhs
+             * @return true if inner Nodes are equal
+             */
+            friend bool operator==(const ExtendedNode& lhs,
+                                   const ExtendedNode& rhs);
+
+            /**
+             * @brief operator !=
+             * @param lhs
+             * @param rhs
+             * @return true if inner Nodes are not equal
+             */
+            friend bool operator!=(const ExtendedNode& lhs,
+                                   const ExtendedNode& rhs);
+
+            /**
              * @brief Compare two ExtendedNodes
              *
              * Less than operator returns true if total cost
