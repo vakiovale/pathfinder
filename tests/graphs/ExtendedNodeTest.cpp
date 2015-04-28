@@ -220,6 +220,7 @@ SCENARIO("ExtendedNodes are considered same if their inner Nodes are same",
 
             THEN("First ExtendedNode != other ExtendedNode") {
                 REQUIRE(extendedNode != otherExtNode);
+                REQUIRE_FALSE(extendedNode == otherExtNode);
             }
         }
 
@@ -230,6 +231,7 @@ SCENARIO("ExtendedNodes are considered same if their inner Nodes are same",
 
             THEN("First ExtendedNode == other ExtendedNode") {
                 REQUIRE(extendedNode == otherExtNode);
+                REQUIRE_FALSE(extendedNode != otherExtNode);
             }
 
         }
