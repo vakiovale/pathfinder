@@ -218,7 +218,7 @@ SCENARIO("ExtendedNodes are considered same if their inner Nodes are same",
             pathfinder::Node otherNode(1,1);
             pathfinder::ExtendedNode otherExtNode(&otherNode);
 
-            THEN("First ExtendedNode != second ExtendedNode") {
+            THEN("First ExtendedNode != other ExtendedNode") {
                 REQUIRE(extendedNode != otherExtNode);
             }
         }
@@ -228,7 +228,7 @@ SCENARIO("ExtendedNodes are considered same if their inner Nodes are same",
             pathfinder::Node otherNode(1,0);
             pathfinder::ExtendedNode otherExtNode(&otherNode);
 
-            THEN("First ExtendedNode == second ExtendedNode") {
+            THEN("First ExtendedNode == other ExtendedNode") {
                 REQUIRE(extendedNode == otherExtNode);
             }
 

@@ -104,3 +104,5 @@ SCENARIO("ExtendedNodes can be added/removed to/from OpenList",
     }
 
 }
+
+
