@@ -67,11 +67,26 @@ SCENARIO("ExtendedNodePointers can be compared using less than operator",
                 REQUIRE(extNodePointer1 < extNodePointer2);
             }
 
+            AND_THEN("Second pointer !< first pointer") {
+                REQUIRE_FALSE(extNodePointer2 < extNodePointer1);
+            }
+
         }
 
+        WHEN("ExtendedNodes have total costs 10 and 11") {
 
+            extendedNode1.setTotalCost(10);
+            extendedNode2.setTotalCost(11);
 
+            THEN("Second pointer < first pointer") {
+                REQUIRE(extNodePointer2 < extNodePointer1);
+            }
 
+            AND_THEN("First pointer !< second pointer") {
+                REQUIRE_FALSE(extNodePointer1 < extNodePointer2);
+            }
+
+        }
     }
 
 }
