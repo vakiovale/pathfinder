@@ -1,8 +1,7 @@
 /**
  * @brief ExtendedNodePointer class.
  *
- * ExtendedNodePointer wraps ExtendedNode inside. ExtendedNodePointer
- * can be compared with the same way as ExtendedNodes.
+ * ExtendedNodePointer wraps ExtendedNode inside.
  *
  * @author Valtteri Pyyhtiä
  */
@@ -43,7 +42,7 @@ namespace pathfinder {
             bool operator<(const ExtendedNodePointer& extendedNodePointer) const;
 
         private:
-            const ExtendedNode* extendedNode;
+            const ExtendedNode* extendedNode; /*< binded ExtendedNode */
     };
 
 }
