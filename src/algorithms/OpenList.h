@@ -9,6 +9,7 @@
 #ifndef OPENLIST_H
 #define OPENLIST_H
 
+#include <unordered_set>
 #include "PriorityQueue.h"
 #include "ExtendedNodePointer.h"
 #include "ExtendedNode.h"
@@ -39,6 +40,16 @@ namespace pathfinder {
              * @return reference to the best ExtendedNode
              */
             const ExtendedNode& getBestNode() const;
+
+            /**
+             * @brief  Check if open list contains ExtendedNode
+             *
+             * Checks if a specific ExtendedNode is in the open list.
+             *
+             * @param extendedNode to be searched inside open list
+             * @return true if extendedNode is inside open list
+             */
+            bool contains(const ExtendedNode& extendedNode) const;
 
             /**
              * @brief Check if open list is empty

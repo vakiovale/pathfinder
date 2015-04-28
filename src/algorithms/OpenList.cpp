@@ -23,4 +23,8 @@ namespace pathfinder {
         return openList.isEmpty();
     }
 
+    bool OpenList::contains(const ExtendedNode& extendedNode) const {
+        return true; // TODO: implement searching functionality
+    }
+
 }
