@@ -19,10 +19,18 @@ namespace pathfinder {
 
         public:
             /**
+             * @brief initializes OpenList
+             */
+            OpenList();
+
+            /**
              * @brief Check if open list is empty
              * @return true if there's zero nodes in the open list
              */
             bool isEmpty() const;
+
+        private:
+            PriorityQueue<ExtendedNodePointer> openList;
 
     };
 

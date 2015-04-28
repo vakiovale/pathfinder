@@ -2,8 +2,12 @@
 
 namespace pathfinder {
 
+    OpenList::OpenList() {
+        // nothing to do yet
+    }
+
     bool OpenList::isEmpty() const {
-        return false;
+        return openList.isEmpty();
     }
 
 }
