@@ -6,7 +6,7 @@ namespace pathfinder {
         this->totalCost = -1.0f;
     }
 
-    const Node& ExtendedNode::getNode() {
+    const Node& ExtendedNode::getNode() const {
         return *(this->node);
     }
 

@@ -30,7 +30,7 @@ namespace pathfinder {
              * @brief Get a reference to binded Node
              * @return reference to binded node
              */
-            const Node& getNode();
+            const Node& getNode() const;
 
             /**
              * @brief Compare two ExtendedNodes
