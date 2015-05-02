@@ -345,3 +345,50 @@ SCENARIO("ExtendedNode can be set to be in open list", "[extendednode]") {
     }
 
 }
+
+SCENARIO("ExtendedNode can be set to be in closed list", "[extendednode]") {
+
+    GIVEN("ExtendedNode in position (1,0)") {
+
+        pathfinder::Node node(1,0);
+        pathfinder::ExtendedNode extNode(&node);
+
+        WHEN("Nothing has been done") {
+
+            THEN("ExtendedNode should not be in closed list") {
+                REQUIRE_FALSE(extNode.isInClosedList());
+            }
+        }
+
+        WHEN("ExtendedNode is set to be in closed list") {
+
+            extNode.setNodeToClosedList();
+
+            THEN("ExtendedNode should be in closed list") {
+                REQUIRE(extNode.isInClosedList());
+            }
+
+            AND_WHEN("ExtendedNode is set NOT to be in closed list") {
+
+                extNode.setNodeRemovedFromClosedList();
+
+                THEN("ExtendedNode should not be in closed list") {
+                    REQUIRE_FALSE(extNode.isInClosedList());
+                }
+            }
+
+        }
+
+        WHEN("ExtendedNode is set NOT to be in closed list") {
+
+            extNode.setNodeRemovedFromClosedList();
+
+            THEN("ExtendedNode should not be in closed list") {
+                REQUIRE_FALSE(extNode.isInClosedList());
+            }
+        }
+
+    }
+
+}
+

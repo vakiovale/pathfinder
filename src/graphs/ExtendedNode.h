@@ -112,11 +112,34 @@ namespace pathfinder {
              */
             void setNodeRemovedFromOpenList();
 
+            /**
+             * @brief Check if node is set to be in closed list
+             * @return true if node has been set to be in closed list
+             */
+            bool isInClosedList() const;
+
+            /**
+             * @brief Set node to be in closed list
+             *
+             * After calling this, isInClosedList() will return true
+             */
+            void setNodeToClosedList();
+
+            /**
+             * @brief Set node to be removed from closed list
+             *
+             * After calling this, isInClosedList() will return false
+             */
+            void setNodeRemovedFromClosedList();
+
         private:
             const Node* node; /*< binded node */
+
             float totalCost; /*< estimated total cost to the end node */
             float currentCost; /*< current cost that's wasted coming to this node */
+
             bool nodeIsInOpenList; /*< flag to tell if node is in open list */
+            bool nodeIsInClosedList; /*< flag to tell if node is in closed list */
 
     };
 

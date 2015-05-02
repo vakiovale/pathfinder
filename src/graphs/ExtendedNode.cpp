@@ -5,6 +5,7 @@ namespace pathfinder {
     ExtendedNode::ExtendedNode(const Node* node) : node(node){
         this->totalCost = -1.0f;
         this->nodeIsInOpenList = false;
+        this->nodeIsInClosedList = false;
     }
 
     const Node& ExtendedNode::getNode() const {
@@ -49,6 +50,18 @@ namespace pathfinder {
 
     void ExtendedNode::setNodeRemovedFromOpenList() {
         nodeIsInOpenList = false;
+    }
+
+    bool ExtendedNode::isInClosedList() const {
+        return nodeIsInClosedList;
+    }
+
+    void ExtendedNode::setNodeToClosedList() {
+        nodeIsInClosedList = true;
+    }
+
+    void ExtendedNode::setNodeRemovedFromClosedList() {
+        nodeIsInClosedList = false;
     }
 
 }
