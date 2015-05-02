@@ -216,8 +216,6 @@ SCENARIO("MovementCostCalculator calculates movement cost from one Node to"
             }
         }
 
-
-
     }
 
 }
