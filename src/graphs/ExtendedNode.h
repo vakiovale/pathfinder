@@ -77,9 +77,30 @@ namespace pathfinder {
              */
             void setTotalCost(float totalCost);
 
+            /**
+             * @brief Check if node is set to be in open list
+             * @return true if node has been set to be in open list
+             */
+            bool isInOpenList() const;
+
+            /**
+             * @brief Set node to be in open list
+             *
+             * After calling this, isInOpenList() will return true
+             */
+            void setNodeToOpenList();
+
+            /**
+             * @brief Set node to be removed from open list
+             *
+             * After calling this, isInOpenList() will return false
+             */
+            void setNodeRemovedFromOpenList();
+
         private:
             const Node* node; /*< binded node */
-            float totalCost;
+            float totalCost; /*< estimated total cost to the end node */
+            bool nodeIsInOpenList; /*< flag to tell if node is in open list */
 
     };
 

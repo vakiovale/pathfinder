@@ -23,13 +23,13 @@ namespace pathfinder {
              *
              * @param ExtendedNode to be binded
              */
-            ExtendedNodePointer(const ExtendedNode* extendedNode);
+            ExtendedNodePointer(ExtendedNode* extendedNode);
 
             /**
              * @brief Get a reference to binded ExtendedNode
              * @return reference to binded ExtendedNode
              */
-            const ExtendedNode& getExtendedNode() const;
+            ExtendedNode& getExtendedNode() const;
 
             /**
              * @brief Compare two ExtendedNodePointers
@@ -42,7 +42,7 @@ namespace pathfinder {
             bool operator<(const ExtendedNodePointer& extendedNodePointer) const;
 
         private:
-            const ExtendedNode* extendedNode; /*< binded ExtendedNode */
+            ExtendedNode* extendedNode; /*< binded ExtendedNode */
     };
 
 }

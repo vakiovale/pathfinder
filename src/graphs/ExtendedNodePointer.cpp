@@ -2,12 +2,12 @@
 
 namespace pathfinder {
 
-    ExtendedNodePointer::ExtendedNodePointer(const ExtendedNode *extendedNode)
+    ExtendedNodePointer::ExtendedNodePointer(ExtendedNode *extendedNode)
         : extendedNode(extendedNode){
         // nothing more to do
     }
 
-    const ExtendedNode& ExtendedNodePointer::getExtendedNode() const {
+    ExtendedNode& ExtendedNodePointer::getExtendedNode() const {
         return *(this->extendedNode);
     }
 

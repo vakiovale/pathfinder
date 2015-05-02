@@ -237,3 +237,49 @@ SCENARIO("ExtendedNodes are considered same if their inner Nodes are same",
         }
     }
 }
+
+SCENARIO("ExtendedNode can be set to be in open list", "[extendednode]") {
+
+    GIVEN("ExtendedNode in position (1,0)") {
+
+        pathfinder::Node node(1,0);
+        pathfinder::ExtendedNode extNode(&node);
+
+        WHEN("Nothing has been done") {
+
+            THEN("ExtendedNode should not be in open list") {
+                REQUIRE_FALSE(extNode.isInOpenList());
+            }
+        }
+
+        WHEN("ExtendedNode is set to be in open list") {
+
+            extNode.setNodeToOpenList();
+
+            THEN("ExtendedNode should be in open list") {
+                REQUIRE(extNode.isInOpenList());
+            }
+
+            AND_WHEN("ExtendedNode is set NOT to be in open list") {
+
+                extNode.setNodeRemovedFromOpenList();
+
+                THEN("ExtendedNode should not be in open list") {
+                    REQUIRE_FALSE(extNode.isInOpenList());
+                }
+            }
+
+        }
+
+        WHEN("ExtendedNode is set NOT to be in open list") {
+
+            extNode.setNodeRemovedFromOpenList();
+
+            THEN("ExtendedNode should not be in open list") {
+                REQUIRE_FALSE(extNode.isInOpenList());
+            }
+        }
+
+    }
+
+}
