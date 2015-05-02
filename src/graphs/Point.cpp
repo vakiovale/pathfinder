@@ -2,16 +2,17 @@
 
 namespace pathfinder {
 
-    Point::Point(int x, int y) : X(x), Y(y) {
-        // do nothing else
+    Point::Point(int x, int y) {
+        this->x = x;
+        this->y = y;
     }
 
     int Point::getX() const {
-        return X;
+        return x;
     }
 
     int Point::getY() const {
-        return Y;
+        return y;
     }
 
 }

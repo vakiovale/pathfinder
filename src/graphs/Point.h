@@ -37,8 +37,8 @@ namespace pathfinder {
             int getY() const;
 
         private:
-            const int X;
-            const int Y;
+            int x;
+            int y;
 
     };
 

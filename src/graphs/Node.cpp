@@ -2,21 +2,19 @@
 
 namespace pathfinder {
 
-    Node::Node(int x, int y) : movementCostFactor(1.0f) {
+    Node::Node(int x, int y) : movementCostFactor(1.0f), position(x, y) {
         if(x < 0 || y < 0) {
             throw std::invalid_argument("Negative coordinates not allowed.");
         }
-        this->x = x;
-        this->y = y;
         this->accessible = true;
     }
 
     int Node::getX() const {
-        return x;
+        return position.getX();
     }
 
     int Node::getY() const {
-        return y;
+        return position.getY();
     }
 
     float Node::getMovementCostFactor() const {

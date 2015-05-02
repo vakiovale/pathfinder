@@ -10,6 +10,7 @@
 #define NODE_H
 
 #include <stdexcept>
+#include "Point.h"
 
 namespace pathfinder {
 
@@ -94,8 +95,7 @@ namespace pathfinder {
             void setAccessible(bool isNodeAcccessible);
 
         private:
-            int x; /*< x coordinate */
-            int y; /*< y coordinate */
+            Point position;
             float movementCostFactor; /*< how expensive is visiting this node */
             bool accessible; /*< true if moving to node is possible */
     };
