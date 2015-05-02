@@ -99,7 +99,6 @@ SCENARIO("Nodes can be retrieved from graphs", "[graph][node]") {
         WHEN("Getting a single node from position (2, 3)") {
 
             pathfinder::Node* node = graph.getNodeFromPosition(2, 3);
-            node->setMovementCostFactor(10101);
 
             THEN("The requested node should be the same as other"
                  "node in a position (2, 3)") {

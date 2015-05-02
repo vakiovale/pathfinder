@@ -3,23 +3,27 @@
 namespace pathfinder {
 
     AStarPathFinder::AStarPathFinder(Graph* graph) : PathFinder(graph) {
-        initializeTotalCosts();
+        initializeExtendedNodes();
     }
 
-    void AStarPathFinder::initializeTotalCosts() {
-        std::vector<std::vector<pathfinder::Node>> nodes = this->GRAPH->getAllNodes();
+    void AStarPathFinder::initializeExtendedNodes() {
+        std::vector<std::vector<pathfinder::Node>> nodes =
+                this->GRAPH->getAllNodes();
 
         for(std::vector<pathfinder::Node> innerVector : nodes) {
-            std::vector<float> rowOfFloats;
+
+            std::vector<ExtendedNode> rowOfExtendedNodes;
+
             for(Node& node : innerVector) {
-                rowOfFloats.push_back(0.0f);
+                ExtendedNode extendedNode(&node);
+                rowOfExtendedNodes.push_back(extendedNode);
             }
-            totalCosts.push_back(rowOfFloats);
+            extendedNodes.push_back(rowOfExtendedNodes);
         }
     }
 
     Path AStarPathFinder::findAndGetShortestPath(Node startNode, Node endNode) {
-        setTotalCostsToZero();
+        setExtendedNodesOpenListFlagsToFalse();
 
         pathfinder::Path path;
 
@@ -31,10 +35,10 @@ namespace pathfinder {
         return path;
     }
 
-    void AStarPathFinder::setTotalCostsToZero() {
-        for(std::vector<float> innerVector : totalCosts) {
-            for(float& totalCost : innerVector) {
-                totalCost = 0.0f;
+    void AStarPathFinder::setExtendedNodesOpenListFlagsToFalse() {
+        for(std::vector<ExtendedNode> innerVector : extendedNodes) {
+            for(ExtendedNode& extendedNode : innerVector) {
+                extendedNode.setNodeRemovedFromOpenList();
             }
         }
     }
