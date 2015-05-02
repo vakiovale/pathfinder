@@ -6,12 +6,16 @@ namespace pathfinder {
         // nothing to do yet
     }
 
-    void OpenList::add(const ExtendedNode& node) {
+    void OpenList::add(ExtendedNode& node) {
+        node.setNodeToOpenList();
         ExtendedNodePointer extendedNodePointer(&node);
         openList.push(extendedNodePointer);
     }
 
     void OpenList::removeBestNode() {
+        const ExtendedNodePointer& bestNodePointer = openList.top();
+        ExtendedNode& bestNode = bestNodePointer.getExtendedNode();
+        bestNode.setNodeRemovedFromOpenList();
         openList.pop();
     }
 
@@ -24,7 +28,7 @@ namespace pathfinder {
     }
 
     bool OpenList::contains(const ExtendedNode& extendedNode) const {
-        return true; // TODO: implement searching functionality
+        return extendedNode.isInOpenList();
     }
 
 }

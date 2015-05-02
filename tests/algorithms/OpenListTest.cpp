@@ -141,7 +141,6 @@ SCENARIO("ExtendedNodes can be checked if they are in the OpenList",
 
             pathfinder::Node node3(1, 0);
             pathfinder::ExtendedNode extNode3(&node3);
-            openList.add(extNode3);
 
             bool isInOpenList = openList.contains(extNode3);
 
@@ -149,8 +148,33 @@ SCENARIO("ExtendedNodes can be checked if they are in the OpenList",
                 REQUIRE_FALSE(isInOpenList);
             }
 
+            openList.add(extNode3);
+            AND_WHEN("Adding ExtendedNode (1,0) to the open list") {
+
+                openList.add(extNode3);
+
+                THEN("ExtendedNode (1,0) is in the open list") {
+                    REQUIRE(openList.contains(extNode3));
+                }
+            }
         }
 
-    }
+        WHEN("Removing two nodes from the open list") {
 
+            openList.removeBestNode();
+            openList.removeBestNode();
+
+            THEN("ExtendedNodes (2, 1) and (2, 2) are not in the open list") {
+
+                bool bothNodesAreRemoved =
+                        (!openList.contains(extNode1) &&
+                         !openList.contains(extNode2))
+                        ? true : false;
+
+                REQUIRE(bothNodesAreRemoved);
+
+            }
+
+        }
+    }
 }

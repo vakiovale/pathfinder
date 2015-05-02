@@ -9,7 +9,7 @@
 #ifndef OPENLIST_H
 #define OPENLIST_H
 
-#include <unordered_set>
+#include <unordered_map>
 #include "PriorityQueue.h"
 #include "ExtendedNodePointer.h"
 #include "ExtendedNode.h"
@@ -26,12 +26,18 @@ namespace pathfinder {
 
             /**
              * @brief Add ExtendedNode into the open list
+             *
+             * ExtendedNode will be set to be in open list
+             *
              * @param node to be added
              */
-            void add(const ExtendedNode& node);
+            void add(ExtendedNode& node);
 
             /**
              * @brief Remove best node from the open list
+             *
+             * ExtendedNode that is removed, will be set to be
+             * removed from the open list
              */
             void removeBestNode();
 
