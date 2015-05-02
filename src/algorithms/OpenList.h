@@ -27,7 +27,11 @@ namespace pathfinder {
             /**
              * @brief Add ExtendedNode into the open list
              *
-             * ExtendedNode will be set to be in open list
+             * ExtendedNode will be set to be in open list.
+             *
+             * If added ExtendedNode is already in some other
+             * open list or already in this open list, there
+             * WILL be some undefined behaviour.
              *
              * @param node to be added
              */
