@@ -29,11 +29,11 @@ namespace pathfinder {
     }
 
     bool operator==(const Node& lhs, const Node& rhs) {
-        return lhs.getX() == rhs.getX() && lhs.getY() == rhs.getY();
+        return lhs.position == rhs.position;
     }
 
     bool operator!=(const Node& lhs, const Node& rhs) {
-        return !(lhs == rhs);
+        return lhs.position != rhs.position;
     }
 
     bool Node::isAccessible() const {
