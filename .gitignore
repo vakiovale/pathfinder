@@ -4,3 +4,4 @@ pathfinder-build/
 eclipse-build/
 CMakeLists.txt.user
 *~
+*.autosave
