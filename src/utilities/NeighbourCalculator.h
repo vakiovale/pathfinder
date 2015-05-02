@@ -10,6 +10,9 @@
 #ifndef NEIGHBOUR_CALCULATOR_H
 #define NEIGHBOUR_CALCULATOR_H
 
+#include <vector>
+#include "Point.h"
+
 namespace pathfinder {
 
     class NeighbourCalculator {
@@ -24,6 +27,17 @@ namespace pathfinder {
              * @param y position
              */
             NeighbourCalculator(int x, int y);
+
+            /**
+             * @brief Get all the 8 neighbours
+             *
+             * Neighbouring points will be all the 8 neighbours
+             * starting from NORTH point and going clockwise
+             * to the NORTHWEST point.
+             *
+             * @return vector of Points
+             */
+            std::vector<Point> getNeighbourPoints() const;
 
             int getNorthX() const;
             int getNorthY() const;

@@ -3,5 +3,6 @@
 
 #include "catch.hpp"
 #include "NeighbourCalculator.h"
+#include "Point.h"
 
 #endif

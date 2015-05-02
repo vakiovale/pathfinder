@@ -190,6 +190,81 @@ SCENARIO("Neighbour calculator calculates positions of nearby neighbours",
         }
 
     }
+}
 
+SCENARIO("All the neighbour Points can be recieved as a vector",
+         "[neighbour][neighbourcalculator][point]") {
+
+    GIVEN("NeighbourCalculator initialized with position (2, 4)") {
+
+        pathfinder::NeighbourCalculator calc(2, 4);
+
+        WHEN("Getting a vector of Points from the initialized calculator") {
+            std::vector<pathfinder::Point> neighbourPoints =
+                    calc.getNeighbourPoints();
+
+            THEN("Neighbouring Points are (2,3), (3,3), (3,4),"
+                 "(3,5), (2,5), (1,5), (1,4) and (1,3) in that order") {
+
+                pathfinder::Point north(2,3);
+                pathfinder::Point northEast(3,3);
+                pathfinder::Point east(3,4);
+                pathfinder::Point southEast(3,5);
+
+                pathfinder::Point south(2,5);
+                pathfinder::Point southWest(1,5);
+                pathfinder::Point west(1,4);
+                pathfinder::Point northWest(1,3);
+
+                REQUIRE(neighbourPoints[0] == north);
+                REQUIRE(neighbourPoints[1] == northEast);
+                REQUIRE(neighbourPoints[2] == east);
+                REQUIRE(neighbourPoints[3] == southEast);
+
+                REQUIRE(neighbourPoints[4] == south);
+                REQUIRE(neighbourPoints[5] == southWest);
+                REQUIRE(neighbourPoints[6] == west);
+                REQUIRE(neighbourPoints[7] == northWest);
+
+            }
+        }
+
+    }
+
+    GIVEN("NeighbourCalculator initialized with position (7, 7)") {
+
+        pathfinder::NeighbourCalculator calc(7, 7);
+
+        WHEN("Getting a vector of Points from the initialized calculator") {
+            std::vector<pathfinder::Point> neighbourPoints =
+                    calc.getNeighbourPoints();
+
+            THEN("Neighbouring Points are (7,6), (8,6), (8,7),"
+                 "(8,8), (7,8), (6,8), (6,7) and (6,6) in that order") {
+
+                pathfinder::Point north(7,6);
+                pathfinder::Point northEast(8,6);
+                pathfinder::Point east(8,7);
+                pathfinder::Point southEast(8,8);
+
+                pathfinder::Point south(7,8);
+                pathfinder::Point southWest(6,8);
+                pathfinder::Point west(6,7);
+                pathfinder::Point northWest(6,6);
+
+                REQUIRE(neighbourPoints[0] == north);
+                REQUIRE(neighbourPoints[1] == northEast);
+                REQUIRE(neighbourPoints[2] == east);
+                REQUIRE(neighbourPoints[3] == southEast);
+
+                REQUIRE(neighbourPoints[4] == south);
+                REQUIRE(neighbourPoints[5] == southWest);
+                REQUIRE(neighbourPoints[6] == west);
+                REQUIRE(neighbourPoints[7] == northWest);
+
+            }
+        }
+
+    }
 
 }
