@@ -40,7 +40,7 @@ namespace pathfinder {
     }
 
     int NeighbourCalculator::getNorthWestX() const {
-        return x+1;
+        return x-1;
     }
 
     int NeighbourCalculator::getNorthWestY() const {
