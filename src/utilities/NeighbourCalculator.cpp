@@ -39,4 +39,36 @@ namespace pathfinder {
         return y;
     }
 
+    int NeighbourCalculator::getNorthWestX() const {
+        return x+1;
+    }
+
+    int NeighbourCalculator::getNorthWestY() const {
+        return y-1;
+    }
+
+    int NeighbourCalculator::getSouthWestX() const {
+        return x-1;
+    }
+
+    int NeighbourCalculator::getSouthWestY() const {
+        return y+1;
+    }
+
+    int NeighbourCalculator::getNorthEastX() const {
+        return x+1;
+    }
+
+    int NeighbourCalculator::getNorthEastY() const {
+        return y-1;
+    }
+
+    int NeighbourCalculator::getSouthEastX() const {
+        return x+1;
+    }
+
+    int NeighbourCalculator::getSouthEastY() const {
+        return y+1;
+    }
+
 }

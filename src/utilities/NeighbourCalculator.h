@@ -37,6 +37,18 @@ namespace pathfinder {
             int getWestX() const;
             int getWestY() const;
 
+            int getNorthWestX() const;
+            int getNorthWestY() const;
+
+            int getSouthWestX() const;
+            int getSouthWestY() const;
+
+            int getNorthEastX() const;
+            int getNorthEastY() const;
+
+            int getSouthEastX() const;
+            int getSouthEastY() const;
+
         private:
             int x;
             int y;

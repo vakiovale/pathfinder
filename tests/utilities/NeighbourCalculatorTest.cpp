@@ -51,6 +51,50 @@ SCENARIO("Neighbour calculator calculates positions of nearby neighbours",
             }
         }
 
+        WHEN("Getting NORTHWEST positions") {
+
+            int x = calc.getNorthWestX();
+            int y = calc.getNorthWestY();
+
+            THEN("X position is 4 and Y position is 1") {
+                REQUIRE(x == 4);
+                REQUIRE(y == 1);
+            }
+        }
+
+        WHEN("Getting SOUTHWEST positions") {
+
+            int x = calc.getSouthWestX();
+            int y = calc.getSouthWestY();
+
+            THEN("X position is 2 and Y position is 3") {
+                REQUIRE(x == 2);
+                REQUIRE(y == 3);
+            }
+        }
+
+        WHEN("Getting NORTHEAST positions") {
+
+            int x = calc.getNorthEastX();
+            int y = calc.getNorthEastY();
+
+            THEN("X position is 4 and Y position is 1") {
+                REQUIRE(x == 4);
+                REQUIRE(y == 1);
+            }
+        }
+
+        WHEN("Getting SOUTHEAST positions") {
+
+            int x = calc.getSouthEastX();
+            int y = calc.getSouthEastY();
+
+            THEN("X position is 4 and Y position is 3") {
+                REQUIRE(x == 4);
+                REQUIRE(y == 3);
+            }
+        }
+
     }
 
 
