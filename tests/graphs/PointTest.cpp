@@ -79,3 +79,49 @@ SCENARIO("Point has X and Y positions", "[point]") {
     }
 
 }
+
+SCENARIO("Points can be compared", "[point]") {
+
+    GIVEN("Point (1, 0)") {
+
+        pathfinder::Point point(1,0);
+
+        WHEN("Other point is (1,0)") {
+            pathfinder::Point otherPoint(1,0);
+
+            THEN("Point == other Point") {
+                REQUIRE(point == otherPoint);
+                REQUIRE_FALSE(point != otherPoint);
+            }
+        }
+
+        WHEN("Other point is (1,1)") {
+            pathfinder::Point otherPoint(1,1);
+
+            THEN("Point != other Point") {
+                REQUIRE(point != otherPoint);
+                REQUIRE_FALSE(point == otherPoint);
+            }
+        }
+
+        WHEN("Other point is (0,1)") {
+            pathfinder::Point otherPoint(0,1);
+
+            THEN("Point != other Point") {
+                REQUIRE(point != otherPoint);
+                REQUIRE_FALSE(point == otherPoint);
+            }
+        }
+
+        WHEN("Other point is (2,2)") {
+            pathfinder::Point otherPoint(2,2);
+
+            THEN("Point != other Point") {
+                REQUIRE(point != otherPoint);
+                REQUIRE_FALSE(point == otherPoint);
+            }
+        }
+
+    }
+
+}

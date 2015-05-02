@@ -15,4 +15,12 @@ namespace pathfinder {
         return y;
     }
 
+    bool operator==(const Point& lhs, const Point& rhs) {
+        return lhs.getX() == rhs.getX() && lhs.getY() == rhs.getY();
+    }
+
+    bool operator!=(const Point& lhs, const Point& rhs) {
+        return !(lhs == rhs);
+    }
+
 }

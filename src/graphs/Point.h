@@ -36,6 +36,28 @@ namespace pathfinder {
              */
             int getY() const;
 
+            /**
+             * @brief Compare two Points
+             *
+             * Two point are equal if the x and y coordinates are the same
+             *
+             * @param lhs
+             * @param rhs
+             * @return true if equal
+             */
+            friend bool operator==(const Point& lhs, const Point& rhs);
+
+            /**
+             * @brief Compare two Points
+             *
+             * Two point are not equal if the x and y coordinates are the same
+             *
+             * @param lhs
+             * @param rhs
+             * @return true if not equal
+             */
+            friend bool operator!=(const Point& lhs, const Point& rhs);
+
         private:
             int x;
             int y;
