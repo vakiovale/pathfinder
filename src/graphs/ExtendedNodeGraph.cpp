@@ -12,11 +12,12 @@ namespace pathfinder {
                 graph->getAllNodes();
 
         int numberOfRows = nodes.size();
-        int numberOfColumns = (nodes[0]).size();
+        for(int i = 0; i < numberOfRows; i++) {
 
-        for(int i = 0; i < numberOfColumns; i++) {
             std::vector<ExtendedNode> rowOfVectors;
-            for(int j = 0; j < numberOfRows; j++) {
+            int numberOfColumns = (nodes[i]).size();
+
+            for(int j = 0; j < numberOfColumns; j++) {
                 rowOfVectors.push_back(
                             ExtendedNode(
                                 graph->getNodeFromPosition(j,i)));
@@ -31,7 +32,6 @@ namespace pathfinder {
 
     std::vector<ExtendedNode*> ExtendedNodeGraph::getNeighboursOfExtendedNode(
             const ExtendedNode& extendedNode) {
-
         std::vector<ExtendedNode*> neighbours;
 
         ExtendedNode* node = &(getExtendedNodeInPosition(extendedNode.getNode().getX(),

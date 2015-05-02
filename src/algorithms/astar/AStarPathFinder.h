@@ -14,6 +14,7 @@
 #include "Path.h"
 #include "PathFinder.h"
 #include "ExtendedNode.h"
+#include "ExtendedNodeGraph.h"
 
 namespace pathfinder {
 
@@ -38,10 +39,7 @@ namespace pathfinder {
             Path findAndGetShortestPath(Node startNode, Node endNode);
 
        private:
-            std::vector<std::vector<ExtendedNode>> extendedNodes;
-            void initializeExtendedNodes();
-            void setExtendedNodesOpenListFlagsToFalse();
-
+            ExtendedNodeGraph extendedGraph;
 
     };
 

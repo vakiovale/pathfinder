@@ -18,6 +18,22 @@ SCENARIO("ExtendedNodeGraphs initializes itself with a Graph",
         }
     }
 
+    GIVEN("An empty graph") {
+
+        pathfinder::Graph graph;
+
+        WHEN("Initializing ExtendedNodeGraph with an empty graph") {
+
+            pathfinder::ExtendedNodeGraph extGraph(&graph);
+
+            THEN("Initializing works "
+                 "(although there's not much use for an empty graph)") {
+                REQUIRE(true);
+            }
+
+        }
+    }
+
 }
 
 SCENARIO("ExtendedNodeGraph has an ExtendedNode for every Node in the graph",
