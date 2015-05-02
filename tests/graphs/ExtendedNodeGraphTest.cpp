@@ -163,8 +163,12 @@ SCENARIO("It's possible to get all the neighbour ExtendedNodes from a "
                  "(1,0), (2,0), (2,1), (2,2), (1,2), (0,2), (0,1), (0,0) "
                  "in that order") {
 
-                pathfinder::ExtendedNode* extendedNode = neighbours.back();
+                pathfinder::ExtendedNode* extendedNode = neighbours[0];
                 REQUIRE(extendedNode->getNode().getX() == 1);
+                REQUIRE(extendedNode->getNode().getY() == 0);
+
+                extendedNode = neighbours[1];
+                REQUIRE(extendedNode->getNode().getX() == 2);
                 REQUIRE(extendedNode->getNode().getY() == 0);
 
             }

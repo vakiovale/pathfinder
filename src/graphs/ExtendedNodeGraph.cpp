@@ -34,9 +34,15 @@ namespace pathfinder {
             const ExtendedNode& extendedNode) {
         std::vector<ExtendedNode*> neighbours;
 
-        ExtendedNode* node = &(getExtendedNodeInPosition(extendedNode.getNode().getX(),
-                                                       extendedNode.getNode().getY()-1));
+        ExtendedNode* node =
+                &(getExtendedNodeInPosition(extendedNode.getNode().getX(),
+                                            extendedNode.getNode().getY()-1));
         neighbours.push_back(node);
+
+        node = &(getExtendedNodeInPosition(extendedNode.getNode().getX()+1,
+                                           extendedNode.getNode().getY()-1));
+        neighbours.push_back(node);
+
         return neighbours;
     }
 
