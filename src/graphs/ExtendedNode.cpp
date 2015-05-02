@@ -31,6 +31,14 @@ namespace pathfinder {
         this->totalCost = totalCost;
     }
 
+    float ExtendedNode::getCurrentCost() const {
+        return this->currentCost;
+    }
+
+    void ExtendedNode::setCurrentCost(float currentCost) {
+        this->currentCost = currentCost;
+    }
+
     bool ExtendedNode::isInOpenList() const {
         return nodeIsInOpenList;
     }

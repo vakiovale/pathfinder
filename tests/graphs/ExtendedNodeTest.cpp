@@ -96,6 +96,68 @@ SCENARIO("ExtendedNode has total cost value that can be changed", "[extendednode
     }
 }
 
+SCENARIO("ExtendedNode has current cost value that can be changed",
+         "[extendednode][node][astar]") {
+
+    GIVEN("ExtendedNode in position (0,0)") {
+
+        pathfinder::Node innerNode(0, 0);
+        pathfinder::ExtendedNode node(&innerNode);
+
+        WHEN("Getting current cost from node") {
+
+            float currentCost = node.getCurrentCost();
+
+            THEN("Current cost is 0") {
+
+                Approx approximationCurrentCost((double)currentCost);
+                REQUIRE(approximationCurrentCost == 0.0f);
+
+            }
+        }
+
+        WHEN("Setting current cost to 1.5f") {
+
+            node.setCurrentCost(1.5f);
+
+            THEN("Current cost is 1.5f") {
+
+                float currentCost = node.getCurrentCost();
+                Approx approximation((double)currentCost);
+                REQUIRE(approximation == 1.5f);
+
+            }
+        }
+
+        WHEN("Setting current cost to 1.68f") {
+
+            node.setCurrentCost(1.68f);
+
+            THEN("Total cost is 1.68f") {
+
+                float currentCost = node.getCurrentCost();
+                Approx approximation((double)currentCost);
+                REQUIRE(approximation == 1.68f);
+
+            }
+        }
+
+        WHEN("Setting current cost to zero") {
+
+            node.setCurrentCost(0);
+
+            THEN("Current cost is 0") {
+
+                float currentCost = node.getCurrentCost();
+                Approx approximation((double)currentCost);
+                REQUIRE(approximation == 0);
+
+            }
+
+        }
+    }
+}
+
 SCENARIO("ExtendedNodes can be compared by total cost", "[extendednode][node]") {
 
     GIVEN("First ExtendedNode with position (2,4) and total cost 15.0 "

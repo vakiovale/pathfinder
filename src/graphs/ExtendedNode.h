@@ -78,6 +78,21 @@ namespace pathfinder {
             void setTotalCost(float totalCost);
 
             /**
+             * @brief Get current cost
+             *
+             * Current cost is cost that has been wasted coming to this Node.
+             *
+             * @return current cost
+             */
+            float getCurrentCost() const;
+
+            /**
+             * @brief Set current cost to new value
+             * @param new current cost
+             */
+            void setCurrentCost(float currentCost);
+
+            /**
              * @brief Check if node is set to be in open list
              * @return true if node has been set to be in open list
              */
@@ -100,6 +115,7 @@ namespace pathfinder {
         private:
             const Node* node; /*< binded node */
             float totalCost; /*< estimated total cost to the end node */
+            float currentCost; /*< current cost that's wasted coming to this node */
             bool nodeIsInOpenList; /*< flag to tell if node is in open list */
 
     };
