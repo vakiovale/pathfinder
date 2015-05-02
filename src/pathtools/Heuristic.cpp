@@ -41,8 +41,6 @@ namespace pathfinder {
 
     void Heuristic::setDiagonalMovementCostFactor(
             float diagonalMovementCostFactor) {
-        this->nonDiagonalMovementCost = 1.0f;
-        this->diagonalMovementCost =
-                nonDiagonalMovementCost * diagonalMovementCostFactor;
+        this->diagonalMovementCost = diagonalMovementCostFactor;
     }
 }
