@@ -40,7 +40,7 @@ namespace pathfinder {
             /**
              * @brief Get all the neighbours of a specific ExtendedNode
              *
-             * Number of neighbours will be between 0 and 9 depending
+             * Number of neighbours will be between 0 and 8 depending
              * on the position of the ExtendedNode and the size of the graph
              *
              * @param extendedNode
