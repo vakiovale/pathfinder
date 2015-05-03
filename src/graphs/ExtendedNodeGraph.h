@@ -47,10 +47,10 @@ namespace pathfinder {
              * Number of neighbours will be between 0 and 8 depending
              * on the position of the ExtendedNode and the size of the graph.
              * Nodes that are not accessible will not be added to vector
-             * of ExtendedNodes.
+             * of pointers to ExtendedNodes.
              *
              * @param extendedNode
-             * @return vector of ExtendedNodes
+             * @return vector of pointers to ExtendedNodes
              */
             std::vector<ExtendedNode*> getNeighboursOfExtendedNode(
                     const ExtendedNode& extendedNode);
@@ -59,6 +59,10 @@ namespace pathfinder {
             Graph* graph;
             std::vector<std::vector<ExtendedNode>> extendedNodes;
             void initializeExtendedGraph();
+            std::vector<Point> getNeighbourPoints(const Node& node);
+            bool pointExistsInGraph(const Point& point) const;
+            ExtendedNode& getExtendedNodeFromPoint(const Point& point);
+            bool extendedNodeIsAccessible(const ExtendedNode& extendedNode) const;
 
     };
 

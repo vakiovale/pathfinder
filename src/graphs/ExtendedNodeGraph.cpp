@@ -33,23 +33,17 @@ namespace pathfinder {
     std::vector<ExtendedNode*> ExtendedNodeGraph::getNeighboursOfExtendedNode(
             const ExtendedNode& extendedNode) {
 
-
-        NeighbourCalculator calculator(extendedNode.getNode().getX(),
-                                       extendedNode.getNode().getY());
         std::vector<ExtendedNode*> neighbours;
-        std::vector<Point> neighbourPoints = calculator.getNeighbourPoints();
+        std::vector<Point> neighbourPoints =
+                getNeighbourPoints(extendedNode.getNode());
 
         for(Point neighbourPoint : neighbourPoints) {
-            if(!(graph->nodeExistsInPosition(neighbourPoint.getX(), neighbourPoint.getY()))) {
+            if(!pointExistsInGraph(neighbourPoint)) {
                 continue;
             }
-            int x = neighbourPoint.getX();
-            int y = neighbourPoint.getY();
 
-            ExtendedNode& neighbour = getExtendedNodeInPosition(x,y);
-
-            const Node& node = neighbour.getNode();
-            if(node.isAccessible()) {
+            ExtendedNode& neighbour = getExtendedNodeFromPoint(neighbourPoint);
+            if(extendedNodeIsAccessible(neighbour)) {
                 neighbours.push_back(&neighbour);
             }
         }
@@ -57,5 +51,31 @@ namespace pathfinder {
         return neighbours;
     }
 
+    std::vector<Point> ExtendedNodeGraph::getNeighbourPoints(const Node& node) {
+        int x = node.getX();
+        int y = node.getY();
+        NeighbourCalculator calculator(x, y);
+        return calculator.getNeighbourPoints();
+    }
+
+    bool ExtendedNodeGraph::pointExistsInGraph(const Point& point) const {
+        int x = point.getX();
+        int y = point.getY();
+        return graph->nodeExistsInPosition(x, y);
+    }
+
+    ExtendedNode& ExtendedNodeGraph::getExtendedNodeFromPoint(
+            const Point& point) {
+
+        int x = point.getX();
+        int y = point.getY();
+        return getExtendedNodeInPosition(x,y);
+    }
+
+    bool ExtendedNodeGraph::extendedNodeIsAccessible(
+            const ExtendedNode& extendedNode) const {
+        const Node& node = extendedNode.getNode();
+        return node.isAccessible();
+    }
 
 }
