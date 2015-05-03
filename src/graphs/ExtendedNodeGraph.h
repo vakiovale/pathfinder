@@ -52,7 +52,7 @@ namespace pathfinder {
              * @param extendedNode
              * @return vector of pointers to ExtendedNodes
              */
-            std::vector<ExtendedNode*> getNeighboursOfExtendedNode(
+            std::vector<ExtendedNode*> getAccessibleNeighboursOfExtendedNode(
                     const ExtendedNode& extendedNode);
 
         private:

@@ -30,7 +30,7 @@ namespace pathfinder {
         return extendedNodes[y][x];
     }
 
-    std::vector<ExtendedNode*> ExtendedNodeGraph::getNeighboursOfExtendedNode(
+    std::vector<ExtendedNode*> ExtendedNodeGraph::getAccessibleNeighboursOfExtendedNode(
             const ExtendedNode& extendedNode) {
 
         std::vector<ExtendedNode*> neighbours;

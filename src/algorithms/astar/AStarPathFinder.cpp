@@ -39,7 +39,7 @@ namespace pathfinder {
                 break;
 
             std::vector<ExtendedNode*> neighbours =
-                    extendedGraph.getNeighboursOfExtendedNode(current);
+                    extendedGraph.getAccessibleNeighboursOfExtendedNode(current);
 
             for(ExtendedNode* neighbour : neighbours) {
                 const Node& first = current.getNode();

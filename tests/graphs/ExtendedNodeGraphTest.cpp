@@ -157,7 +157,7 @@ SCENARIO("It's possible to get all the neighbour ExtendedNodes from a "
                     extGraph.getExtendedNodeInPosition(1, 1);
 
             std::vector<pathfinder::ExtendedNode*> neighbours =
-                    extGraph.getNeighboursOfExtendedNode(extNode);
+                    extGraph.getAccessibleNeighboursOfExtendedNode(extNode);
 
             THEN("Neighbours of ExtendedNode (1, 1) are "
                  "(1,0), (2,0), (2,1), (2,2), (1,2), (0,2), (0,1), (0,0) "
@@ -205,7 +205,7 @@ SCENARIO("It's possible to get all the neighbour ExtendedNodes from a "
                     extGraph.getExtendedNodeInPosition(0, 1);
 
             std::vector<pathfinder::ExtendedNode*> neighbours =
-                    extGraph.getNeighboursOfExtendedNode(extNode);
+                    extGraph.getAccessibleNeighboursOfExtendedNode(extNode);
 
             THEN("Neighbours of ExtendedNode (0, 1) are "
                  "(0,0), (1,0), (1,1), (1,2), (0,2)"
@@ -257,7 +257,7 @@ SCENARIO("Unaccessible nodes restrict movement", "[extendednodegraph]"
                  "in that order") {
 
                 std::vector<pathfinder::ExtendedNode*> neighbours =
-                        extGraph.getNeighboursOfExtendedNode(middleNode);
+                        extGraph.getAccessibleNeighboursOfExtendedNode(middleNode);
 
                 REQUIRE(neighbours.size() == 7);
 
@@ -302,7 +302,7 @@ SCENARIO("Unaccessible nodes restrict movement", "[extendednodegraph]"
                  "in that order") {
 
                 std::vector<pathfinder::ExtendedNode*> neighbours =
-                        extGraph.getNeighboursOfExtendedNode(middleNode);
+                        extGraph.getAccessibleNeighboursOfExtendedNode(middleNode);
 
                 REQUIRE(neighbours.size() == 5);
 
