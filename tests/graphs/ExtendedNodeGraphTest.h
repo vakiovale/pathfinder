@@ -7,5 +7,4 @@
 #include "ExtendedNode.h"
 #include "Node.h"
 
-
 #endif
