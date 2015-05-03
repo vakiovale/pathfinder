@@ -69,6 +69,8 @@ namespace pathfinder {
 
             /**
              * @brief Fixes OpenList
+             *
+             * Updates priority queue.
              */
             void fixOpenList();
 
