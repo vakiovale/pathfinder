@@ -171,6 +171,30 @@ SCENARIO("It's possible to get all the neighbour ExtendedNodes from a "
                 REQUIRE(extendedNode->getNode().getX() == 2);
                 REQUIRE(extendedNode->getNode().getY() == 0);
 
+                extendedNode = neighbours[2];
+                REQUIRE(extendedNode->getNode().getX() == 2);
+                REQUIRE(extendedNode->getNode().getY() == 1);
+
+                extendedNode = neighbours[3];
+                REQUIRE(extendedNode->getNode().getX() == 2);
+                REQUIRE(extendedNode->getNode().getY() == 2);
+
+                extendedNode = neighbours[4];
+                REQUIRE(extendedNode->getNode().getX() == 1);
+                REQUIRE(extendedNode->getNode().getY() == 2);
+
+                extendedNode = neighbours[5];
+                REQUIRE(extendedNode->getNode().getX() == 0);
+                REQUIRE(extendedNode->getNode().getY() == 2);
+
+                extendedNode = neighbours[6];
+                REQUIRE(extendedNode->getNode().getX() == 0);
+                REQUIRE(extendedNode->getNode().getY() == 1);
+
+                extendedNode = neighbours[7];
+                REQUIRE(extendedNode->getNode().getX() == 0);
+                REQUIRE(extendedNode->getNode().getY() == 0);
+
             }
 
         }

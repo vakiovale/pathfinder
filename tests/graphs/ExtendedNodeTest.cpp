@@ -108,10 +108,10 @@ SCENARIO("ExtendedNode has current cost value that can be changed",
 
             float currentCost = node.getCurrentCost();
 
-            THEN("Current cost is 0") {
+            THEN("Current cost is maximum limit of float") {
 
                 Approx approximationCurrentCost((double)currentCost);
-                REQUIRE(approximationCurrentCost == 0.0f);
+                REQUIRE(approximationCurrentCost == std::numeric_limits<float>::max());
 
             }
         }

@@ -10,6 +10,7 @@
 #ifndef EXTENDED_NODE_H
 #define EXTENDED_NODE_H
 
+#include <limits>
 #include "Node.h"
 
 namespace pathfinder {

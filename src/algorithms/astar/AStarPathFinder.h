@@ -15,6 +15,13 @@
 #include "PathFinder.h"
 #include "ExtendedNode.h"
 #include "ExtendedNodeGraph.h"
+#include "OpenList.h"
+#include "NeighbourCalculator.h"
+#include "MovementCostCalculator.h"
+#include "Heuristic.h"
+#include "Point.h"
+#include "Node.h"
+
 
 namespace pathfinder {
 

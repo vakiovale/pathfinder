@@ -14,6 +14,9 @@
 #include <vector>
 #include "Graph.h"
 #include "ExtendedNode.h"
+#include "Point.h"
+#include "NeighbourCalculator.h"
+#include "Node.h"
 
 namespace pathfinder {
 
@@ -38,10 +41,13 @@ namespace pathfinder {
             ExtendedNode& getExtendedNodeInPosition(int x, int y);
 
             /**
-             * @brief Get all the neighbours of a specific ExtendedNode
+             * @brief Get all the accessible neighbours
+             * of a specific ExtendedNode
              *
              * Number of neighbours will be between 0 and 8 depending
-             * on the position of the ExtendedNode and the size of the graph
+             * on the position of the ExtendedNode and the size of the graph.
+             * Nodes that are not accessible will not be added to vector
+             * of ExtendedNodes.
              *
              * @param extendedNode
              * @return vector of ExtendedNodes

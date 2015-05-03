@@ -4,6 +4,7 @@ namespace pathfinder {
 
     ExtendedNode::ExtendedNode(const Node* node) : node(node){
         this->totalCost = -1.0f;
+        this->currentCost = std::numeric_limits<float>::max();
         this->nodeIsInOpenList = false;
         this->nodeIsInClosedList = false;
     }

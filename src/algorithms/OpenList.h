@@ -49,7 +49,7 @@ namespace pathfinder {
              * @brief Get best node from open list
              * @return reference to the best ExtendedNode
              */
-            const ExtendedNode& getBestNode() const;
+            ExtendedNode& getBestNode();
 
             /**
              * @brief  Check if open list contains ExtendedNode
@@ -66,6 +66,11 @@ namespace pathfinder {
              * @return true if there's zero nodes in the open list
              */
             bool isEmpty() const;
+
+            /**
+             * @brief Fixes OpenList
+             */
+            void fixOpenList();
 
         private:
             PriorityQueue<ExtendedNodePointer> openList;

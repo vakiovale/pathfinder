@@ -19,7 +19,7 @@ namespace pathfinder {
         openList.pop();
     }
 
-    const ExtendedNode& OpenList::getBestNode() const {
+    ExtendedNode& OpenList::getBestNode() {
         return openList.top().getExtendedNode();
     }
 
@@ -29,6 +29,10 @@ namespace pathfinder {
 
     bool OpenList::contains(const ExtendedNode& extendedNode) const {
         return extendedNode.isInOpenList();
+    }
+
+    void OpenList::fixOpenList() {
+        openList.update();
     }
 
 }

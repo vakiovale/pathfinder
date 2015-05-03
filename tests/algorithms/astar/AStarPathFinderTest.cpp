@@ -56,11 +56,15 @@ SCENARIO("Pathfinder finds shortest paths", "[pathfinder][astar]") {
             pathfinder::Node start(0,0);
             pathfinder::Node end(3,0);
 
-            THEN("Pathfinder returns a path") {
+            THEN("Pathfinder returns a shortest path") {
 
                 pathfinder::Path shortestPath =
                         pathFinder.findAndGetShortestPath(start, end);
-                REQUIRE(shortestPath.pathExists());
+
+                REQUIRE(shortestPath[0] == start);
+                REQUIRE(shortestPath[1] == pathfinder::Node(1,0));
+                REQUIRE(shortestPath[2] == pathfinder::Node(2,0));
+                REQUIRE(shortestPath[3] == end);
 
             }
 

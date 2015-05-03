@@ -32,16 +32,27 @@ namespace pathfinder {
 
     std::vector<ExtendedNode*> ExtendedNodeGraph::getNeighboursOfExtendedNode(
             const ExtendedNode& extendedNode) {
+
+
+        NeighbourCalculator calculator(extendedNode.getNode().getX(),
+                                       extendedNode.getNode().getY());
         std::vector<ExtendedNode*> neighbours;
+        std::vector<Point> neighbourPoints = calculator.getNeighbourPoints();
 
-        ExtendedNode* node =
-                &(getExtendedNodeInPosition(extendedNode.getNode().getX(),
-                                            extendedNode.getNode().getY()-1));
-        neighbours.push_back(node);
+        for(Point neighbourPoint : neighbourPoints) {
+            if(!(graph->nodeExistsInPosition(neighbourPoint.getX(), neighbourPoint.getY()))) {
+                continue;
+            }
+            int x = neighbourPoint.getX();
+            int y = neighbourPoint.getY();
 
-        node = &(getExtendedNodeInPosition(extendedNode.getNode().getX()+1,
-                                           extendedNode.getNode().getY()-1));
-        neighbours.push_back(node);
+            ExtendedNode& neighbour = getExtendedNodeInPosition(x,y);
+
+            const Node& node = neighbour.getNode();
+            if(node.isAccessible()) {
+                neighbours.push_back(&neighbour);
+            }
+        }
 
         return neighbours;
     }
