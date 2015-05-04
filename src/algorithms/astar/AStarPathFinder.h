@@ -53,6 +53,10 @@ namespace pathfinder {
        private:
             ExtendedNodeGraph extendedGraph;
 
+            OpenList openList;
+
+            std::vector<ExtendedNode*> closedList;
+
             MovementCostCalculator movementCalculator;
 
             Heuristic heuristic;
@@ -60,8 +64,6 @@ namespace pathfinder {
             ExtendedNode* start;
 
             ExtendedNode* end;
-
-            std::vector<ExtendedNode*> closedList;
 
             void cleanExtendedGraph();
 
@@ -75,7 +77,7 @@ namespace pathfinder {
 
             bool extendedNodeIsGoal(const ExtendedNode& extendedNode) const;
 
-            void cleanExtendedNodesFromOpenAndClosedList(OpenList& openList);
+            void cleanExtendedNodesFromOpenAndClosedList();
 
             void resetExtendedNodeCurrentCost(ExtendedNode& nodeToReset);
 

@@ -143,6 +143,34 @@ SCENARIO("Pathfinder finds shortest paths", "[pathfinder][astar]") {
         }
     }
 
+    GIVEN("A AStarPathfinder initialized with empty 1000x1000 2D grid map") {
+
+        pathfinder::Graph graph;
+        graph.create2DGridMap(1000);
+        pathfinder::AStarPathFinder pathFinder(&graph);
+
+        WHEN("Path starting point is (0,0) and ending point is (999,999)") {
+
+            pathfinder::Node start(0,0);
+            pathfinder::Node end(999,999);
+
+            THEN("Pathfinder returns a shortest path") {
+
+                pathfinder::Path shortestPath =
+                        pathFinder.findAndGetShortestPath(start, end);
+
+                REQUIRE(shortestPath.getPathLength() == 1000);
+                REQUIRE(shortestPath[0] == start);
+
+                for(int i = 1; i < 999; i++) {
+                    REQUIRE(shortestPath[i] == pathfinder::Node(i, i));
+                }
+
+                REQUIRE(shortestPath[999] == end);
+
+            }
+        }
+    }
 }
 
 SCENARIO("Pathfinder finds shortest when used multiple times", "[pathfinder][astar]") {
@@ -169,46 +197,44 @@ SCENARIO("Pathfinder finds shortest when used multiple times", "[pathfinder][ast
                 REQUIRE(shortestPath1[2] == pathfinder::Node(2,0));
                 REQUIRE(shortestPath1[3] == end1);
 
-            }
+                AND_WHEN("Path starting point is (0,1) and ending point is (4,3)") {
 
-            AND_WHEN("Path starting point is (0,1) and ending point is (4,3)") {
-
-                pathfinder::Node start2(0,1);
-                pathfinder::Node end2(4,3);
-
-                THEN("Pathfinder returns a shortest path") {
-
-                    pathfinder::Path shortestPath2 =
-                            pathFinder.findAndGetShortestPath(start2, end2);
-
-                    REQUIRE(shortestPath2.getPathLength() == 5);
-                    REQUIRE(shortestPath2[0] == start2);
-                    REQUIRE(shortestPath2[1] == pathfinder::Node(1,1));
-                    REQUIRE(shortestPath2[2] == pathfinder::Node(2,2));
-                    REQUIRE(shortestPath2[3] == pathfinder::Node(3,2));
-                    REQUIRE(shortestPath2[4] == end2);
-
-                }
-
-                AND_WHEN("Path starting point is (3,0) and ending point is (0,0)") {
-
-                    pathfinder::Node start3(3,0);
-                    pathfinder::Node end3(0,0);
+                    pathfinder::Node start2(0,1);
+                    pathfinder::Node end2(4,3);
 
                     THEN("Pathfinder returns a shortest path") {
 
-                        pathfinder::Path shortestPath3 =
-                                pathFinder.findAndGetShortestPath(start3, end3);
+                        pathfinder::Path shortestPath2 =
+                                pathFinder.findAndGetShortestPath(start2, end2);
 
-                        REQUIRE(shortestPath3.getPathLength() == 4);
-                        REQUIRE(shortestPath3[0] == start3);
-                        REQUIRE(shortestPath3[1] == pathfinder::Node(2,0));
-                        REQUIRE(shortestPath3[2] == pathfinder::Node(1,0));
-                        REQUIRE(shortestPath3[3] == end3);
+                        REQUIRE(shortestPath2.getPathLength() == 5);
+                        REQUIRE(shortestPath2[0] == start2);
+                        REQUIRE(shortestPath2[1] == pathfinder::Node(1,1));
+                        REQUIRE(shortestPath2[2] == pathfinder::Node(2,2));
+                        REQUIRE(shortestPath2[3] == pathfinder::Node(3,2));
+                        REQUIRE(shortestPath2[4] == end2);
 
+                        AND_WHEN("Path starting point is (3,0) and ending point is (0,0)") {
+
+                            pathfinder::Node start3(3,0);
+                            pathfinder::Node end3(0,0);
+
+                            THEN("Pathfinder returns a shortest path") {
+
+                                pathfinder::Path shortestPath3 =
+                                        pathFinder.findAndGetShortestPath(start3, end3);
+
+                                REQUIRE(shortestPath3.getPathLength() == 4);
+                                REQUIRE(shortestPath3[0] == start3);
+                                REQUIRE(shortestPath3[1] == pathfinder::Node(2,0));
+                                REQUIRE(shortestPath3[2] == pathfinder::Node(1,0));
+                                REQUIRE(shortestPath3[3] == end3);
+
+                            }
+                        }
                     }
                 }
-            }
+            }           
         }
     }
 }

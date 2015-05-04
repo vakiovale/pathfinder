@@ -14,7 +14,6 @@ namespace pathfinder {
     Path AStarPathFinder::findAndGetShortestPath(Node startNode, Node endNode) {
         pathfinder::Path path;
         initializeStartAndEndNodes(startNode, endNode);
-        OpenList openList;
         openList.add(*start);
 
         while(!openList.isEmpty()) {
@@ -37,7 +36,9 @@ namespace pathfinder {
                         movementCalculator.getCostBetweenNodes(currentNode,
                                                                neighbourNode);
 
-                if(openList.contains(*neighbour) && cost < neighbour->getCurrentCost()) {
+                if(openList.contains(*neighbour) &&
+                   cost < neighbour->getCurrentCost()) {
+
                    neighbour->setCurrentCost(cost);
                    neighbour->setTotalCost(cost+heuristic.estimateDistance(
                                                neighbourNode, endNode));
@@ -52,7 +53,7 @@ namespace pathfinder {
             }
         }
 
-        cleanExtendedNodesFromOpenAndClosedList(openList);
+        cleanExtendedNodesFromOpenAndClosedList();
         return path;
     }
 
@@ -86,8 +87,7 @@ namespace pathfinder {
         return extendedNode == *end;
     }
 
-    void AStarPathFinder::cleanExtendedNodesFromOpenAndClosedList(
-            OpenList& openList) {
+    void AStarPathFinder::cleanExtendedNodesFromOpenAndClosedList() {
 
         while(!openList.isEmpty()) {
             resetExtendedNodeCurrentCost(openList.getBestNode());
