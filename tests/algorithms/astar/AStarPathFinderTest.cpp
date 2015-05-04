@@ -273,6 +273,33 @@ SCENARIO("After path finding all ExtendedNodes should be reset",
                                 std::numeric_limits<float>::max());
                     }
                 }
+
+                AND_WHEN("Finding shortest path between (0,4) and (4,0)") {
+
+                    pathFinder.findAndGetShortestPath(pathfinder::Node(0,4),
+                                                      pathfinder::Node(4,0));
+
+                    THEN("All ExtendedNodes in the AStar's ExtendedGraph should"
+                         "be reset so that current cost is maximum (float limit)") {
+
+                        pathfinder::ExtendedNodeGraph& extendedGraph2 =
+                                pathFinder.getAllExtendedNodes();
+
+
+                        for(int i = 0; i < 5; i++) {
+                            for(int j = 0; j < 5; j++) {
+                                pathfinder::ExtendedNode& extendedNode =
+                                        extendedGraph2.getExtendedNodeInPosition(j,i);
+
+                                Approx approximation((double)
+                                                     extendedNode.getCurrentCost());
+
+                                REQUIRE(approximation ==
+                                        std::numeric_limits<float>::max());
+                            }
+                        }
+                    }
+                }
             }
         }
     }
