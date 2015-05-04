@@ -37,13 +37,21 @@ namespace pathfinder {
         std::vector<Point> neighbourPoints =
                 getNeighbourPoints(extendedNode.getNode());
 
-        for(Point neighbourPoint : neighbourPoints) {
+        std::vector<bool> accessibleNonDiagonalNodes;
+        for(int i = 0; i < 4; i++) accessibleNonDiagonalNodes.push_back(true);
+
+        for(int i = 0; i < neighbourPoints.size(); ++i) {
+
+            Point& neighbourPoint = neighbourPoints[i];
+
             if(!pointExistsInGraph(neighbourPoint)) {
                 continue;
             }
 
             ExtendedNode& neighbour = getExtendedNodeFromPoint(neighbourPoint);
-            if(extendedNodeIsAccessible(neighbour)) {
+            CompassPosition position = CompassPosition(i);
+
+            if(extendedNodeIsAccessible(neighbour, position, accessibleNonDiagonalNodes)) {
                 neighbours.push_back(&neighbour);
             }
         }
@@ -73,9 +81,45 @@ namespace pathfinder {
     }
 
     bool ExtendedNodeGraph::extendedNodeIsAccessible(
-            const ExtendedNode& extendedNode) const {
+            const ExtendedNode& extendedNode,
+            CompassPosition position,
+            std::vector<bool>& accessibleNonDiagonalNodes) {
+
         const Node& node = extendedNode.getNode();
-        return node.isAccessible();
+        bool accessible = node.isAccessible();
+
+        switch(position) {
+            case NORTH:
+            case EAST:
+            case SOUTH:
+            case WEST:
+                accessibleNonDiagonalNodes[position] = accessible;
+                return accessible;
+            case NORTH_EAST:
+                if(!accessibleNonDiagonalNodes[NORTH] ||
+                   !accessibleNonDiagonalNodes[EAST])
+                    return false;
+                break;
+            case SOUTH_EAST:
+                if(!accessibleNonDiagonalNodes[EAST] ||
+                   !accessibleNonDiagonalNodes[SOUTH])
+                    return false;
+                break;
+            case SOUTH_WEST:
+                if(!accessibleNonDiagonalNodes[WEST] ||
+                   !accessibleNonDiagonalNodes[SOUTH])
+                    return false;
+                break;
+            case NORTH_WEST:
+                if(!accessibleNonDiagonalNodes[NORTH] ||
+                   !accessibleNonDiagonalNodes[WEST])
+                    return false;
+                break;
+            default:
+                return false;
+        }
+
+        return accessible;
     }
 
 }

@@ -1,7 +1,7 @@
 /**
  * @brief CompassPosition
  *
- * CompassPosition holds all the 8 compass positions from North to North west
+ * CompassPosition holds all the 8 compass positions
 
 @author*
  */
@@ -12,8 +12,8 @@
 namespace pathfinder {
 
     enum CompassPosition {
-        NORTH, NORTH_EAST, EAST, SOUTH_EAST,
-        SOUTH, SOUTH_WEST, WEST, NORTH_WEST
+        NORTH, EAST, SOUTH, WEST,
+        NORTH_EAST, SOUTH_EAST, SOUTH_WEST, NORTH_WEST
     };
 }
 

@@ -11,12 +11,13 @@ namespace pathfinder {
         std::vector<Point> neighbours;
 
         neighbours.push_back(Point(getNorthX(), getNorthY()));
-        neighbours.push_back(Point(getNorthEastX(), getNorthEastY()));
         neighbours.push_back(Point(getEastX(), getEastY()));
-        neighbours.push_back(Point(getSouthEastX(), getSouthEastY()));
         neighbours.push_back(Point(getSouthX(), getSouthY()));
-        neighbours.push_back(Point(getSouthWestX(), getSouthWestY()));
         neighbours.push_back(Point(getWestX(), getWestY()));
+
+        neighbours.push_back(Point(getNorthEastX(), getNorthEastY()));
+        neighbours.push_back(Point(getSouthEastX(), getSouthEastY()));        
+        neighbours.push_back(Point(getSouthWestX(), getSouthWestY()));        
         neighbours.push_back(Point(getNorthWestX(), getNorthWestY()));
 
         return neighbours;

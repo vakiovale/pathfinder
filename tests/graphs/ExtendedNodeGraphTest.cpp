@@ -160,8 +160,10 @@ SCENARIO("It's possible to get all the neighbour ExtendedNodes from a "
                     extGraph.getAccessibleNeighboursOfExtendedNode(extNode);
 
             THEN("Neighbours of ExtendedNode (1, 1) are "
-                 "(1,0), (2,0), (2,1), (2,2), (1,2), (0,2), (0,1), (0,0) "
+                 "(1,0), (2,1), (1,2), (0,1), (2,0), (2,2), (0,2), (0,0) "
                  "in that order") {
+
+                REQUIRE(neighbours.size() == 8);
 
                 pathfinder::ExtendedNode* extendedNode = neighbours[0];
                 REQUIRE(extendedNode->getNode().getX() == 1);
@@ -169,27 +171,27 @@ SCENARIO("It's possible to get all the neighbour ExtendedNodes from a "
 
                 extendedNode = neighbours[1];
                 REQUIRE(extendedNode->getNode().getX() == 2);
-                REQUIRE(extendedNode->getNode().getY() == 0);
-
-                extendedNode = neighbours[2];
-                REQUIRE(extendedNode->getNode().getX() == 2);
                 REQUIRE(extendedNode->getNode().getY() == 1);
 
-                extendedNode = neighbours[3];
-                REQUIRE(extendedNode->getNode().getX() == 2);
-                REQUIRE(extendedNode->getNode().getY() == 2);
-
-                extendedNode = neighbours[4];
+                extendedNode = neighbours[2];
                 REQUIRE(extendedNode->getNode().getX() == 1);
                 REQUIRE(extendedNode->getNode().getY() == 2);
 
-                extendedNode = neighbours[5];
+                extendedNode = neighbours[3];
                 REQUIRE(extendedNode->getNode().getX() == 0);
+                REQUIRE(extendedNode->getNode().getY() == 1);
+
+                extendedNode = neighbours[4];
+                REQUIRE(extendedNode->getNode().getX() == 2);
+                REQUIRE(extendedNode->getNode().getY() == 0);
+
+                extendedNode = neighbours[5];
+                REQUIRE(extendedNode->getNode().getX() == 2);
                 REQUIRE(extendedNode->getNode().getY() == 2);
 
                 extendedNode = neighbours[6];
                 REQUIRE(extendedNode->getNode().getX() == 0);
-                REQUIRE(extendedNode->getNode().getY() == 1);
+                REQUIRE(extendedNode->getNode().getY() == 2);
 
                 extendedNode = neighbours[7];
                 REQUIRE(extendedNode->getNode().getX() == 0);
@@ -208,8 +210,10 @@ SCENARIO("It's possible to get all the neighbour ExtendedNodes from a "
                     extGraph.getAccessibleNeighboursOfExtendedNode(extNode);
 
             THEN("Neighbours of ExtendedNode (0, 1) are "
-                 "(0,0), (1,0), (1,1), (1,2), (0,2)"
+                 "(0,0), (1,1), (0,2), (1,0), (1,2)"
                  "in that order") {
+
+                REQUIRE(neighbours.size() == 5);
 
                 pathfinder::ExtendedNode* extendedNode = neighbours[0];
                 REQUIRE(extendedNode->getNode().getX() == 0);
@@ -217,18 +221,18 @@ SCENARIO("It's possible to get all the neighbour ExtendedNodes from a "
 
                 extendedNode = neighbours[1];
                 REQUIRE(extendedNode->getNode().getX() == 1);
-                REQUIRE(extendedNode->getNode().getY() == 0);
+                REQUIRE(extendedNode->getNode().getY() == 1);
 
                 extendedNode = neighbours[2];
-                REQUIRE(extendedNode->getNode().getX() == 1);
-                REQUIRE(extendedNode->getNode().getY() == 1);
+                REQUIRE(extendedNode->getNode().getX() == 0);
+                REQUIRE(extendedNode->getNode().getY() == 2);
 
                 extendedNode = neighbours[3];
                 REQUIRE(extendedNode->getNode().getX() == 1);
-                REQUIRE(extendedNode->getNode().getY() == 2);
+                REQUIRE(extendedNode->getNode().getY() == 0);
 
                 extendedNode = neighbours[4];
-                REQUIRE(extendedNode->getNode().getX() == 0);
+                REQUIRE(extendedNode->getNode().getX() == 1);
                 REQUIRE(extendedNode->getNode().getY() == 2);
 
             }
@@ -252,8 +256,8 @@ SCENARIO("Unaccessible nodes restrict movement", "[extendednodegraph]"
 
             graph.getNodeFromPosition(0,0)->setAccessible(false);
 
-            THEN("Neighbours of (1,1) are "
-                 "(1,0), (2,0), (2,1), (2,2), (1,2), (0,2) and (0,1)"
+            THEN("Neighbours of ExtendedNode (1, 1) are "
+                 "(1,0), (2,1), (1,2), (0,1), (2,0), (2,2), (0,2) "
                  "in that order") {
 
                 std::vector<pathfinder::ExtendedNode*> neighbours =
@@ -267,28 +271,27 @@ SCENARIO("Unaccessible nodes restrict movement", "[extendednodegraph]"
 
                 extendedNode = neighbours[1];
                 REQUIRE(extendedNode->getNode().getX() == 2);
-                REQUIRE(extendedNode->getNode().getY() == 0);
-
-                extendedNode = neighbours[2];
-                REQUIRE(extendedNode->getNode().getX() == 2);
                 REQUIRE(extendedNode->getNode().getY() == 1);
 
-                extendedNode = neighbours[3];
-                REQUIRE(extendedNode->getNode().getX() == 2);
-                REQUIRE(extendedNode->getNode().getY() == 2);
-
-                extendedNode = neighbours[4];
+                extendedNode = neighbours[2];
                 REQUIRE(extendedNode->getNode().getX() == 1);
                 REQUIRE(extendedNode->getNode().getY() == 2);
 
-                extendedNode = neighbours[5];
+                extendedNode = neighbours[3];
                 REQUIRE(extendedNode->getNode().getX() == 0);
+                REQUIRE(extendedNode->getNode().getY() == 1);
+
+                extendedNode = neighbours[4];
+                REQUIRE(extendedNode->getNode().getX() == 2);
+                REQUIRE(extendedNode->getNode().getY() == 0);
+
+                extendedNode = neighbours[5];
+                REQUIRE(extendedNode->getNode().getX() == 2);
                 REQUIRE(extendedNode->getNode().getY() == 2);
 
                 extendedNode = neighbours[6];
                 REQUIRE(extendedNode->getNode().getX() == 0);
-                REQUIRE(extendedNode->getNode().getY() == 1);
-
+                REQUIRE(extendedNode->getNode().getY() == 2);
 
             }
         }
@@ -298,7 +301,7 @@ SCENARIO("Unaccessible nodes restrict movement", "[extendednodegraph]"
             graph.getNodeFromPosition(1,0)->setAccessible(false);
 
             THEN("Neighbours of (1,1) are "
-                 "(2,1), (2,2), (1,2), (0,2) and (0,1)"
+                 "(2,1), (1,2), (0,1), (2,2) and (0,2)"
                  "in that order") {
 
                 std::vector<pathfinder::ExtendedNode*> neighbours =
@@ -311,20 +314,20 @@ SCENARIO("Unaccessible nodes restrict movement", "[extendednodegraph]"
                 REQUIRE(extendedNode->getNode().getY() == 1);
 
                 extendedNode = neighbours[1];
-                REQUIRE(extendedNode->getNode().getX() == 2);
-                REQUIRE(extendedNode->getNode().getY() == 2);
-
-                extendedNode = neighbours[2];
                 REQUIRE(extendedNode->getNode().getX() == 1);
                 REQUIRE(extendedNode->getNode().getY() == 2);
 
-                extendedNode = neighbours[3];
+                extendedNode = neighbours[2];
                 REQUIRE(extendedNode->getNode().getX() == 0);
+                REQUIRE(extendedNode->getNode().getY() == 1);
+
+                extendedNode = neighbours[3];
+                REQUIRE(extendedNode->getNode().getX() == 2);
                 REQUIRE(extendedNode->getNode().getY() == 2);
 
                 extendedNode = neighbours[4];
                 REQUIRE(extendedNode->getNode().getX() == 0);
-                REQUIRE(extendedNode->getNode().getY() == 1);
+                REQUIRE(extendedNode->getNode().getY() == 2);
 
             }
         }

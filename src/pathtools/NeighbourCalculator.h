@@ -31,9 +31,9 @@ namespace pathfinder {
             /**
              * @brief Get all the 8 neighbours
              *
-             * Neighbouring points will be all the 8 neighbours
-             * starting from NORTH point and going clockwise
-             * to the NORTHWEST point.
+             * Neighbouring points will be all the 8 neighbours.
+             * Order will be NORTH, EAST, SOUTH, WEST,
+             * NORTH EAST, SOUTH EAST, SOUTH WEST, NORTH WEST
              *
              * @return vector of Points
              */

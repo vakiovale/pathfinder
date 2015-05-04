@@ -203,8 +203,8 @@ SCENARIO("All the neighbour Points can be recieved as a vector",
             std::vector<pathfinder::Point> neighbourPoints =
                     calc.getNeighbourPoints();
 
-            THEN("Neighbouring Points are (2,3), (3,3), (3,4),"
-                 "(3,5), (2,5), (1,5), (1,4) and (1,3) in that order") {
+            THEN("Neighbouring Points are (2,3), (3,4),"
+                 "(2,5), (1,4), (3,3), (3,5), (1,5) and (1,3) in that order") {
 
                 pathfinder::Point north(2,3);
                 pathfinder::Point northEast(3,3);
@@ -217,13 +217,12 @@ SCENARIO("All the neighbour Points can be recieved as a vector",
                 pathfinder::Point northWest(1,3);
 
                 REQUIRE(neighbourPoints[0] == north);
-                REQUIRE(neighbourPoints[1] == northEast);
-                REQUIRE(neighbourPoints[2] == east);
-                REQUIRE(neighbourPoints[3] == southEast);
-
-                REQUIRE(neighbourPoints[4] == south);
-                REQUIRE(neighbourPoints[5] == southWest);
-                REQUIRE(neighbourPoints[6] == west);
+                REQUIRE(neighbourPoints[1] == east);
+                REQUIRE(neighbourPoints[2] == south);
+                REQUIRE(neighbourPoints[3] == west);
+                REQUIRE(neighbourPoints[4] == northEast);
+                REQUIRE(neighbourPoints[5] == southEast);
+                REQUIRE(neighbourPoints[6] == southWest);
                 REQUIRE(neighbourPoints[7] == northWest);
 
             }
@@ -239,8 +238,8 @@ SCENARIO("All the neighbour Points can be recieved as a vector",
             std::vector<pathfinder::Point> neighbourPoints =
                     calc.getNeighbourPoints();
 
-            THEN("Neighbouring Points are (7,6), (8,6), (8,7),"
-                 "(8,8), (7,8), (6,8), (6,7) and (6,6) in that order") {
+            THEN("Neighbouring Points are (7,6), (8,7), (7,8),"
+                 "(6,7), (8,6), (8,8), (6,8) and (6,6) in that order") {
 
                 pathfinder::Point north(7,6);
                 pathfinder::Point northEast(8,6);
@@ -253,13 +252,12 @@ SCENARIO("All the neighbour Points can be recieved as a vector",
                 pathfinder::Point northWest(6,6);
 
                 REQUIRE(neighbourPoints[0] == north);
-                REQUIRE(neighbourPoints[1] == northEast);
-                REQUIRE(neighbourPoints[2] == east);
-                REQUIRE(neighbourPoints[3] == southEast);
-
-                REQUIRE(neighbourPoints[4] == south);
-                REQUIRE(neighbourPoints[5] == southWest);
-                REQUIRE(neighbourPoints[6] == west);
+                REQUIRE(neighbourPoints[1] == east);
+                REQUIRE(neighbourPoints[2] == south);
+                REQUIRE(neighbourPoints[3] == west);
+                REQUIRE(neighbourPoints[4] == northEast);
+                REQUIRE(neighbourPoints[5] == southEast);
+                REQUIRE(neighbourPoints[6] == southWest);
                 REQUIRE(neighbourPoints[7] == northWest);
 
             }
