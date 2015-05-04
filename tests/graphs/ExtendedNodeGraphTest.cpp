@@ -332,8 +332,199 @@ SCENARIO("Unaccessible nodes restrict movement", "[extendednodegraph]"
             }
         }
 
+        WHEN("Node (1,2) is unaccessible") {
+
+            graph.getNodeFromPosition(1,2)->setAccessible(false);
+
+            THEN("Neighbours of (1,1) are "
+                 "(1,0), (2,1), (0,1), (2,0) and (0,0)"
+                 "in that order") {
+
+                std::vector<pathfinder::ExtendedNode*> neighbours =
+                        extGraph.getAccessibleNeighboursOfExtendedNode(middleNode);
+
+                REQUIRE(neighbours.size() == 5);
+
+                pathfinder::ExtendedNode* extendedNode = neighbours[0];
+                REQUIRE(extendedNode->getNode().getX() == 1);
+                REQUIRE(extendedNode->getNode().getY() == 0);
+
+                extendedNode = neighbours[1];
+                REQUIRE(extendedNode->getNode().getX() == 2);
+                REQUIRE(extendedNode->getNode().getY() == 1);
+
+                extendedNode = neighbours[2];
+                REQUIRE(extendedNode->getNode().getX() == 0);
+                REQUIRE(extendedNode->getNode().getY() == 1);
+
+                extendedNode = neighbours[3];
+                REQUIRE(extendedNode->getNode().getX() == 2);
+                REQUIRE(extendedNode->getNode().getY() == 0);
+
+                extendedNode = neighbours[4];
+                REQUIRE(extendedNode->getNode().getX() == 0);
+                REQUIRE(extendedNode->getNode().getY() == 0);
+
+            }
+        }
+
+        WHEN("Node (0,1) is unaccessible") {
+
+            graph.getNodeFromPosition(0,1)->setAccessible(false);
+
+            THEN("Neighbours of (1,1) are "
+                 "(1,0), (2,1), (1,2), (2,0) and (2,2)"
+                 "in that order") {
+
+                std::vector<pathfinder::ExtendedNode*> neighbours =
+                        extGraph.getAccessibleNeighboursOfExtendedNode(middleNode);
+
+                REQUIRE(neighbours.size() == 5);
+
+                pathfinder::ExtendedNode* extendedNode = neighbours[0];
+                REQUIRE(extendedNode->getNode().getX() == 1);
+                REQUIRE(extendedNode->getNode().getY() == 0);
+
+                extendedNode = neighbours[1];
+                REQUIRE(extendedNode->getNode().getX() == 2);
+                REQUIRE(extendedNode->getNode().getY() == 1);
+
+                extendedNode = neighbours[2];
+                REQUIRE(extendedNode->getNode().getX() == 1);
+                REQUIRE(extendedNode->getNode().getY() == 2);
+
+                extendedNode = neighbours[3];
+                REQUIRE(extendedNode->getNode().getX() == 2);
+                REQUIRE(extendedNode->getNode().getY() == 0);
+
+                extendedNode = neighbours[4];
+                REQUIRE(extendedNode->getNode().getX() == 2);
+                REQUIRE(extendedNode->getNode().getY() == 2);
+
+            }
+
+            AND_WHEN("Node (2,1) is unaccessible") {
+
+                graph.getNodeFromPosition(2,1)->setAccessible(false);
+
+                THEN("Neighbours of (1,1) are (1,0) and (1,2)"
+                     "in that order") {
+
+                    std::vector<pathfinder::ExtendedNode*> neighbours =
+                            extGraph.getAccessibleNeighboursOfExtendedNode(middleNode);
+
+                    REQUIRE(neighbours.size() == 2);
+
+                    pathfinder::ExtendedNode* extendedNode = neighbours[0];
+                    REQUIRE(extendedNode->getNode().getX() == 1);
+                    REQUIRE(extendedNode->getNode().getY() == 0);
+
+                    extendedNode = neighbours[1];
+                    REQUIRE(extendedNode->getNode().getX() == 1);
+                    REQUIRE(extendedNode->getNode().getY() == 2);
+                }
+
+            }
+
+            AND_WHEN("Node (2,2) is unaccessible") {
+
+                graph.getNodeFromPosition(2,2)->setAccessible(false);
+
+                THEN("Neighbours of (1,1) are (1,0), (2,1), (1,2) and (2,0)"
+                     "in that order") {
+
+                    std::vector<pathfinder::ExtendedNode*> neighbours =
+                            extGraph.getAccessibleNeighboursOfExtendedNode(middleNode);
+
+                    REQUIRE(neighbours.size() == 4);
+
+                    pathfinder::ExtendedNode* extendedNode = neighbours[0];
+                    REQUIRE(extendedNode->getNode().getX() == 1);
+                    REQUIRE(extendedNode->getNode().getY() == 0);
+
+                    extendedNode = neighbours[1];
+                    REQUIRE(extendedNode->getNode().getX() == 2);
+                    REQUIRE(extendedNode->getNode().getY() == 1);
+
+                    extendedNode = neighbours[2];
+                    REQUIRE(extendedNode->getNode().getX() == 1);
+                    REQUIRE(extendedNode->getNode().getY() == 2);
+
+                    extendedNode = neighbours[3];
+                    REQUIRE(extendedNode->getNode().getX() == 2);
+                    REQUIRE(extendedNode->getNode().getY() == 0);
+                }
+
+            }
+        }
+
+        WHEN("Node (2,1) is unaccessible") {
+
+            graph.getNodeFromPosition(2,1)->setAccessible(false);
+
+            THEN("Neighbours of (1,1) are "
+                 "(1,0), (1,2), (0,1), (0,2) and (0,0)"
+                 "in that order") {
+
+                std::vector<pathfinder::ExtendedNode*> neighbours =
+                        extGraph.getAccessibleNeighboursOfExtendedNode(middleNode);
+
+                REQUIRE(neighbours.size() == 5);
+
+                pathfinder::ExtendedNode* extendedNode = neighbours[0];
+                REQUIRE(extendedNode->getNode().getX() == 1);
+                REQUIRE(extendedNode->getNode().getY() == 0);
+
+                extendedNode = neighbours[1];
+                REQUIRE(extendedNode->getNode().getX() == 1);
+                REQUIRE(extendedNode->getNode().getY() == 2);
+
+                extendedNode = neighbours[2];
+                REQUIRE(extendedNode->getNode().getX() == 0);
+                REQUIRE(extendedNode->getNode().getY() == 1);
+
+                extendedNode = neighbours[3];
+                REQUIRE(extendedNode->getNode().getX() == 0);
+                REQUIRE(extendedNode->getNode().getY() == 2);
+
+                extendedNode = neighbours[4];
+                REQUIRE(extendedNode->getNode().getX() == 0);
+                REQUIRE(extendedNode->getNode().getY() == 0);
+
+            }
+
+            AND_WHEN("Node (0,2) is unaccessible") {
+
+                graph.getNodeFromPosition(0,2)->setAccessible(false);
+
+                THEN("Neighbours of (1,1) are "
+                     "(1,0), (1,2), (0,1) and (0,0)"
+                     "in that order") {
+
+                    std::vector<pathfinder::ExtendedNode*> neighbours =
+                            extGraph.getAccessibleNeighboursOfExtendedNode(middleNode);
+
+                    REQUIRE(neighbours.size() == 4);
+
+                    pathfinder::ExtendedNode* extendedNode = neighbours[0];
+                    REQUIRE(extendedNode->getNode().getX() == 1);
+                    REQUIRE(extendedNode->getNode().getY() == 0);
+
+                    extendedNode = neighbours[1];
+                    REQUIRE(extendedNode->getNode().getX() == 1);
+                    REQUIRE(extendedNode->getNode().getY() == 2);
+
+                    extendedNode = neighbours[2];
+                    REQUIRE(extendedNode->getNode().getX() == 0);
+                    REQUIRE(extendedNode->getNode().getY() == 1);
+
+                    extendedNode = neighbours[3];
+                    REQUIRE(extendedNode->getNode().getX() == 0);
+                    REQUIRE(extendedNode->getNode().getY() == 0);
+
+                }
+
+            }
+        }
     }
-
-
-
 }
