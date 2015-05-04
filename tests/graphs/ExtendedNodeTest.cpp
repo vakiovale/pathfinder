@@ -392,3 +392,78 @@ SCENARIO("ExtendedNode can be set to be in closed list", "[extendednode]") {
 
 }
 
+SCENARIO("ExtendedNode holds pointer to a parent ExtendedNode if it has one",
+         "[extendednode]") {
+
+    GIVEN("ExtendedNode in position (1,0) and ExtendedNode in position (2,0)") {
+
+        pathfinder::Node node1(1,0);
+        pathfinder::Node node2(2,0);
+
+        pathfinder::ExtendedNode extNode1(&node1);
+        pathfinder::ExtendedNode extNode2(&node2);
+
+        WHEN("Nothing is done") {
+
+            THEN("ExtendedNode does not have a parent ExtendedNode") {
+                REQUIRE_FALSE(extNode1.hasParent());
+            }
+
+            AND_WHEN("Getting ExtendedNode's (1,0) parent") {
+
+                const pathfinder::ExtendedNode* const parent =
+                        extNode1.getParent();
+
+                THEN("Parent is a nullptr") {
+                    REQUIRE(parent == nullptr);
+                }
+            }
+        }
+
+        WHEN("Setting ExtendedNode (2,0) parent to ExtendedNode (1,0)") {
+
+            extNode1.setParent(&extNode2);
+
+            THEN("ExtendedNode (1,0) has parent") {
+                REQUIRE(extNode1.hasParent());
+            }
+
+            AND_WHEN("Getting ExtendedNode's (1,0) parent") {
+
+                const pathfinder::ExtendedNode* const parent =
+                        extNode1.getParent();
+
+                THEN("Parent points to ExtendedNode (2,0)") {
+                    REQUIRE(parent == &extNode2);
+                }
+
+            }
+
+            AND_WHEN("Setting ExtendedNode (1,1) parent to ExtendedNode (1,0)") {
+                pathfinder::Node node3(3,0);
+                pathfinder::ExtendedNode extNode3(&node3);
+                extNode1.setParent(&extNode3);
+
+                THEN("ExtendedNode (1,0) has parent") {
+                    REQUIRE(extNode1.hasParent());
+                }
+
+                AND_WHEN("Getting ExtendedNode's (1,0) parent") {
+
+                    const pathfinder::ExtendedNode* const parent =
+                            extNode1.getParent();
+
+                    THEN("Parent points to ExtendedNode (3,0)") {
+                        REQUIRE(parent == &extNode3);
+                    }
+
+                    AND_THEN("Parent does not point to ExtendedNode (2,0) "
+                             "any more") {
+                        REQUIRE_FALSE(parent == &extNode2);
+                    }
+                }
+            }
+        }
+    }
+}
+

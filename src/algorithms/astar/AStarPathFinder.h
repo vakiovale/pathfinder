@@ -10,6 +10,7 @@
 #define A_STAR_PATH_FINDER_H
 
 #include <vector>
+#include <algorithm>
 #include "Graph.h"
 #include "Path.h"
 #include "PathFinder.h"
@@ -79,7 +80,9 @@ namespace pathfinder {
 
             void cleanExtendedNodesFromOpenAndClosedList();
 
-            void resetExtendedNodeCurrentCost(ExtendedNode& nodeToReset);
+            void resetExtendedNode(ExtendedNode& nodeToReset);
+
+            void constructPath(Path& path);
 
     };
 

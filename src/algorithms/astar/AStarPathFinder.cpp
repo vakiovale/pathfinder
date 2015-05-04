@@ -21,8 +21,6 @@ namespace pathfinder {
             openList.removeBestNode();
             addNodeToClosedList(current);
 
-            path.addNode(current.getNode());
-
             if(extendedNodeIsGoal(current))
                 break;
 
@@ -36,24 +34,28 @@ namespace pathfinder {
                         movementCalculator.getCostBetweenNodes(currentNode,
                                                                neighbourNode);
 
-                if(openList.contains(*neighbour) &&
-                   cost < neighbour->getCurrentCost()) {
+                if(openList.contains(*neighbour)) {
+                    if(cost < neighbour->getCurrentCost()) {
 
-                   neighbour->setCurrentCost(cost);
-                   neighbour->setTotalCost(cost+heuristic.estimateDistance(
+                        neighbour->setCurrentCost(cost);
+                        neighbour->setTotalCost(cost+heuristic.estimateDistance(
                                                neighbourNode, endNode));
-                   openList.fixOpenList();
+                        neighbour->setParent(&current);
+                        openList.fixOpenList();
+                    }
                 }
                 else if(!neighbour->isInClosedList()) {
                     neighbour->setCurrentCost(cost);
                     neighbour->setTotalCost(cost+heuristic.estimateDistance(
                                                 neighbourNode, endNode));
+                    neighbour->setParent(&current);
                     openList.add(*neighbour);
                 }
             }
         }
-
+        constructPath(path);
         cleanExtendedNodesFromOpenAndClosedList();
+
         return path;
     }
 
@@ -90,21 +92,36 @@ namespace pathfinder {
     void AStarPathFinder::cleanExtendedNodesFromOpenAndClosedList() {
 
         while(!openList.isEmpty()) {
-            resetExtendedNodeCurrentCost(openList.getBestNode());
+            resetExtendedNode(openList.getBestNode());
             openList.removeBestNode();
         }
 
         while(!closedList.empty()) {
             ExtendedNode* nodeToRemove = closedList.back();
-            resetExtendedNodeCurrentCost(*nodeToRemove);
+            resetExtendedNode(*nodeToRemove);
             nodeToRemove->setNodeRemovedFromClosedList();
             closedList.pop_back();
         }
     }
 
-    void AStarPathFinder::resetExtendedNodeCurrentCost(ExtendedNode& nodeToReset) {
+    void AStarPathFinder::resetExtendedNode(ExtendedNode& nodeToReset) {
         nodeToReset.setCurrentCost(std::numeric_limits<float>::max());
+        nodeToReset.setParent(nullptr);
     }
 
+    void AStarPathFinder::constructPath(Path& path) {
+        const ExtendedNode* currentNode = end;
+        std::vector<const Node*> shortestPath;
 
+        while(currentNode->hasParent()) {
+            shortestPath.push_back(&currentNode->getNode());
+            currentNode = currentNode->getParent();
+        }
+
+        std::reverse(shortestPath.begin(), shortestPath.end());
+        path.addNode(start->getNode());
+        for(const Node* node : shortestPath) {
+            path.addNode(*node);
+        }
+    }
 }

@@ -133,6 +133,24 @@ namespace pathfinder {
              */
             void setNodeRemovedFromClosedList();
 
+            /**
+             * @brief Check if ExtendedNode has parent
+             * @return true if it has parent
+             */
+            bool hasParent() const;
+
+            /**
+             * @brief Get pointer to const ExtendedNode parent
+             * @return pointer to const ExtendedNode parent
+             */
+            const ExtendedNode* getParent() const;
+
+            /**
+             * @brief Set new parent to this ExtendedNode
+             * @param parent to be set
+             */
+            void setParent(const ExtendedNode* parent);
+
         private:
             const Node* node; /*< binded node */
 
@@ -141,6 +159,8 @@ namespace pathfinder {
 
             bool nodeIsInOpenList; /*< flag to tell if node is in open list */
             bool nodeIsInClosedList; /*< flag to tell if node is in closed list */
+
+            const ExtendedNode* parent; /*< ExtendedNode's parent if it has one */
 
     };
 

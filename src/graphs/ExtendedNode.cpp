@@ -7,6 +7,7 @@ namespace pathfinder {
         this->currentCost = std::numeric_limits<float>::max();
         this->nodeIsInOpenList = false;
         this->nodeIsInClosedList = false;
+        this->parent = nullptr;
     }
 
     const Node& ExtendedNode::getNode() const {
@@ -63,6 +64,18 @@ namespace pathfinder {
 
     void ExtendedNode::setNodeRemovedFromClosedList() {
         nodeIsInClosedList = false;
+    }
+
+    bool ExtendedNode::hasParent() const {
+        return parent != nullptr;
+    }
+
+    const ExtendedNode* ExtendedNode::getParent() const {
+        return parent;
+    }
+
+    void ExtendedNode::setParent(const ExtendedNode *parent) {
+        this->parent = parent;
     }
 
 }
