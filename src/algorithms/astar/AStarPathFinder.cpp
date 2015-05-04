@@ -10,21 +10,11 @@ namespace pathfinder {
     Path AStarPathFinder::findAndGetShortestPath(Node startNode, Node endNode) {
         pathfinder::Path path;
 
+        initializeStartAndEndNodes(startNode, endNode);
+
         OpenList openList;
 
-        int startX = startNode.getX();
-        int startY = startNode.getY();
-
-        int endX = endNode.getX();
-        int endY = endNode.getY();
-
-        ExtendedNode& end = extendedGraph.getExtendedNodeInPosition(endX, endY);
-        ExtendedNode& start = extendedGraph.getExtendedNodeInPosition(startX, startY);
-
-        start.setCurrentCost(0);
-        start.setTotalCost(heuristic.estimateDistance(startNode, endNode));
-
-        openList.add(start);
+        openList.add(*start);
 
         while(!openList.isEmpty()) {
             ExtendedNode& current = openList.getBestNode();
@@ -32,7 +22,7 @@ namespace pathfinder {
             current.setNodeToClosedList();
 
             path.addNode(current.getNode());
-            if(current == end)
+            if(current == *end)
                 break;
 
             std::vector<ExtendedNode*> neighbours =
@@ -56,6 +46,30 @@ namespace pathfinder {
                 }
             }
         }
+
         return path;
     }
+
+    void AStarPathFinder::initializeStartAndEndNodes(const Node& start,
+                                                     const Node& end) {
+        initializeEndNode(end);
+        initializeStartNode(start);
+    }
+
+    void AStarPathFinder::initializeEndNode(const Node &endNode) {
+        int endX = endNode.getX();
+        int endY = endNode.getY();
+        end = &extendedGraph.getExtendedNodeInPosition(endX, endY);
+    }
+
+    void AStarPathFinder::initializeStartNode(const Node &startNode) {
+        int startX = startNode.getX();
+        int startY = startNode.getY();
+        start = &extendedGraph.getExtendedNodeInPosition(startX, startY);
+        start->setCurrentCost(0);
+        start->setTotalCost(heuristic.estimateDistance(startNode,
+                                                       end->getNode()));
+    }
+
+
 }

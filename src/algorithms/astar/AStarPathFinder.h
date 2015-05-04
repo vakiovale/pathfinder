@@ -46,8 +46,20 @@ namespace pathfinder {
 
        private:
             ExtendedNodeGraph extendedGraph;
+
             MovementCostCalculator movementCalculator;
+
             Heuristic heuristic;
+
+            ExtendedNode* start;
+
+            ExtendedNode* end;
+
+            void initializeStartAndEndNodes(const Node& start, const Node& end);
+
+            void initializeEndNode(const Node& end);
+
+            void initializeStartNode(const Node& start);
 
     };
 
