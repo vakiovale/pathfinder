@@ -34,6 +34,12 @@ namespace pathfinder {
             AStarPathFinder(Graph* graph);
 
             /**
+             * @brief Get ExtendedNodeGraph
+             * @return reference to ExtendedNodeGraph
+             */
+            ExtendedNodeGraph& getAllExtendedNodes();
+
+            /**
              * @brief Finds a shortest path
              *
              * Finds a shortest path between two nodes and returns the path.
@@ -55,11 +61,23 @@ namespace pathfinder {
 
             ExtendedNode* end;
 
+            std::vector<ExtendedNode*> closedList;
+
+            void cleanExtendedGraph();
+
             void initializeStartAndEndNodes(const Node& start, const Node& end);
 
             void initializeEndNode(const Node& end);
 
             void initializeStartNode(const Node& start);
+
+            void addNodeToClosedList(ExtendedNode& extendedNode);
+
+            bool extendedNodeIsGoal(const ExtendedNode& extendedNode) const;
+
+            void cleanExtendedNodesFromOpenAndClosedList(OpenList& openList);
+
+            void resetExtendedNodeCurrentCost(ExtendedNode& nodeToReset);
 
     };
 

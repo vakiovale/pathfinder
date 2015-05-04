@@ -212,3 +212,42 @@ SCENARIO("Pathfinder finds shortest when used multiple times", "[pathfinder][ast
         }
     }
 }
+
+
+SCENARIO("After path finding all ExtendedNodes should be reset",
+         "[pathfinder][astar]") {
+
+    GIVEN("A AStarPathfinder initialized with empty 5x5 2D grid map") {
+
+        pathfinder::Graph graph;
+        graph.create2DGridMap(5);
+        pathfinder::AStarPathFinder pathFinder(&graph);
+
+        WHEN("Finding shortest path between (0,0) and (4,4)") {
+
+            pathFinder.findAndGetShortestPath(pathfinder::Node(0,0),
+                                              pathfinder::Node(4,4));
+
+            THEN("All ExtendedNodes in the AStar's ExtendedGraph should"
+                 "be reset so that current cost is maximum (float limit)") {
+
+                pathfinder::ExtendedNodeGraph& extendedGraph =
+                        pathFinder.getAllExtendedNodes();
+
+
+                for(int i = 0; i < 5; i++) {
+                    for(int j = 0; j < 5; j++) {
+                        pathfinder::ExtendedNode& extendedNode =
+                                extendedGraph.getExtendedNodeInPosition(j,i);
+
+                        Approx approximation((double)
+                                             extendedNode.getCurrentCost());
+
+                        REQUIRE(approximation ==
+                                std::numeric_limits<float>::max());
+                    }
+                }
+            }
+        }
+    }
+}

@@ -5,5 +5,7 @@
 #include "Path.h"
 #include "Graph.h"
 #include "AStarPathFinder.h"
+#include "ExtendedNode.h"
+#include "ExtendedNodeGraph.h"
 
 #endif
