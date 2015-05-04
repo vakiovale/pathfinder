@@ -10,9 +10,6 @@ namespace pathfinder {
     Path AStarPathFinder::findAndGetShortestPath(Node startNode, Node endNode) {
         pathfinder::Path path;
 
-        MovementCostCalculator movementCalculator;
-        Heuristic heuristic;
-
         OpenList openList;
 
         int startX = startNode.getX();
