@@ -415,7 +415,7 @@ SCENARIO("ExtendedNode holds pointer to a parent ExtendedNode if it has one",
                         extNode1.getParent();
 
                 THEN("Parent is a nullptr") {
-                    REQUIRE(parent == nullptr);
+		    REQUIRE_FALSE(parent);
                 }
             }
         }
