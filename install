@@ -1,0 +1,11 @@
+#!/bin/bash
+
+## Run cmake if there's no build directory
+if [ ! -d "pathfinder-build" ]; then
+    ./runcmake
+fi
+
+cd pathfinder-build
+
+## Build and install library
+make install
