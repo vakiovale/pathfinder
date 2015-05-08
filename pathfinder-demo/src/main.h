@@ -2,7 +2,11 @@
 #define MAIN_H
 
 #include <SFML/Graphics.hpp>
+
 #include <iostream>
+#include <random>
+#include <cmath>
+
 #include <Graph.h>
 #include <Node.h>
 #include <Point.h>
@@ -12,7 +16,7 @@
 
 using namespace pathfinder;
 
-const int NUMBER_OF_NODES_IN_A_ROW = 25;
+const int NUMBER_OF_NODES_IN_A_ROW = 50;
 
 const int NUMBER_OF_NODES_IN_A_COLUMN = NUMBER_OF_NODES_IN_A_ROW;
 
@@ -39,6 +43,8 @@ Node* end;
 Path* finalPath;
 
 int main();
+
+void createRandomWalls();
 
 void pollEvents(sf::Event& event);
 

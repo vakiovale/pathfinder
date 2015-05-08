@@ -2,19 +2,8 @@
 
 int main() {
     graph.create2DGridMap(NUMBER_OF_NODES_IN_A_ROW);
-    graph.getNodeFromPosition(12, 11)->setAccessible(false);
-    graph.getNodeFromPosition(3, 6)->setAccessible(false);
-    graph.getNodeFromPosition(4, 6)->setAccessible(false);
-    graph.getNodeFromPosition(5, 6)->setAccessible(false);
-    graph.getNodeFromPosition(6, 6)->setAccessible(false);
-    graph.getNodeFromPosition(7, 6)->setAccessible(false);
-    graph.getNodeFromPosition(7, 7)->setAccessible(false);
-    graph.getNodeFromPosition(7, 8)->setAccessible(false);
-    graph.getNodeFromPosition(7, 9)->setAccessible(false);
-    graph.getNodeFromPosition(7, 10)->setAccessible(false);
-    graph.getNodeFromPosition(7, 11)->setAccessible(false);
-    graph.getNodeFromPosition(7, 12)->setAccessible(false);
-    graph.getNodeFromPosition(7, 13)->setAccessible(false);
+
+    createRandomWalls();
 
     start = graph.getNodeFromPosition(4, 10);
     end = graph.getNodeFromPosition(15, 5);
@@ -41,6 +30,27 @@ int main() {
     
     delete pathFinder;
     return 0;
+}
+
+void createRandomWalls() {
+
+    int numberOfNodes = graph.getNumberOfNodes();
+
+    std::random_device randomDevice;
+
+    std::default_random_engine randomEngine(randomDevice());
+
+    std::uniform_int_distribution<int> uniform_dist(0,
+                                                    NUMBER_OF_NODES_IN_A_ROW-1);
+
+    for(int i = 0; i < numberOfNodes / 2; i++) {
+        int x = uniform_dist(randomEngine);
+        int y = uniform_dist(randomEngine);
+        if(graph.nodeExistsInPosition(x, y))
+            graph.getNodeFromPosition(x, y)->setAccessible(false);
+        else
+            std::cout << x << " " << y << std::endl;
+    }
 }
 
 void pollEvents(sf::Event& event) {
