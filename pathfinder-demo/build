@@ -21,8 +21,3 @@ cd pathfinder-demo-build
 
 ## Build
 make
-
-## Run tests after build
-if [ -f "TestDemoAll" ]; then
-    ./TestDemoAll
-fi

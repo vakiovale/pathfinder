@@ -6,7 +6,7 @@ fi
 
 cd SFML/
 
-if [ ! -d "SFML-2.3"]; then
+if [ ! -d "SFML-2.3" ]; then
   wget https://github.com/SFML/SFML/archive/2.3.tar.gz
   tar -xvxf 2.3.tar.gz 
 fi
