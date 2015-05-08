@@ -12,6 +12,11 @@ if [ ! -d "../libPathFinder" ]; then
     cd pathfinder-demo
 fi
 
+## Install SFML if it doesn't exist in the project
+if [ ! -d "SFML" ]; then
+    ./installSFML
+fi
+
 cd pathfinder-demo-build
 
 ## Build
