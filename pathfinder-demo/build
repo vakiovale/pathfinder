@@ -1,0 +1,22 @@
+#!/bin/bash
+
+## Run cmake if there's no build directory
+if [ ! -d "pathfinder-demo-build" ]; then
+    ./runcmake
+fi
+
+if [ ! -d "../libPathFinder" ]; then
+    cd ..
+    ./install
+    cd pathfinder-demo
+fi
+
+cd pathfinder-demo-build
+
+## Build
+make
+
+## Run tests after build
+if [ -f "TestDemoAll" ]; then
+    ./TestDemoAll
+fi

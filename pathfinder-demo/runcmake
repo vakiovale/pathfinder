@@ -1,0 +1,11 @@
+#!/bin/bash
+
+## Create build folder
+if [ ! -d "pathfinder-demo-build" ]; then
+    mkdir pathfinder-demo-build
+fi
+
+cd pathfinder-demo-build 
+
+## Run cmake
+cmake ..
