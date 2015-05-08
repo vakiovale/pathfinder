@@ -5,6 +5,7 @@ if [ ! -d "pathfinder-demo-build" ]; then
     ./runcmake
 fi
 
+## Install path finder library if it doesn't exist
 if [ ! -d "../libPathFinder" ]; then
     cd ..
     ./install

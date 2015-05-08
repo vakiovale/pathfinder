@@ -7,4 +7,6 @@ if [ ! -f "pathfinder-demo-build/pathfinderDemo" ]; then
 fi
 
 ## Run tests
-pathfinder-demo-build/pathfinderDemo
+if [ -f "pathfinder-demo-build/pathfinderDemo" ]; then
+    pathfinder-demo-build/pathfinderDemo
+fi
