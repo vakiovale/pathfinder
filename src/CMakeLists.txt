@@ -16,5 +16,5 @@ include_directories("${PROJECT_SOURCE_DIR}/include/")
 
 add_library(PathFinder ${SOURCES})
 
-install(TARGETS PathFinder DESTINATION "${PROJECT_BINARY_DIR}/libPathFinder")
-install(FILES ${HEADERS} DESTINATION "${PROJECT_BINARY_DIR}/libPathFinder/include")
+install(TARGETS PathFinder DESTINATION "${PROJECT_SOURCE_DIR}/libPathFinder")
+install(FILES ${HEADERS} DESTINATION "${PROJECT_SOURCE_DIR}/libPathFinder/include")
