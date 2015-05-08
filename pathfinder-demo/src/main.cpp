@@ -1,23 +1,45 @@
-#include <SFML/Graphics.hpp>
+#include "main.h"
 
-int main()
-{
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+int main() {
+    graph.create2DGridMap(NUMBER_OF_NODES_IN_A_ROW);
 
-    while (window.isOpen())
-    {
+    while(window.isOpen()) {
+
         sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
+        while(window.pollEvent(event)) {
+            if(event.type == sf::Event::Closed)
                 window.close();
         }
+
         window.clear();
-        window.draw(shape);
+
+        draw();
+
         window.display();
     }
     
     return 0;
+}
+
+void draw() {
+    for(int i = 0; i < NUMBER_OF_NODES_IN_A_ROW; i++) {
+        for(int j = 0; j < NUMBER_OF_NODES_IN_A_ROW; j++) {
+            Node* node = graph.getNodeFromPosition(j,i);
+            int x = node->getX();
+            int y = node->getY();
+
+            sf::RectangleShape shape(sf::Vector2f(BLOCK_WIDTH, BLOCK_HEIGHT));
+            shape.setOrigin(sf::Vector2f(-x*BLOCK_WIDTH, -y*BLOCK_HEIGHT));
+
+            shape.setOutlineThickness(2.0f);
+
+            shape.setOutlineColor(sf::Color::Black);
+
+            if(node->isAccessible()) {
+                shape.setFillColor(sf::Color::White);
+            }
+
+            window.draw(shape);
+        }
+    }
 }
