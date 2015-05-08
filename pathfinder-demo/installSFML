@@ -1,11 +1,12 @@
 #!/bin/bash
 
-if [ ! -d "sfml" ]; then
-  mkdir sfml
-  cd sfml/
+if [ ! -d "SFML" ]; then
+  mkdir SFML
+  cd SFML/
   wget https://github.com/SFML/SFML/archive/2.3.tar.gz
   tar -xvxf 2.3.tar.gz 
   cmake SFML-2.3/
   make
+  cp -r SFML-2.3/include .
 fi
 
