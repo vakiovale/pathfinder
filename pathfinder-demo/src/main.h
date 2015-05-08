@@ -5,6 +5,10 @@
 #include <iostream>
 #include <Graph.h>
 #include <Node.h>
+#include <Point.h>
+#include <PathFinder.h>
+#include <AStarPathFinder.h>
+#include <Path.h>
 
 using namespace pathfinder;
 
@@ -26,8 +30,20 @@ sf::Color gray(150, 150, 150);
 
 Graph graph;
 
+PathFinder* pathFinder;
+
+Node* start;
+
+Node* end;
+
+Path* finalPath;
+
 int main();
 
+void pollEvents(sf::Event& event);
+
 void draw();
+
+void draw(int x, int y, sf::Color color);
 
 #endif
