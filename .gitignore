@@ -1,6 +1,7 @@
 build/
 doxygen/
 pathfinder-build/
+libPathFinder/
 eclipse-build/
 CMakeLists.txt.user
 *~
