@@ -2,6 +2,8 @@
 
 int main() {
     graph.create2DGridMap(NUMBER_OF_NODES_IN_A_ROW);
+    graph.getNodeFromPosition(12, 11)->setAccessible(false);
+    graph.getNodeFromPosition(3, 6)->setAccessible(false);
 
     while(window.isOpen()) {
 
@@ -37,6 +39,9 @@ void draw() {
 
             if(node->isAccessible()) {
                 shape.setFillColor(sf::Color::White);
+            }
+            else {
+                shape.setFillColor(gray);
             }
 
             window.draw(shape);

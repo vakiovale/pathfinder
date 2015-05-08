@@ -22,6 +22,8 @@ const float BLOCK_HEIGHT = WINDOW_HEIGHT / (float)NUMBER_OF_NODES_IN_A_COLUMN;
 
 sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Pathfinder");
 
+sf::Color gray(150, 150, 150);
+
 Graph graph;
 
 int main();
