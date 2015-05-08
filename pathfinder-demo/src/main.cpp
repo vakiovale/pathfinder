@@ -5,8 +5,8 @@ int main() {
 
     createRandomWalls();
 
-    start = graph.getNodeFromPosition(4, 10);
-    end = graph.getNodeFromPosition(15, 5);
+    start = graph.getNodeFromPosition(0, 0);
+    end = graph.getNodeFromPosition(1, 1);
 
     pathFinder = new AStarPathFinder(&graph);
 
@@ -43,7 +43,7 @@ void createRandomWalls() {
     std::uniform_int_distribution<int> uniform_dist(0,
                                                     NUMBER_OF_NODES_IN_A_ROW-1);
 
-    for(int i = 0; i < numberOfNodes / 2; i++) {
+    for(int i = 0; i < numberOfNodes / 3; i++) {
         int x = uniform_dist(randomEngine);
         int y = uniform_dist(randomEngine);
         if(graph.nodeExistsInPosition(x, y))
