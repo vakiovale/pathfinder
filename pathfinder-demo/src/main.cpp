@@ -67,6 +67,38 @@ void pollEvents(sf::Event& event) {
             }
         }
     }
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::G)) {
+        if(event.type == sf::Event::MouseButtonReleased) {
+            int x = event.mouseButton.x / (WINDOW_WIDTH / (float)NUMBER_OF_NODES_IN_A_ROW);
+            int y = event.mouseButton.y / (WINDOW_HEIGHT / (float)NUMBER_OF_NODES_IN_A_COLUMN);
+
+            if (event.mouseButton.button == sf::Mouse::Left){
+                Node* node = graph.getNodeFromPosition(x, y);
+                if(node->getMovementCostFactor() > 1.0f) {
+                    node->setMovementCostFactor(1.0f);
+                }
+                else {
+                    node->setMovementCostFactor(2.0f);
+                }
+            }
+        }
+    }
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+        if(event.type == sf::Event::MouseButtonReleased) {
+            int x = event.mouseButton.x / (WINDOW_WIDTH / (float)NUMBER_OF_NODES_IN_A_ROW);
+            int y = event.mouseButton.y / (WINDOW_HEIGHT / (float)NUMBER_OF_NODES_IN_A_COLUMN);
+
+            if (event.mouseButton.button == sf::Mouse::Left){
+                Node* node = graph.getNodeFromPosition(x, y);
+                if(node->getMovementCostFactor() > 2.0f) {
+                    node->setMovementCostFactor(1.0f);
+                }
+                else {
+                    node->setMovementCostFactor(10.0f);
+                }
+            }
+        }
+    }
     else if(event.type == sf::Event::MouseButtonPressed) {
         int x = event.mouseButton.x / (WINDOW_WIDTH / (float)NUMBER_OF_NODES_IN_A_ROW);
         int y = event.mouseButton.y / (WINDOW_HEIGHT / (float)NUMBER_OF_NODES_IN_A_COLUMN);
@@ -90,7 +122,13 @@ void draw() {
             sf::Color color;
 
             if(node->isAccessible()) {
-                color = sf::Color::White;
+                float factor = node->getMovementCostFactor();
+                if(factor < 2.0f)
+                    color = sf::Color::White;
+                else if(factor < 10.0f)
+                    color = sf::Color(100, std::max(255.0f, factor*200.0f), 100);
+                else
+                    color = sf::Color(0, 191, 255);
             }
             else {
                 color = gray;
@@ -109,13 +147,27 @@ void draw() {
     }
 
     for(int i = 1; i < finalPath->getPathLength()-1; i++) {
-        draw((*finalPath)[i].getX(), (*finalPath)[i].getY(), sf::Color::Yellow);
+        drawCircle((*finalPath)[i].getX(),
+             (*finalPath)[i].getY(),
+             sf::Color(255, 255, 0, 255));
     }
 }
 
 void draw(int x, int y, sf::Color color) {
     sf::RectangleShape shape(sf::Vector2f(BLOCK_WIDTH, BLOCK_HEIGHT));
     shape.setOrigin(sf::Vector2f(-x*BLOCK_WIDTH, -y*BLOCK_HEIGHT));
+
+    shape.setOutlineThickness(2.0f);
+    shape.setOutlineColor(sf::Color::Black);
+    shape.setFillColor(color);
+
+    window.draw(shape);
+}
+
+void drawCircle(int x, int y, sf::Color color) {
+    sf::CircleShape shape(BLOCK_WIDTH/6);
+    shape.setOrigin(sf::Vector2f(-x*BLOCK_WIDTH - BLOCK_WIDTH/4,
+                                 -y*BLOCK_HEIGHT - BLOCK_HEIGHT/4));
 
     shape.setOutlineThickness(2.0f);
     shape.setOutlineColor(sf::Color::Black);

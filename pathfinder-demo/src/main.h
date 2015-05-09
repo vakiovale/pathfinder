@@ -6,6 +6,7 @@
 #include <iostream>
 #include <random>
 #include <cmath>
+#include <algorithm>
 
 #include <Graph.h>
 #include <Node.h>
@@ -51,5 +52,7 @@ void pollEvents(sf::Event& event);
 void draw();
 
 void draw(int x, int y, sf::Color color);
+
+void drawCircle(int x, int y, sf::Color color);
 
 #endif
