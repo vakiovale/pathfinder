@@ -56,6 +56,7 @@ void createRandomWalls() {
 void pollEvents(sf::Event& event) {
     if(event.type == sf::Event::Closed)
         window.close();
+
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::B)) {
         if(event.type == sf::Event::MouseButtonReleased) {
             int x = event.mouseButton.x / (WINDOW_WIDTH / (float)NUMBER_OF_NODES_IN_A_ROW);
