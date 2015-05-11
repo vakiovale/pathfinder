@@ -22,4 +22,4 @@ Run thesse Linux scripts:
 ./install
 </code>
 
-This installs PathFinder library to the <code>libPathFinder/</code> directory which can be used in the PathFinder demo.
+This installs static PathFinder library to the <code>libPathFinder/</code> directory which can be used in the PathFinder demo. Important files are <code>libPathFinder.a</code> and all the header files in the <code>libPathFinder/include/</code> directory.
