@@ -17,9 +17,9 @@ class TerrainBlock {
 
     public:
         /**
-         * @brief Initialize TerrainBlock
+         * @brief Initialize TerrainBlock with a specific Node
          */
-        TerrainBlock();
+        TerrainBlock(pathfinder::Node* node);
 
         /**
          * @brief Set terrain properties for the specific node
@@ -34,6 +34,7 @@ class TerrainBlock {
         Terrain getTerrain() const;
 
     protected:
+        pathfinder::Node* const node;
         Terrain terrain;
         bool terrainIsAccessible;
         float movementCostFactor;

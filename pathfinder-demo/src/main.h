@@ -8,6 +8,8 @@
 #include <cmath>
 #include <algorithm>
 
+#include "GameWorld.h"
+
 #include <Graph.h>
 #include <Node.h>
 #include <Point.h>
@@ -17,13 +19,15 @@
 
 using namespace pathfinder;
 
+GameWorld* gameWorld;
+
 const int NUMBER_OF_NODES_IN_A_ROW = 35;
 
 const int NUMBER_OF_NODES_IN_A_COLUMN = NUMBER_OF_NODES_IN_A_ROW;
 
-const int WINDOW_WIDTH = 600;
+const int WINDOW_WIDTH = 650;
 
-const int WINDOW_HEIGHT = 600;
+const int WINDOW_HEIGHT = 650;
 
 const float BLOCK_WIDTH = WINDOW_WIDTH / (float)NUMBER_OF_NODES_IN_A_ROW;
 

@@ -1,15 +1,18 @@
 #include "main.h"
 
 int main() {
+    gameWorld = new GameWorld(35);
+
     graph.create2DGridMap(NUMBER_OF_NODES_IN_A_ROW);
 
-    createRandomWalls();
+    //createRandomWalls();
 
     start = graph.getNodeFromPosition(0, 0);
     end = graph.getNodeFromPosition(1, 1);
 
     pathFinder = new AStarPathFinder(&graph);
 
+    long counter = 0;
     while(window.isOpen()) {
 
         sf::Event event;
@@ -19,6 +22,14 @@ int main() {
 
         finalPath = new Path(pathFinder->findAndGetShortestPath(*start, *end));
 
+        counter++;
+        if(counter > 5 && finalPath->getPathLength() > 1) {
+            counter = 0;
+            int x = (*finalPath)[1].getX();
+            int y = (*finalPath)[1].getY();
+            start = graph.getNodeFromPosition(x, y);
+        }
+
         window.clear();
 
         draw();
@@ -26,9 +37,12 @@ int main() {
         window.display();
 
         delete finalPath;
+
     }
     
     delete pathFinder;
+    delete gameWorld;
+
     return 0;
 }
 

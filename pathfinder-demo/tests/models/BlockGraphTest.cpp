@@ -38,8 +38,12 @@ SCENARIO("BlockGraph holds different terrain for each node in the graph",
 
         BlockGraph graph(2);
 
-        THEN("")
-
+        THEN("Graph has plain terrain in each of it's nodes") {
+            REQUIRE(graph.getTerrainInPosition(0,0) == PLAIN);
+            REQUIRE(graph.getTerrainInPosition(1,0) == PLAIN);
+            REQUIRE(graph.getTerrainInPosition(0,1) == PLAIN);
+            REQUIRE(graph.getTerrainInPosition(1,1) == PLAIN);
+        }
     }
 
 }
