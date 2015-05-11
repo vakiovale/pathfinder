@@ -1,5 +1,5 @@
 /**
- * @brief Abstract TerrainBlock class
+ * @brief TerrainBlock class
  *
  * TerrainBlock is used for different kind of terrains. Nodes can be modified
  * by using TerrainBlocks.
@@ -19,7 +19,7 @@ class TerrainBlock {
         /**
          * @brief Initialize TerrainBlock
          */
-        virtual TerrainBlock() = 0;
+        TerrainBlock();
 
         /**
          * @brief Set terrain properties for the specific node
