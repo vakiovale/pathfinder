@@ -14,7 +14,7 @@ include_directories("${PROJECT_SOURCE_DIR}/src/pathtools/")
 include_directories("${PROJECT_SOURCE_DIR}/src/utilities/")
 include_directories("${PROJECT_SOURCE_DIR}/include/")
 
-add_library(PathFinder ${SOURCES})
+add_library(PathFinder ${SOURCES} ${HEADERS})
 
 install(TARGETS PathFinder DESTINATION "${PROJECT_SOURCE_DIR}/libPathFinder")
 install(FILES ${HEADERS} DESTINATION "${PROJECT_SOURCE_DIR}/libPathFinder/include")

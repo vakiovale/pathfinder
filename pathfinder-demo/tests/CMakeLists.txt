@@ -1,6 +1,7 @@
 include_directories("${PROJECT_SOURCE_DIR}/../libPathFinder/include")
 include_directories("${PROJECT_SOURCE_DIR}/../include")
 include_directories("${PROJECT_SOURCE_DIR}/src/controllers")
+include_directories("${PROJECT_SOURCE_DIR}/src/models")
 
 file(GLOB_RECURSE TEST_SOURCES *.cpp *.h)
 set(TEST_SOURCES ${TEST_SOURCES})
