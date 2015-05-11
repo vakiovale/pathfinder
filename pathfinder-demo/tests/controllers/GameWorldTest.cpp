@@ -85,6 +85,15 @@ SCENARIO("GameWorld can be initialized with graph size", "[gameworld]") {
             delete game;
         }
 
+        WHEN("Initializer is left to zero") {
+            game = new GameWorld();
+            THEN("GameWorld has default width 35 and default height 35") {
+                REQUIRE(game->getWidth() == 35);
+                REQUIRE(game->getHeight() == 35);
+            }
+            delete game;
+        }
+
     }
 
 }
