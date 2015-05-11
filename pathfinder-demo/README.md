@@ -11,7 +11,9 @@ Demo program for visualizing path finding
 
 1. Check that PathFinder library has been installed (<a href="https://github.com/valtteripyyhtia/pathfinder#installing-pathfinder-library">instructions here</a>)
 2. <a href="#installing-sfml">Installing SFML library</a>
-3. Run these scripts from <code>pathfinder-demo/</directory>: <code>./runcmake</code> and <code>./build</code>
+3. Run these scripts from <code>pathfinder-demo/</code> directory:
+  - <code>./runcmake</code>
+  - <code>./build</code>
 
 ## Installing SFML
 
