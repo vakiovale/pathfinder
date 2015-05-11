@@ -2,8 +2,8 @@
  * @brief CompassPosition
  *
  * CompassPosition holds all the 8 compass positions
-
-@author*
+ *
+ * @author Valtteri Pyyhtiä
  */
 
 #ifndef COMPASS_POSITION_H
