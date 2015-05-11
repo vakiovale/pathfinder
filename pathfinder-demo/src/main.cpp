@@ -5,7 +5,7 @@ int main() {
 
     graph.create2DGridMap(NUMBER_OF_NODES_IN_A_ROW);
 
-    //createRandomWalls();
+    createRandomWalls();
 
     start = graph.getNodeFromPosition(0, 0);
     end = graph.getNodeFromPosition(1, 1);
