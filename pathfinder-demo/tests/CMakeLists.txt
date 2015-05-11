@@ -1,3 +1,4 @@
+include_directories("${PROJECT_SOURCE_DIR}/../libPathFinder/include")
 include_directories("${PROJECT_SOURCE_DIR}/../include")
 include_directories("${PROJECT_SOURCE_DIR}/src/controllers")
 
@@ -7,3 +8,4 @@ message(STATUS "Found sources: " ${TEST_SOURCES})
 
 add_executable(TestDemoAll ${TEST_SOURCES})
 target_link_libraries(TestDemoAll PathFinderDemo)
+target_link_libraries(TestDemoAll ${PROJECT_SOURCE_DIR}/../libPathFinder/libPathFinder.a)
