@@ -11,7 +11,7 @@
 
 #include "Updateable.h"
 
-#include <Graph.h>
+#include <BlockGraph.h>
 #include <PathFinder.h>
 #include <AStarPathFinder.h>
 
@@ -59,7 +59,7 @@ class GameWorld : public Updateable {
         int getHeight() const;
 
     private:
-        Graph graph;
+        BlockGraph graph;
 
         int width;
 
