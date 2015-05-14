@@ -1,9 +1,12 @@
 #include "TerrainBlock.h"
 
-TerrainBlock::TerrainBlock(pathfinder::Node* node) : node(node){
-    terrainIsAccessible = true;
-    movementCostFactor = 1.0f;
-    terrain = PLAIN;
+TerrainBlock::TerrainBlock(pathfinder::Node* node,
+                           bool terrainIsAccessible,
+                           float movementCostFactor,
+                           Terrain terrain) : node(node){
+    this->terrainIsAccessible = terrainIsAccessible;
+    this->movementCostFactor = movementCostFactor;
+    this->terrain = terrain;
     setTerrainPropertiesForNode(*this->node);
 }
 

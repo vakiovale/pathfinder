@@ -19,7 +19,8 @@ class TerrainBlock {
         /**
          * @brief Initialize TerrainBlock with a specific Node
          */
-        TerrainBlock(pathfinder::Node* node);
+        TerrainBlock(pathfinder::Node* node, bool terrainIsAccessible,
+                     float movementCostFactor, Terrain terrain);
 
         /**
          * @brief Set terrain properties for the specific node

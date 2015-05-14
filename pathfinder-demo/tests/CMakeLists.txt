@@ -2,6 +2,7 @@ include_directories("${PROJECT_SOURCE_DIR}/../libPathFinder/include")
 include_directories("${PROJECT_SOURCE_DIR}/../include")
 include_directories("${PROJECT_SOURCE_DIR}/src/controllers")
 include_directories("${PROJECT_SOURCE_DIR}/src/models")
+include_directories("${PROJECT_SOURCE_DIR}/src/models/terrainblocks")
 
 file(GLOB_RECURSE TEST_SOURCES *.cpp *.h)
 set(TEST_SOURCES ${TEST_SOURCES})
