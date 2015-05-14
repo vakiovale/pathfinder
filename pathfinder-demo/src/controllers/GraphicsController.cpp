@@ -1,0 +1,63 @@
+#include "GraphicsController.h"
+
+GraphicsController::GraphicsController(GameWorld* gameWorld,
+                                       sf::RenderWindow* window) :
+    gameWorld(gameWorld), window(window) {
+    // do nothing yet
+}
+
+void GraphicsController::draw() {
+    for(int i = 0; i < NUMBER_OF_NODES_IN_A_COLUMN; i++) {
+        for(int j = 0; j < NUMBER_OF_NODES_IN_A_ROW; j++) {
+            Node* node = gameWorld->getBlockGraph()->getNodeFromPosition(j,i);
+            int x = node->getX();
+            int y = node->getY();
+
+            sf::Color color;
+
+            if(node->isAccessible()) {
+                float factor = node->getMovementCostFactor();
+                if(factor < 2.0f)
+                    color = sf::Color::White;
+                else if(factor < 10.0f)
+                    color = sf::Color(100, std::max(255.0f, factor*200.0f), 100);
+                else
+                    color = sf::Color(0, 191, 255);
+            }
+            else {
+                color = sf::Color(150, 150, 150);
+            }
+
+            draw(x, y, color);
+        }
+    }
+
+    /*for(int i = 1; i < finalPath->getPathLength()-1; i++) {
+        drawCircle((*finalPath)[i].getX(),
+             (*finalPath)[i].getY(),
+             sf::Color(255, 255, 0, 255));
+    }*/
+}
+
+void GraphicsController::draw(int x, int y, sf::Color color) {
+    sf::RectangleShape shape(sf::Vector2f(BLOCK_WIDTH, BLOCK_HEIGHT));
+    shape.setOrigin(sf::Vector2f(-x*BLOCK_WIDTH, -y*BLOCK_HEIGHT));
+
+    shape.setOutlineThickness(2.0f);
+    shape.setOutlineColor(sf::Color::Black);
+    shape.setFillColor(color);
+
+    window->draw(shape);
+}
+
+void GraphicsController::drawCircle(int x, int y, sf::Color color) {
+    sf::CircleShape shape(BLOCK_WIDTH/6);
+    shape.setOrigin(sf::Vector2f(-x*BLOCK_WIDTH - BLOCK_WIDTH/4,
+                                 -y*BLOCK_HEIGHT - BLOCK_HEIGHT/4));
+
+    shape.setOutlineThickness(2.0f);
+    shape.setOutlineColor(sf::Color::Black);
+    shape.setFillColor(color);
+
+    window->draw(shape);
+}

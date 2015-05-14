@@ -11,6 +11,10 @@
 
 #include "Updateable.h"
 
+#include <random>
+#include <cmath>
+
+#include <Node.h>
 #include <BlockGraph.h>
 #include <PathFinder.h>
 #include <AStarPathFinder.h>
@@ -58,6 +62,12 @@ class GameWorld : public Updateable {
          */
         int getHeight() const;
 
+        /**
+         * @brief Get BlockGraph
+         * @return graph
+         */
+        BlockGraph* getBlockGraph();
+
     private:
         BlockGraph graph;
 
@@ -66,6 +76,14 @@ class GameWorld : public Updateable {
         int height;
 
         PathFinder* pathFinder;
+
+        void createRandomWalls();
+
+        Node* start;
+
+        Node* end;
+
+        Path* finalPath;
 };
 
 #endif
