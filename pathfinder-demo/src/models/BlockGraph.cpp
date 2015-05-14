@@ -27,7 +27,9 @@ void BlockGraph::initializeBlocks() {
     for(int i = 0; i < height; i++) {
         std::vector<TerrainBlock*> rowOfBlocks;
         for(int j = 0; j < width; j++) {
-            rowOfBlocks.push_back(new TerrainBlock(this->getNodeFromPosition(j,i)));
+            rowOfBlocks.push_back(new TerrainBlock(
+                                      this->getNodeFromPosition(j,i),
+                                      true, 1.0f, PLAIN));
         }
         blocks.push_back(rowOfBlocks);
     }
@@ -41,6 +43,43 @@ int BlockGraph::getHeight() const {
     return height;
 }
 
+Terrain BlockGraph::getTerrainInPosition(const pathfinder::Point& position) const {
+    return getTerrainInPosition(position.getX(), position.getY());
+}
+
 Terrain BlockGraph::getTerrainInPosition(int x, int y) const {
     return (blocks[y][x])->getTerrain();
+}
+
+void BlockGraph::changeBlockTerrainInPoint(const pathfinder::Point &position,
+                                           Terrain terrain) {
+    changeBlockTerrainInPoint(position.getX(), position.getY(), terrain);
+}
+
+void BlockGraph::changeBlockTerrainInPoint(int x, int y, Terrain terrain) {
+    TerrainBlock* blockToBeChanged = getTerrainBlockInPosition(x, y);
+    pathfinder::Node* nodeInBlock = getNodeFromPosition(x, y);
+
+    switch (terrain) {
+        case WALL:
+            delete blockToBeChanged;
+            blockToBeChanged = new WallBlock(nodeInBlock);
+            break;
+        case PLAIN:
+            delete blockToBeChanged;
+            blockToBeChanged = new PlainBlock(nodeInBlock);
+            break;
+        case GRASS:
+            delete blockToBeChanged;
+            blockToBeChanged = new GrassBlock(nodeInBlock);
+            break;
+        case WATER:
+            delete blockToBeChanged;
+            blockToBeChanged = new WaterBlock(nodeInBlock);
+            break;
+    }
+}
+
+TerrainBlock* BlockGraph::getTerrainBlockInPosition(int x, int y) {
+    return (blocks[y][x]);
 }
