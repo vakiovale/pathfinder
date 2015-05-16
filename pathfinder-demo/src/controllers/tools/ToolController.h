@@ -31,7 +31,7 @@ class ToolController {
     private:
         GameWorld* gameWorld;
 
-        BuildTool* buildTool;
+        Tool* tool;
 
         void initializeTools();
 
