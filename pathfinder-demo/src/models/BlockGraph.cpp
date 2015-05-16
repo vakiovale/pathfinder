@@ -67,32 +67,27 @@ void BlockGraph::changeBlockTerrainInPoint(const pathfinder::Point &position,
 }
 
 void BlockGraph::changeBlockTerrainInPoint(int x, int y, Terrain terrain) {
-    TerrainBlock* blockToBeChanged = getTerrainBlockInPosition(x, y);
-    pathfinder::Node* nodeInBlock = getNodeFromPosition(x, y);
+    delete getTerrainBlockInPosition(x, y);
+    pathfinder::Node* node = getNodeFromPosition(x, y);
 
     switch (terrain) {
         case WALL:
-            delete (blocks[y][x]);
-            (blocks[y][x]) = new WallBlock(nodeInBlock);
+            blocks[y][x] = new WallBlock(node);
             break;
         case PLAIN:
-            delete (blocks[y][x]);
-            (blocks[y][x]) = new PlainBlock(nodeInBlock);
+            blocks[y][x] = new PlainBlock(node);
             break;
         case GRASS:
-            delete (blocks[y][x]);
-            (blocks[y][x]) = new GrassBlock(nodeInBlock);
+            blocks[y][x] = new GrassBlock(node);
             break;
         case WATER:
-            delete (blocks[y][x]);
-            (blocks[y][x]) = new WaterBlock(nodeInBlock);
+            blocks[y][x] = new WaterBlock(node);
             break;
     }
 }
 
 TerrainBlock* BlockGraph::getTerrainBlockInPosition(int x, int y) {
-    TerrainBlock* block = (blocks[y][x]);
-    return block;
+    return blocks[y][x];
 }
 
 void BlockGraph::printTerrainBlockPositions() const {
