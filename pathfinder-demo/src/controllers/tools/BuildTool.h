@@ -12,6 +12,15 @@ class BuildTool : public Tool {
         BuildTool(GameWorld* gameWorld);
 
         /**
+         * @brief Execute tool action
+         */
+        void execute();
+
+        void clickLeftMouseButton();
+
+        void clickRightMouseButton();
+
+        /**
          * @brief Change tool to use new terrain
          * @param terrain to use with this BuildTool
          */
@@ -19,7 +28,20 @@ class BuildTool : public Tool {
 
     private:
         Terrain terrainToUse;
+
         GameWorld* gameWorld;
+
+        Terrain getTerrainToolIsOn() const;
+
+        bool eraseMode;
+
+        bool primaryActionHasNotBeenExecuted();
+
+        void erase();
+
+        void paint();
+
+        void checkEraseMode();
 
 };
 

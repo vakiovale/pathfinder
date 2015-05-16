@@ -27,19 +27,18 @@ void InputController::pollEvent(sf::Event& event) {
             rightMouseButtonReleased();
         }
     }
+
+    toolController.update();
 }
 
 void InputController::mouseMoved(int x, int y) {
     int xBlock = x / (WINDOW_WIDTH / (float)NUMBER_OF_NODES_IN_A_ROW);
     int yBlock = y / (WINDOW_HEIGHT / (float)NUMBER_OF_NODES_IN_A_COLUMN);
-
-    std::cout << "mouse moved to x: " << xBlock << " y: " << yBlock << std::endl;
-
-    toolController.update(Point(x,y));
+    toolController.mouseMoved(Point(xBlock, yBlock));
 }
 
 void InputController::leftMouseButtonPressed() {
-    std::cout << "LMB pressed" << std::endl;
+    toolController.leftMouseButtonPressed();
 }
 
 void InputController::rightMouseButtonPressed() {
@@ -47,7 +46,7 @@ void InputController::rightMouseButtonPressed() {
 }
 
 void InputController::leftMouseButtonReleased() {
-    std::cout << "LMB released" << std::endl;
+    toolController.leftMouseButtonReleased();
 }
 
 void InputController::rightMouseButtonReleased() {

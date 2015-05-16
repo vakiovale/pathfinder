@@ -1,23 +1,43 @@
 #include "Tool.h"
 
+void Tool::execute() {
+    // do nothing with this tool
+}
+
 void Tool::moveTo(const Point newPosition) {
-
-    justMovedToNewBlock = false;
-
     if(lastPosition != newPosition) {
        justMovedToNewBlock = true;
+       executedPrimaryActionOnce = false;
+       executedSecondaryActionOnce = false;
     }
     else {
-        execute();
+        justMovedToNewBlock = false;
     }
-
     lastPosition = newPosition;
 }
 
-void Tool::hold() {}
+void Tool::clickLeftMouseButton() {
+    holdingLeftMouseButton = true;
+}
 
-void Tool::click() {}
+void Tool::releaseLeftMouseButton() {
+    holdingLeftMouseButton = false;
+    executedPrimaryActionOnce = false;
+}
 
-void Tool::release() {}
+void Tool::clickRightMouseButton() {
+    holdingRightMouseButton = true;
+}
 
-void Tool::execute() {}
+void Tool::releaseRightMouseButton() {
+    holdingRightMouseButton = false;
+    executedSecondaryActionOnce = false;
+}
+
+void Tool::reset() {
+    justMovedToNewBlock = false;
+    holdingLeftMouseButton = false;
+    holdingRightMouseButton = false;
+    executedPrimaryActionOnce = false;
+    executedSecondaryActionOnce = false;
+}

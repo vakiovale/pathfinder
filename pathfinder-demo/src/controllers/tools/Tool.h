@@ -9,20 +9,32 @@ using namespace pathfinder;
 class Tool {
 
     public:
+        virtual void execute();
+
         void moveTo(const Point newPosition);
 
-        void hold();
+        void clickLeftMouseButton();
 
-        void click();
+        void releaseLeftMouseButton();
 
-        void release();
+        void clickRightMouseButton();
 
-        void execute();
+        void releaseRightMouseButton();
+
+        void reset();
 
     protected:
-        Point lastPosition = Point(0,0);
+        Point lastPosition = Point(-1,-1);
 
         bool justMovedToNewBlock;
+
+        bool holdingLeftMouseButton;
+
+        bool holdingRightMouseButton;
+
+        bool executedPrimaryActionOnce;
+
+        bool executedSecondaryActionOnce;
 
 };
 

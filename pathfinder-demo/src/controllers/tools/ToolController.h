@@ -13,7 +13,17 @@ class ToolController {
 
         ~ToolController();
 
-        void update(const Point& point);
+        void update();
+
+        void mouseMoved(const Point& point);
+
+        void leftMouseButtonPressed();
+
+        void rightMouseButtonPressed();
+
+        void leftMouseButtonReleased();
+
+        void rightMouseButtonReleased();
 
     private:
         GameWorld* gameWorld;

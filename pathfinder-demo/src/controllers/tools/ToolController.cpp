@@ -10,11 +10,31 @@ ToolController::~ToolController() {
     delete buildTool;
 }
 
-void ToolController::update(const Point& point) {
+void ToolController::update() {
+    buildTool->execute();
+}
+
+void ToolController::mouseMoved(const Point& point) {
     int x = point.getX();
     int y = point.getY();
 
     if(gameWorld->getBlockGraph()->nodeExistsInPosition(x, y)) {
         buildTool->moveTo(point);
     }
+}
+
+void ToolController::leftMouseButtonPressed() {
+    buildTool->clickLeftMouseButton();
+}
+
+void ToolController::rightMouseButtonPressed() {
+    buildTool->clickRightMouseButton();
+}
+
+void ToolController::leftMouseButtonReleased() {
+    buildTool->releaseLeftMouseButton();
+}
+
+void ToolController::rightMouseButtonReleased() {
+    buildTool->releaseRightMouseButton();
 }
