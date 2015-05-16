@@ -6,8 +6,6 @@ GameWorld::GameWorld(int graphSize) {
     }
     graph = new BlockGraph(graphSize);
 
-    createRandomWalls();
-
     height = graphSize;
     width = graphSize;
 

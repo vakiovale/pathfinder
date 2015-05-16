@@ -5,6 +5,10 @@ int main() {
     graphicsController = new GraphicsController(gameWorld, &window);
     inputController = new InputController(gameWorld);
 
+    if(RANDOM_WALLS) {
+        gameWorld->createRandomWalls();
+    }
+
     while(window.isOpen()) {
 
         sf::Event event;

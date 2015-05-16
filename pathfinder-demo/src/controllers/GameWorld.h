@@ -70,6 +70,11 @@ class GameWorld : public Updateable {
          */
         BlockGraph* getBlockGraph();
 
+        /**
+         * @brief Create random walls
+         */
+        void createRandomWalls();
+
     private:
         BlockGraph* graph;
 
@@ -78,8 +83,6 @@ class GameWorld : public Updateable {
         int height;
 
         PathFinder* pathFinder;
-
-        void createRandomWalls();
 
         Point start = Point(0,0);
 

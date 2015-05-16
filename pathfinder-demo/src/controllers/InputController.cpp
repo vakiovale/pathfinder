@@ -35,6 +35,9 @@ void InputController::pollEvent(sf::Event& event) {
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)) {
             toolController.changeBuildTool(GRASS);
         }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)) {
+            toolController.changeBuildTool(WATER);
+        }
     }
 
     toolController.update();
