@@ -10,8 +10,11 @@
 #ifndef TERRAIN_BLOCK_H
 #define TERRAIN_BLOCK_H
 
+#include <Point.h>
 #include <Node.h>
 #include "Terrain.h"
+
+using namespace pathfinder;
 
 class TerrainBlock {
 
@@ -34,8 +37,14 @@ class TerrainBlock {
          */
         Terrain getTerrain() const;
 
+        /**
+         * @brief Get point where TerrainBlock is
+         * @return position of TerrainBlock
+         */
+        const Point& getPoint() const;
+
     protected:
-        pathfinder::Node* const node;
+        const pathfinder::Point point;
         Terrain terrain;
         bool terrainIsAccessible;
         float movementCostFactor;

@@ -11,6 +11,7 @@ include_directories("${PROJECT_SOURCE_DIR}/SFML/include/")
 include_directories("${PROJECT_SOURCE_DIR}/../libPathFinder/include")
 include_directories("${PROJECT_SOURCE_DIR}/src")
 include_directories("${PROJECT_SOURCE_DIR}/src/controllers")
+include_directories("${PROJECT_SOURCE_DIR}/src/controllers/tools")
 include_directories("${PROJECT_SOURCE_DIR}/src/models")
 include_directories("${PROJECT_SOURCE_DIR}/src/models/terrainblocks")
 

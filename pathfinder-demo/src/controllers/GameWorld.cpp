@@ -18,6 +18,9 @@ GameWorld::GameWorld(int graphSize) {
 }
 
 GameWorld::~GameWorld() {
+    if(finalPath) {
+        delete finalPath;
+    }
     if(pathFinder) {
         delete pathFinder;
     }

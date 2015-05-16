@@ -13,6 +13,7 @@
 #include <Graph.h>
 #include <Point.h>
 #include <vector>
+#include <iostream>
 
 #include "TerrainBlock.h"
 #include "Terrain.h"
@@ -32,11 +33,6 @@ class BlockGraph : public pathfinder::Graph {
          * by default if no graphSize is used. Graph size can't be lower than 1.
          */
         BlockGraph(int graphSize = 35);
-
-        /**
-         * @brief BlockGraph destructor
-         */
-        ~BlockGraph();
 
         /**
          * @brief Get width of the graph.
@@ -83,16 +79,23 @@ class BlockGraph : public pathfinder::Graph {
          */
         void changeBlockTerrainInPoint(int x, int y, Terrain terrain);
 
+        /**
+         * @brief Get TerrainBlock in position
+         * @param x position
+         * @param y position
+         * @return pointer to TerrainBlock
+         */
+        TerrainBlock* getTerrainBlockInPosition(int x, int y);
+
 
     private:
         std::vector<std::vector<TerrainBlock*>> blocks;
         int width;
         int height;
 
-        TerrainBlock* getTerrainBlockInPosition(int x, int y);
-
         void initializeGraph(int graphSize);
         void initializeBlocks();
+        void printTerrainBlockPositions() const;
 
 };
 

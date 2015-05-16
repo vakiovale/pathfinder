@@ -5,14 +5,6 @@ BlockGraph::BlockGraph(int graphSize) {
     initializeBlocks();
 }
 
-BlockGraph::~BlockGraph() {
-    for(std::vector<TerrainBlock*> rowOfBlocks : blocks) {
-        for(TerrainBlock* block : rowOfBlocks) {
-            delete block;
-        }
-    }
-}
-
 void BlockGraph::initializeGraph(int graphSize) {
     if(graphSize < 1) {
         graphSize = 35;
@@ -23,13 +15,11 @@ void BlockGraph::initializeGraph(int graphSize) {
 }
 
 void BlockGraph::initializeBlocks() {
-    std::vector<std::vector<pathfinder::Node>> nodes = this->getAllNodes();
     for(int i = 0; i < height; i++) {
         std::vector<TerrainBlock*> rowOfBlocks;
         for(int j = 0; j < width; j++) {
-            rowOfBlocks.push_back(new TerrainBlock(
-                                      this->getNodeFromPosition(j,i),
-                                      true, 1.0f, PLAIN));
+            TerrainBlock* newTerrainBlock = new PlainBlock(this->getNodeFromPosition(j,i));
+            rowOfBlocks.push_back(newTerrainBlock);
         }
         blocks.push_back(rowOfBlocks);
     }
@@ -81,5 +71,16 @@ void BlockGraph::changeBlockTerrainInPoint(int x, int y, Terrain terrain) {
 }
 
 TerrainBlock* BlockGraph::getTerrainBlockInPosition(int x, int y) {
-    return (blocks[y][x]);
+    TerrainBlock* block = (blocks[y][x]);
+    return block;
+}
+
+void BlockGraph::printTerrainBlockPositions() const {
+    std::cout<< "printing blocks" << std::endl;
+    for(std::vector<TerrainBlock*> rowOfBlocks : this->blocks) {
+        for(TerrainBlock* block : rowOfBlocks) {
+            std::cout << "X:" << block->getPoint().getX() << "Y:" << block->getPoint().getY() << "\t";
+        }
+        std::cout << std::endl;
+    }
 }

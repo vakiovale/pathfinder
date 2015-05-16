@@ -3,6 +3,7 @@
 
 #include "DemoConfigurations.h"
 #include "GameWorld.h"
+#include "ToolController.h"
 #include <SFML/Graphics.hpp>
 
 class InputController {
@@ -14,6 +15,8 @@ class InputController {
 
     private:
         GameWorld* gameWorld;
+
+        ToolController toolController;
 
 };
 
