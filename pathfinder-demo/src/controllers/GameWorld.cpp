@@ -84,6 +84,14 @@ const Point& GameWorld::getEndPoint() const {
     return end;
 }
 
+void GameWorld::moveStartTo(const Point& point) {
+    start = point;
+}
+
+void GameWorld::moveEndTo(const Point& point) {
+    end = point;
+}
+
 const Path& GameWorld::getPath() const {
     return *finalPath;
 }

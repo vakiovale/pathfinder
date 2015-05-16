@@ -32,18 +32,18 @@ void GraphicsController::draw() {
         }
     }
 
-    const Point& start = gameWorld->getStartPoint();
-    const Point& end = gameWorld->getEndPoint();
-
-    draw(start.getX(), start.getY(), sf::Color::Red);
-    draw(end.getX(), end.getY(), sf::Color::Blue);
-
     const Path& path = gameWorld->getPath();
     for(int i = 1; i < path.getPathLength()-1; i++) {
         drawCircle(path[i].getX(),
              path[i].getY(),
              sf::Color(255, 255, 0, 255));
     }
+
+    const Point& start = gameWorld->getStartPoint();
+    const Point& end = gameWorld->getEndPoint();
+
+    draw(start.getX(), start.getY(), sf::Color::Red);
+    draw(end.getX(), end.getY(), sf::Color::Blue);
 }
 
 void GraphicsController::draw(int x, int y, sf::Color color) {

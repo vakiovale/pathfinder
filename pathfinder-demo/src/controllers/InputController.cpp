@@ -38,6 +38,9 @@ void InputController::pollEvent(sf::Event& event) {
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)) {
             toolController.changeBuildTool(WATER);
         }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+            gameWorld->toggleMoving();
+        }
     }
 
     toolController.update();
@@ -54,7 +57,7 @@ void InputController::leftMouseButtonPressed() {
 }
 
 void InputController::rightMouseButtonPressed() {
-    std::cout << "RMB pressed" << std::endl;
+    // right mouse button pressed
 }
 
 void InputController::leftMouseButtonReleased() {
@@ -62,5 +65,5 @@ void InputController::leftMouseButtonReleased() {
 }
 
 void InputController::rightMouseButtonReleased() {
-    std::cout << "RMB released" << std::endl;
+    // right mouse button released
 }

@@ -84,6 +84,10 @@ class GameWorld : public Updateable {
 
         const Point& getEndPoint() const;
 
+        void moveStartTo(const Point& point);
+
+        void moveEndTo(const Point& point);
+
         const Path& getPath() const;
 
     private:
