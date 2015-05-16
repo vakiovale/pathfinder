@@ -4,12 +4,19 @@
 #include "PointMover.h"
 #include "GameWorld.h"
 
-class EndPointMover : public PointMover {
+class EndPointMover : public Tool {
 
     public:
         EndPointMover(GameWorld* gameWorld);
 
-        void movePoint();
+        void subExecute();
+
+        void leftMouseAction();
+
+        void rightMouseAction();
+
+    private:
+        GameWorld* gameWorld;
 
 };
 

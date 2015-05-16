@@ -5,13 +5,11 @@ BuildTool::BuildTool(GameWorld* gameWorld) {
     terrainToUse = PLAIN;
 }
 
-void BuildTool::execute() {
-    if(primaryActionExecutedFirstTime()) {
-        if(eraseMode)
-            erase();
-        else
-            paint();
-    }
+void BuildTool::subExecute() {
+    if(eraseMode)
+        erase();
+    else
+        paint();
 }
 
 void BuildTool::erase() {
@@ -31,14 +29,13 @@ void BuildTool::paint() {
             changeBlockTerrainInPoint(this->lastPosition, this->terrainToUse);
 }
 
-void BuildTool::clickLeftMouseButton() {
+void BuildTool::leftMouseAction() {
     if(!this->holdingLeftMouseButton) {
         checkEraseMode();
     }
-    Tool::clickLeftMouseButton();
 }
 
-void BuildTool::clickRightMouseButton() {
+void BuildTool::rightMouseAction() {
     // do nothing
 }
 

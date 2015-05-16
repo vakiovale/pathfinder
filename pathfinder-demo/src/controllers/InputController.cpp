@@ -41,6 +41,12 @@ void InputController::pollEvent(sf::Event& event) {
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
             gameWorld->toggleMoving();
         }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+            toolController.changeStartPointMoverTool();
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
+            toolController.changeEndPointMoverTool();
+        }
     }
 
     toolController.update();

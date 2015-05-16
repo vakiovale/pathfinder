@@ -9,9 +9,11 @@ class PointMover : public Tool {
     public:
         PointMover(GameWorld* gameWorld);
 
-        void execute();
+        void subExecute();
 
-        virtual void movePoint();
+        virtual void movePoint() = 0;
+        virtual void leftMouseAction();
+        virtual void rightMouseAction();
 
     protected:
         GameWorld* gameWorld;

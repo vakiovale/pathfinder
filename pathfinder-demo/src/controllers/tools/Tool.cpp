@@ -1,7 +1,9 @@
 #include "Tool.h"
 
 void Tool::execute() {
-    // do nothing with this tool
+    if(primaryActionExecutedFirstTime()) {
+        subExecute();
+    }
 }
 
 void Tool::moveTo(const Point newPosition) {
@@ -17,6 +19,7 @@ void Tool::moveTo(const Point newPosition) {
 }
 
 void Tool::clickLeftMouseButton() {
+    leftMouseAction();
     holdingLeftMouseButton = true;
 }
 
@@ -26,6 +29,7 @@ void Tool::releaseLeftMouseButton() {
 }
 
 void Tool::clickRightMouseButton() {
+    rightMouseAction();
     holdingRightMouseButton = true;
 }
 

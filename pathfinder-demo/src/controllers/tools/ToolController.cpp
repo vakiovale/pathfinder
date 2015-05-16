@@ -17,13 +17,10 @@ void ToolController::update() {
 }
 
 void ToolController::changeBuildTool(Terrain terrain) {
+    delete tool;
+    tool = new BuildTool(gameWorld);
     BuildTool* buildTool;
     buildTool = dynamic_cast<BuildTool*>(tool);
-    if(!buildTool) {
-        delete tool;
-        tool = new BuildTool(gameWorld);
-        buildTool = dynamic_cast<BuildTool*>(tool);
-    }
     buildTool->changeTerrainTool(terrain);
 }
 
@@ -47,23 +44,11 @@ void ToolController::mouseMoved(const Point& point) {
 }
 
 void ToolController::leftMouseButtonPressed() {
-    BuildTool* buildTool = dynamic_cast<BuildTool*>(tool);
-    if(buildTool) {
-        buildTool->clickLeftMouseButton();
-    }
-    else {
-        tool->clickLeftMouseButton();
-    }
+    tool->clickLeftMouseButton();
 }
 
 void ToolController::rightMouseButtonPressed() {
-    BuildTool* buildTool = dynamic_cast<BuildTool*>(tool);
-    if(buildTool) {
-        buildTool->clickRightMouseButton();
-    }
-    else {
-        tool->clickRightMouseButton();
-    }
+    tool->clickRightMouseButton();
 }
 
 void ToolController::leftMouseButtonReleased() {

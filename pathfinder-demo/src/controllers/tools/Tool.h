@@ -9,15 +9,21 @@ using namespace pathfinder;
 class Tool {
 
     public:
-        virtual void execute();
+        void execute();
+
+        virtual void subExecute() = 0;
 
         void moveTo(const Point newPosition);
 
         void clickLeftMouseButton();
 
+        virtual void leftMouseAction() = 0;
+
         void releaseLeftMouseButton();
 
         void clickRightMouseButton();
+
+        virtual void rightMouseAction() = 0;
 
         void releaseRightMouseButton();
 

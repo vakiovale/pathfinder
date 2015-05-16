@@ -16,9 +16,11 @@ class BuildTool : public Tool {
          */
         void execute();
 
-        void clickLeftMouseButton();
+        void subExecute();
 
-        void clickRightMouseButton();
+        void leftMouseAction();
+
+        void rightMouseAction();
 
         /**
          * @brief Change tool to use new terrain

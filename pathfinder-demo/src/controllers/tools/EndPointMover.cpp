@@ -1,9 +1,17 @@
 #include "EndPointMover.h"
 
-EndPointMover::EndPointMover(GameWorld *gameWorld) : PointMover(gameWorld) {
+EndPointMover::EndPointMover(GameWorld *gameWorld) : gameWorld(gameWorld) {
     // do nothing
 }
 
-void EndPointMover::movePoint() {
+void EndPointMover::subExecute() {
     gameWorld->moveEndTo(this->lastPosition);
+}
+
+void EndPointMover::leftMouseAction() {
+
+}
+
+void EndPointMover::rightMouseAction() {
+
 }

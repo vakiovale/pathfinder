@@ -1,9 +1,17 @@
 #include "StartPointMover.h"
 
-StartPointMover::StartPointMover(GameWorld *gameWorld) : PointMover(gameWorld) {
+StartPointMover::StartPointMover(GameWorld *gameWorld) : gameWorld(gameWorld) {
     // do nothing
 }
 
-void StartPointMover::movePoint() {
+void StartPointMover::subExecute() {
     gameWorld->moveStartTo(this->lastPosition);
+}
+
+void StartPointMover::leftMouseAction() {
+
+}
+
+void StartPointMover::rightMouseAction() {
+
 }
