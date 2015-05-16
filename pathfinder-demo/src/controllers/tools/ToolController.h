@@ -2,6 +2,7 @@
 #define TOOL_CONTROLLER_H
 
 #include "Tool.h"
+#include "Terrain.h"
 #include "BuildTool.h"
 #include "Point.h"
 #include "GameWorld.h"
@@ -14,6 +15,8 @@ class ToolController {
         ~ToolController();
 
         void update();
+
+        void changeBuildTool(Terrain terrain);
 
         void mouseMoved(const Point& point);
 

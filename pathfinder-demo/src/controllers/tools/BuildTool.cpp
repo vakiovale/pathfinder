@@ -22,8 +22,15 @@ bool BuildTool::primaryActionHasNotBeenExecuted() {
 }
 
 void BuildTool::erase() {
-    this->gameWorld->getBlockGraph()->
-            changeBlockTerrainInPoint(this->lastPosition, PLAIN);
+    if(toolIsOnSameTerrainAsTerrainToUse()) {
+        this->gameWorld->getBlockGraph()->
+                changeBlockTerrainInPoint(this->lastPosition, PLAIN);
+    }
+}
+
+bool BuildTool::toolIsOnSameTerrainAsTerrainToUse() {
+    Terrain terrainToolIsOn = getTerrainToolIsOn();
+    return terrainToolIsOn == this->terrainToUse;
 }
 
 void BuildTool::paint() {
@@ -56,6 +63,7 @@ void BuildTool::checkEraseMode() {
 }
 
 void BuildTool::changeTerrainTool(Terrain terrain) {
+    this->reset();
     this->terrainToUse = terrain;
 }
 

@@ -14,6 +14,10 @@ void ToolController::update() {
     buildTool->execute();
 }
 
+void ToolController::changeBuildTool(Terrain terrain) {
+    buildTool->changeTerrainTool(terrain);
+}
+
 void ToolController::mouseMoved(const Point& point) {
     int x = point.getX();
     int y = point.getY();

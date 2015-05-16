@@ -28,6 +28,15 @@ void InputController::pollEvent(sf::Event& event) {
         }
     }
 
+    if(event.type == sf::Event::KeyPressed) {
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) {
+            toolController.changeBuildTool(WALL);
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)) {
+            toolController.changeBuildTool(GRASS);
+        }
+    }
+
     toolController.update();
 }
 

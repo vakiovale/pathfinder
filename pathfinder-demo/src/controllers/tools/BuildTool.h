@@ -37,6 +37,8 @@ class BuildTool : public Tool {
 
         bool primaryActionHasNotBeenExecuted();
 
+        bool toolIsOnSameTerrainAsTerrainToUse();
+
         void erase();
 
         void paint();
