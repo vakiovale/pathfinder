@@ -1,16 +1,14 @@
 #include "Tool.h"
 
-void Tool::moveTo(const TerrainBlock* newPosition) {
+void Tool::moveTo(const Point newPosition) {
 
     justMovedToNewBlock = false;
 
-    if(lastPosition) {
-        if(lastPosition->getPoint() != newPosition->getPoint()) {
-            justMovedToNewBlock = true;
-        }
-        else {
-            execute();
-        }
+    if(lastPosition != newPosition) {
+       justMovedToNewBlock = true;
+    }
+    else {
+        execute();
     }
 
     lastPosition = newPosition;

@@ -2,23 +2,25 @@
 #define TOOL_H
 
 #include <iostream>
-#include "TerrainBlock.h"
+#include <Point.h>
+
+using namespace pathfinder;
 
 class Tool {
 
     public:
-        void moveTo(const TerrainBlock* newPosition);
+        void moveTo(const Point newPosition);
 
-        virtual void hold();
+        void hold();
 
-        virtual void click();
+        void click();
 
-        virtual void release();
+        void release();
 
-        virtual void execute();
+        void execute();
 
     protected:
-        const TerrainBlock* lastPosition;
+        Point lastPosition = Point(0,0);
 
         bool justMovedToNewBlock;
 

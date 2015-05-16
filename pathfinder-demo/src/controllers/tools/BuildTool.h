@@ -3,11 +3,13 @@
 
 #include "Tool.h"
 #include "Terrain.h"
+#include "GameWorld.h"
+#include "Point.h"
 
 class BuildTool : public Tool {
 
     public:
-        BuildTool();
+        BuildTool(GameWorld* gameWorld);
 
         /**
          * @brief Change tool to use new terrain
@@ -15,16 +17,9 @@ class BuildTool : public Tool {
          */
         void changeTerrainTool(Terrain terrain);
 
-        virtual void hold();
-
-        virtual void click();
-
-        virtual void release();
-
-        virtual void execute();
-
     private:
         Terrain terrainToUse;
+        GameWorld* gameWorld;
 
 };
 

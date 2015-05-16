@@ -18,6 +18,16 @@ class InputController {
 
         ToolController toolController;
 
+        void mouseMoved(int x, int y);
+
+        void leftMouseButtonPressed();
+
+        void rightMouseButtonPressed();
+
+        void leftMouseButtonReleased();
+
+        void rightMouseButtonReleased();
+
 };
 
 #endif
