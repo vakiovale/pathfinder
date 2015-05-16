@@ -18,7 +18,7 @@ void BuildTool::execute() {
 }
 
 bool BuildTool::primaryActionHasNotBeenExecuted() {
-    return this->holdingLeftMouseButton && !executedPrimaryActionOnce;
+    return holdingLeftMouseButton && !executedPrimaryActionOnce;
 }
 
 void BuildTool::erase() {
