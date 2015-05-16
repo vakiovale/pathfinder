@@ -101,6 +101,8 @@ class BlockGraph : public pathfinder::Graph {
         void initializeGraph(int graphSize);
         void initializeBlocks();
         void printTerrainBlockPositions() const;
+        void deleteGraph();
+        void cleanBlockGraph();
 
 };
 

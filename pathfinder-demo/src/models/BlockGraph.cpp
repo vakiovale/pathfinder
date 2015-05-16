@@ -15,6 +15,10 @@ void BlockGraph::initializeGraph(int graphSize) {
 }
 
 BlockGraph::~BlockGraph() {
+    deleteGraph();
+}
+
+void BlockGraph::deleteGraph() {
     for(std::vector<TerrainBlock*>& innerVec : blocks) {
         for(int i = innerVec.size()-1; i >= 0; i--) {
             delete innerVec[i];
@@ -23,6 +27,7 @@ BlockGraph::~BlockGraph() {
 }
 
 void BlockGraph::initializeBlocks() {
+    cleanBlockGraph();
     for(int i = 0; i < height; i++) {
         std::vector<TerrainBlock*> rowOfBlocks;
         for(int j = 0; j < width; j++) {
@@ -30,6 +35,13 @@ void BlockGraph::initializeBlocks() {
             rowOfBlocks.push_back(newTerrainBlock);
         }
         blocks.push_back(rowOfBlocks);
+    }
+}
+
+void BlockGraph::cleanBlockGraph() {
+    if(blocks.size() > 0) {
+        deleteGraph();
+        blocks.clear();
     }
 }
 

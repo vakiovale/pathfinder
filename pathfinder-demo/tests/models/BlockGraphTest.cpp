@@ -13,7 +13,6 @@ SCENARIO("BlockGraph creates a graph with specific size", "[blockgraph][graph]")
                 REQUIRE(graph.getWidth() == 40);
                 REQUIRE(graph.getHeight() == 40);
             }
-
         }
     }
 
@@ -34,7 +33,7 @@ SCENARIO("BlockGraph creates a graph with specific size", "[blockgraph][graph]")
 SCENARIO("BlockGraph holds different terrain for each node in the graph",
          "[terrain][node][blockgraph]") {
 
-    GIVEN("A BlockGraph sized 3x3") {
+    GIVEN("A BlockGraph sized 2x2") {
 
         BlockGraph graph(2);
 
@@ -114,5 +113,17 @@ SCENARIO("BlockGraph holds different terrain for each node in the graph",
             }
 
         }
+    }
+}
+
+SCENARIO("BlockGraph holds Point in the same position as the Node it is "
+         "initialized with","[node][point][blockgraph]") {
+
+    GIVEN("A BlockGraph sized 2x2") {
+
+        BlockGraph graph(2);
+
+
+
     }
 }
