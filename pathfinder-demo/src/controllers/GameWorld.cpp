@@ -11,6 +11,7 @@ GameWorld::GameWorld(int graphSize) {
 
     finalPath = new Path();
     pathFinder = new AStarPathFinder(graph);
+    movingEnabled = false;
 }
 
 GameWorld::~GameWorld() {
@@ -29,7 +30,7 @@ void GameWorld::update() {
         Node endNode(end.getX(), end.getY());
 
         finalPath = new Path(pathFinder->findAndGetShortestPath(startNode, endNode));
-        if(finalPath->getPathLength() > 1) {
+        if(movingEnabled && finalPath->getPathLength() > 1) {
             int x = (*finalPath)[1].getX();
             int y = (*finalPath)[1].getY();
             const Node* node = graph->getNodeFromPosition(x, y);
@@ -69,4 +70,20 @@ void GameWorld::createRandomWalls() {
 
 BlockGraph* GameWorld::getBlockGraph() {
     return graph;
+}
+
+void GameWorld::toggleMoving() {
+    movingEnabled = !movingEnabled;
+}
+
+const Point& GameWorld::getStartPoint() const {
+    return start;
+}
+
+const Point& GameWorld::getEndPoint() const {
+    return end;
+}
+
+const Path& GameWorld::getPath() const {
+    return *finalPath;
 }

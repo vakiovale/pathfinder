@@ -75,6 +75,17 @@ class GameWorld : public Updateable {
          */
         void createRandomWalls();
 
+        /**
+         * @brief Toggle moving on and off
+         */
+        void toggleMoving();
+
+        const Point& getStartPoint() const;
+
+        const Point& getEndPoint() const;
+
+        const Path& getPath() const;
+
     private:
         BlockGraph* graph;
 
@@ -86,9 +97,11 @@ class GameWorld : public Updateable {
 
         Point start = Point(0,0);
 
-        Point end = Point(0,0);
+        Point end = Point(10,10);
 
         Path* finalPath;
+
+        bool movingEnabled;
 };
 
 #endif
