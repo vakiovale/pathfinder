@@ -99,9 +99,9 @@ class GameWorld : public Updateable {
 
         PathFinder* pathFinder;
 
-        Point start = Point(0,0);
+        Point start = Point(-1,-1);
 
-        Point end = Point(10,10);
+        Point end = Point(-1,-1);
 
         Path* finalPath;
 

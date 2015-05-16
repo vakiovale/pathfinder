@@ -9,6 +9,9 @@ GameWorld::GameWorld(int graphSize) {
     height = graphSize;
     width = graphSize;
 
+    start = Point(0,0);
+    end = Point(width-1, height-1);
+
     finalPath = new Path();
     pathFinder = new AStarPathFinder(graph);
     movingEnabled = false;
