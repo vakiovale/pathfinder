@@ -4,7 +4,7 @@ GameWorld::GameWorld(int graphSize) {
     if(graphSize < 1) {
         graphSize = 35;
     }
-    graph.create2DGridMap(graphSize);
+    graph = new BlockGraph(graphSize);
 
     createRandomWalls();
 
@@ -12,17 +12,18 @@ GameWorld::GameWorld(int graphSize) {
     width = graphSize;
 
     finalPath = new Path();
-    pathFinder = new AStarPathFinder(&graph);
+    pathFinder = new AStarPathFinder(graph);
 }
 
 GameWorld::~GameWorld() {
     delete finalPath;
     delete pathFinder;
+    delete graph;
 }
 
 void GameWorld::update() {
-    if(graph.nodeExistsInPosition(start.getX(), start.getY()) &&
-       graph.nodeExistsInPosition(end.getX(), end.getY())) {
+    if(graph->nodeExistsInPosition(start.getX(), start.getY()) &&
+       graph->nodeExistsInPosition(end.getX(), end.getY())) {
 
         delete finalPath;
 
@@ -33,7 +34,7 @@ void GameWorld::update() {
         if(finalPath->getPathLength() > 1) {
             int x = (*finalPath)[1].getX();
             int y = (*finalPath)[1].getY();
-            const Node* node = graph.getNodeFromPosition(x, y);
+            const Node* node = graph->getNodeFromPosition(x, y);
             start = Point(node->getX(), node->getY());
         }
     }
@@ -41,7 +42,7 @@ void GameWorld::update() {
 
 void GameWorld::useAStarAlgorithm() {
     delete pathFinder;
-    pathFinder = new AStarPathFinder(&graph);
+    pathFinder = new AStarPathFinder(graph);
 }
 
 int GameWorld::getWidth() const {
@@ -54,7 +55,7 @@ int GameWorld::getHeight() const {
 
 void GameWorld::createRandomWalls() {
 
-    int numberOfNodes = graph.getNumberOfNodes();
+    int numberOfNodes = graph->getNumberOfNodes();
     std::random_device randomDevice;
     std::default_random_engine randomEngine(randomDevice());
     std::uniform_int_distribution<int> uniform_dist(0, width-1);
@@ -63,11 +64,11 @@ void GameWorld::createRandomWalls() {
         int x = uniform_dist(randomEngine);
         int y = uniform_dist(randomEngine);
 
-        if(graph.nodeExistsInPosition(x, y))
-            graph.changeBlockTerrainInPoint(Point(x, y), WALL);
+        if(graph->nodeExistsInPosition(x, y))
+            graph->changeBlockTerrainInPoint(Point(x, y), WALL);
     }
 }
 
 BlockGraph* GameWorld::getBlockGraph() {
-    return &graph;
+    return graph;
 }

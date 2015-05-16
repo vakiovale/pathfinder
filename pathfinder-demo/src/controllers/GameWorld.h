@@ -71,7 +71,7 @@ class GameWorld : public Updateable {
         BlockGraph* getBlockGraph();
 
     private:
-        BlockGraph graph;
+        BlockGraph* graph;
 
         int width;
 
