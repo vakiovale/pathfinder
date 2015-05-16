@@ -4,6 +4,8 @@
 #include "Tool.h"
 #include "Terrain.h"
 #include "BuildTool.h"
+#include "StartPointMover.h"
+#include "EndPointMover.h"
 #include "Point.h"
 #include "GameWorld.h"
 
@@ -17,6 +19,10 @@ class ToolController {
         void update();
 
         void changeBuildTool(Terrain terrain);
+
+        void changeStartPointMoverTool();
+
+        void changeEndPointMoverTool();
 
         void mouseMoved(const Point& point);
 

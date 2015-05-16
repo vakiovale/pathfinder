@@ -42,6 +42,17 @@ void Tool::reset() {
     executedSecondaryActionOnce = false;
 }
 
-bool Tool::primaryActionHasNotBeenExecuted() {
-    return holdingLeftMouseButton && !executedPrimaryActionOnce;
+bool Tool::primaryActionExecutedFirstTime() {
+    if(holdingLeftMouseButton) {
+        if(!executedPrimaryActionOnce) {
+            executedPrimaryActionOnce = true;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    else {
+        return false;
+    }
 }

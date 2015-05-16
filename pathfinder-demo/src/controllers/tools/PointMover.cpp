@@ -5,8 +5,7 @@ PointMover::PointMover(GameWorld* gameWorld) {
 }
 
 void PointMover::execute() {
-    if(primaryActionHasNotBeenExecuted()) {
-        executedPrimaryActionOnce = true;
+    if(primaryActionExecutedFirstTime()) {
         movePoint();
     }
 }

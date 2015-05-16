@@ -6,14 +6,11 @@ BuildTool::BuildTool(GameWorld* gameWorld) {
 }
 
 void BuildTool::execute() {
-    if(primaryActionHasNotBeenExecuted()) {
-        executedPrimaryActionOnce = true;
-
+    if(primaryActionExecutedFirstTime()) {
         if(eraseMode)
             erase();
         else
             paint();
-
     }
 }
 
@@ -42,10 +39,7 @@ void BuildTool::clickLeftMouseButton() {
 }
 
 void BuildTool::clickRightMouseButton() {
-    if(!this->holdingRightMouseButton) {
-        checkEraseMode();
-    }
-    Tool::clickRightMouseButton();
+    // do nothing
 }
 
 void BuildTool::checkEraseMode() {
