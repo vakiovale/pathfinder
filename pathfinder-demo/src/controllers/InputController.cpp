@@ -2,9 +2,7 @@
 
 InputController::InputController(GameWorld *gameWorld) :
     gameWorld(gameWorld) {
-
-
-
+    // nothing to do yet
 }
 
 void InputController::pollEvent(sf::Event& event) {

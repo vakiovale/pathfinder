@@ -46,8 +46,7 @@ SCENARIO("GameWorld can be initialized with graph size", "[gameworld]") {
                 REQUIRE(game->getWidth() == 10);
                 REQUIRE(game->getHeight() == 10);
             }
-            if(game)
-                delete game;
+            delete game;
         }
 
         WHEN("Initialized to 100") {
@@ -56,8 +55,7 @@ SCENARIO("GameWorld can be initialized with graph size", "[gameworld]") {
                 REQUIRE(game->getWidth() == 100);
                 REQUIRE(game->getHeight() == 100);
             }
-            if(game)
-                delete game;
+            delete game;
         }
 
         WHEN("Initialized to 1") {
@@ -66,8 +64,7 @@ SCENARIO("GameWorld can be initialized with graph size", "[gameworld]") {
                 REQUIRE(game->getWidth() == 1);
                 REQUIRE(game->getHeight() == 1);
             }
-            if(game)
-                delete game;
+            delete game;
         }
 
         WHEN("Initialized to 0") {
@@ -76,8 +73,7 @@ SCENARIO("GameWorld can be initialized with graph size", "[gameworld]") {
                 REQUIRE(game->getWidth() == 35);
                 REQUIRE(game->getHeight() == 35);
             }
-            if(game)
-                delete game;
+            delete game;
         }
 
         WHEN("Initialized to -1") {
@@ -86,8 +82,7 @@ SCENARIO("GameWorld can be initialized with graph size", "[gameworld]") {
                 REQUIRE(game->getWidth() == 35);
                 REQUIRE(game->getHeight() == 35);
             }
-            if(game)
-                delete game;
+            delete game;
         }
 
         WHEN("Initializer is left to zero") {
@@ -96,8 +91,7 @@ SCENARIO("GameWorld can be initialized with graph size", "[gameworld]") {
                 REQUIRE(game->getWidth() == 35);
                 REQUIRE(game->getHeight() == 35);
             }
-            if(game)
-                delete game;
+            delete game;
         }
     }
 

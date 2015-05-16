@@ -35,6 +35,11 @@ class BlockGraph : public pathfinder::Graph {
         BlockGraph(int graphSize = 35);
 
         /**
+         * @brief BlockGraph destructor
+         */
+        ~BlockGraph();
+
+        /**
          * @brief Get width of the graph.
          * @return width of the graph
          */

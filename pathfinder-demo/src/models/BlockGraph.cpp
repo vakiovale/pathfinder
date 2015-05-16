@@ -14,6 +14,14 @@ void BlockGraph::initializeGraph(int graphSize) {
     height = graphSize;
 }
 
+BlockGraph::~BlockGraph() {
+    for(std::vector<TerrainBlock*>& innerVec : blocks) {
+        for(int i = innerVec.size()-1; i >= 0; i--) {
+            delete innerVec[i];
+        }
+    }
+}
+
 void BlockGraph::initializeBlocks() {
     for(int i = 0; i < height; i++) {
         std::vector<TerrainBlock*> rowOfBlocks;
@@ -52,20 +60,20 @@ void BlockGraph::changeBlockTerrainInPoint(int x, int y, Terrain terrain) {
 
     switch (terrain) {
         case WALL:
-            delete blockToBeChanged;
-            blockToBeChanged = new WallBlock(nodeInBlock);
+            delete (blocks[y][x]);
+            (blocks[y][x]) = new WallBlock(nodeInBlock);
             break;
         case PLAIN:
-            delete blockToBeChanged;
-            blockToBeChanged = new PlainBlock(nodeInBlock);
+            delete (blocks[y][x]);
+            (blocks[y][x]) = new PlainBlock(nodeInBlock);
             break;
         case GRASS:
-            delete blockToBeChanged;
-            blockToBeChanged = new GrassBlock(nodeInBlock);
+            delete (blocks[y][x]);
+            (blocks[y][x]) = new GrassBlock(nodeInBlock);
             break;
         case WATER:
-            delete blockToBeChanged;
-            blockToBeChanged = new WaterBlock(nodeInBlock);
+            delete (blocks[y][x]);
+            (blocks[y][x]) = new WaterBlock(nodeInBlock);
             break;
     }
 }

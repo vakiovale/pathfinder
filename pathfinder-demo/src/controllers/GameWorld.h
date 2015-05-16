@@ -12,9 +12,11 @@
 #include "Updateable.h"
 
 #include <random>
+#include <iostream>
 #include <cmath>
 
 #include <Node.h>
+#include <Point.h>
 #include <BlockGraph.h>
 #include <PathFinder.h>
 #include <AStarPathFinder.h>
@@ -79,9 +81,9 @@ class GameWorld : public Updateable {
 
         void createRandomWalls();
 
-        Node* start;
+        Point start = Point(0,0);
 
-        Node* end;
+        Point end = Point(0,0);
 
         Path* finalPath;
 };

@@ -8,40 +8,39 @@ GameWorld::GameWorld(int graphSize) {
 
     createRandomWalls();
 
-    start = graph.getNodeFromPosition(0, 0);
-    end = graph.getNodeFromPosition(1, 1);
-
     height = graphSize;
     width = graphSize;
 
+    finalPath = new Path();
     pathFinder = new AStarPathFinder(&graph);
 }
 
 GameWorld::~GameWorld() {
-    if(finalPath) {
-        delete finalPath;
-    }
-    if(pathFinder) {
-        delete pathFinder;
-    }
+    delete finalPath;
+    delete pathFinder;
 }
 
 void GameWorld::update() {
-    if(finalPath) {
+    if(graph.nodeExistsInPosition(start.getX(), start.getY()) &&
+       graph.nodeExistsInPosition(end.getX(), end.getY())) {
+
         delete finalPath;
-    }
-    finalPath = new Path(pathFinder->findAndGetShortestPath(*start, *end));
-    if(finalPath->getPathLength() > 1) {
-        int x = (*finalPath)[1].getX();
-        int y = (*finalPath)[1].getY();
-        start = graph.getNodeFromPosition(x, y);
+
+        Node startNode(start.getX(), start.getY());
+        Node endNode(end.getX(), end.getY());
+
+        finalPath = new Path(pathFinder->findAndGetShortestPath(startNode, endNode));
+        if(finalPath->getPathLength() > 1) {
+            int x = (*finalPath)[1].getX();
+            int y = (*finalPath)[1].getY();
+            const Node* node = graph.getNodeFromPosition(x, y);
+            start = Point(node->getX(), node->getY());
+        }
     }
 }
 
 void GameWorld::useAStarAlgorithm() {
-    if(pathFinder) {
-        delete pathFinder;
-    }
+    delete pathFinder;
     pathFinder = new AStarPathFinder(&graph);
 }
 
@@ -63,6 +62,7 @@ void GameWorld::createRandomWalls() {
     for(int i = 0; i < numberOfNodes / 3; i++) {
         int x = uniform_dist(randomEngine);
         int y = uniform_dist(randomEngine);
+
         if(graph.nodeExistsInPosition(x, y))
             graph.changeBlockTerrainInPoint(Point(x, y), WALL);
     }
