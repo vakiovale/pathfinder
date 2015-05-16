@@ -115,15 +115,3 @@ SCENARIO("BlockGraph holds different terrain for each node in the graph",
         }
     }
 }
-
-SCENARIO("BlockGraph holds Point in the same position as the Node it is "
-         "initialized with","[node][point][blockgraph]") {
-
-    GIVEN("A BlockGraph sized 2x2") {
-
-        BlockGraph graph(2);
-
-
-
-    }
-}
