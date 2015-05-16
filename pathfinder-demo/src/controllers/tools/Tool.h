@@ -23,6 +23,8 @@ class Tool {
 
         void reset();
 
+        bool primaryActionHasNotBeenExecuted();
+
     protected:
         Point lastPosition = Point(-1,-1);
 

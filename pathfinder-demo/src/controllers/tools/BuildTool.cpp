@@ -17,10 +17,6 @@ void BuildTool::execute() {
     }
 }
 
-bool BuildTool::primaryActionHasNotBeenExecuted() {
-    return holdingLeftMouseButton && !executedPrimaryActionOnce;
-}
-
 void BuildTool::erase() {
     if(toolIsOnSameTerrainAsTerrainToUse()) {
         this->gameWorld->getBlockGraph()->

@@ -35,8 +35,6 @@ class BuildTool : public Tool {
 
         bool eraseMode;
 
-        bool primaryActionHasNotBeenExecuted();
-
         bool toolIsOnSameTerrainAsTerrainToUse();
 
         void erase();

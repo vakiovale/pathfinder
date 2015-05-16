@@ -41,3 +41,7 @@ void Tool::reset() {
     executedPrimaryActionOnce = false;
     executedSecondaryActionOnce = false;
 }
+
+bool Tool::primaryActionHasNotBeenExecuted() {
+    return holdingLeftMouseButton && !executedPrimaryActionOnce;
+}
