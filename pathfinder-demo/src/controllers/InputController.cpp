@@ -30,6 +30,15 @@ void InputController::pollEvent(sf::Event& event) {
         }
     }
 
+    if(event.type == sf::Event::MouseWheelScrolled) {
+        if(event.mouseWheelScroll.delta < 0) {
+            gameWorld->decreaseMovementSpeed();
+        }
+        if(event.mouseWheelScroll.delta > 0) {
+            gameWorld->increaseMovementSpeed();
+        }
+    }
+
     if(event.type == sf::Event::KeyPressed) {
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) {
             toolController.changeBuildTool(WALL, lastMousePosition);
@@ -48,6 +57,15 @@ void InputController::pollEvent(sf::Event& event) {
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
             toolController.changeEndPointMoverTool(lastMousePosition);
+        }
+    }
+
+    if(event.type == sf::Event::KeyReleased) {
+        if(event.key.code == sf::Keyboard::Add) {
+            gameWorld->increaseMovementSpeed();
+        }
+        if(event.key.code == sf::Keyboard::Subtract) {
+            gameWorld->decreaseMovementSpeed();
         }
     }
 }

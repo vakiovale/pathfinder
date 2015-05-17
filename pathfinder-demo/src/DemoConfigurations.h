@@ -15,4 +15,6 @@ const float BLOCK_HEIGHT = WINDOW_HEIGHT / (float)NUMBER_OF_NODES_IN_A_COLUMN;
 
 const bool RANDOM_WALLS = false;
 
+const int START_MOVING_SPEED = 5;
+
 #endif

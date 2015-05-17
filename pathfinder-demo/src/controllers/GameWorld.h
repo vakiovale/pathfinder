@@ -20,6 +20,7 @@
 #include <BlockGraph.h>
 #include <PathFinder.h>
 #include <AStarPathFinder.h>
+#include "DemoConfigurations.h"
 
 using namespace pathfinder;
 
@@ -88,10 +89,18 @@ class GameWorld : public Updateable {
 
         void moveEndTo(const Point& point);
 
+        void increaseMovementSpeed();
+
+        void decreaseMovementSpeed();
+
         const Path& getPath() const;
 
     private:
         BlockGraph* graph;
+
+        int startMovingSpeed = START_MOVING_SPEED;
+
+        int movingSpeed;
 
         int width;
 

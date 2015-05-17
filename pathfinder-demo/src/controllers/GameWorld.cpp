@@ -15,6 +15,8 @@ GameWorld::GameWorld(int graphSize) {
     finalPath = new Path();
     pathFinder = new AStarPathFinder(graph);
     movingEnabled = false;
+
+    movingSpeed = startMovingSpeed;
 }
 
 GameWorld::~GameWorld() {
@@ -28,8 +30,10 @@ void GameWorld::update() {
 
         findShortestPath();
 
-        if(movingEnabled && finalPath->getPathLength() > 1) {
+        --movingSpeed;
+        if(movingSpeed < 1 && movingEnabled && finalPath->getPathLength() > 1) {
             moveAlongThePathIfNodeIsAccessible();
+            movingSpeed = startMovingSpeed;
         }
     }
 }
@@ -52,6 +56,17 @@ void GameWorld::moveAlongThePathIfNodeIsAccessible() {
     const Node* node = graph->getNodeFromPosition(x, y);
     if(node->isAccessible())
         start = Point(node->getX(), node->getY());
+}
+
+void GameWorld::increaseMovementSpeed() {
+    startMovingSpeed--;
+    if(startMovingSpeed < 1) {
+        startMovingSpeed = 1;
+    }
+}
+
+void GameWorld::decreaseMovementSpeed() {
+    startMovingSpeed++;
 }
 
 void GameWorld::useAStarAlgorithm() {
