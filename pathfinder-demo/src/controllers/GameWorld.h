@@ -81,18 +81,44 @@ class GameWorld : public Updateable {
          */
         void toggleMoving();
 
+        /**
+         * @brief Get start point position
+         * @return start point position
+         */
         const Point& getStartPoint() const;
 
+        /**
+         * @brief Get end point position
+         * @return end point position
+         */
         const Point& getEndPoint() const;
 
+        /**
+         * @brief Move start point to new location
+         * @param point of the new location
+         */
         void moveStartTo(const Point& point);
 
+        /**
+         * @brief Move end point to new location
+         * @param point of the new location
+         */
         void moveEndTo(const Point& point);
 
+        /**
+         * @brief Increase start point movement speed
+         */
         void increaseMovementSpeed();
 
+        /**
+         * @brief Decrease start point movement speed
+         */
         void decreaseMovementSpeed();
 
+        /**
+         * @brief Get currently the shortest path
+         * @return shortest path
+         */
         const Path& getPath() const;
 
     private:

@@ -1,3 +1,9 @@
+/**
+ * @brief Start point mover tool
+ *
+ * @author Valtteri Pyyhtiä
+ */
+
 #ifndef START_POINT_MOVER_H
 #define START_POINT_MOVER_H
 

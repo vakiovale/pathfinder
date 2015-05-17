@@ -1,3 +1,9 @@
+/**
+ * @brief End point mover tool
+ *
+ * @author Valtteri Pyyhtiä
+ */
+
 #ifndef END_POINT_MOVER_H
 #define END_POINT_MOVER_H
 

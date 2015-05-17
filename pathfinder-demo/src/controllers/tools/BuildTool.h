@@ -1,3 +1,10 @@
+/**
+ * @brief BuildTool is used for adding/removing different
+ * kind of TerrainBlocks to the game world
+ *
+ * @author Valtteri Pyyhtiä
+ */
+
 #ifndef BUILD_TOOL_H
 #define BUILD_TOOL_H
 
@@ -11,9 +18,6 @@ class BuildTool : public Tool {
     public:
         BuildTool(GameWorld* gameWorld, const Point& currentPosition);
 
-        /**
-         * @brief Execute tool action
-         */
         void execute();
 
         void subExecute();
