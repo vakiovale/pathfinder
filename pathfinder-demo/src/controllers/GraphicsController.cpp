@@ -7,6 +7,10 @@ GraphicsController::GraphicsController(GameWorld* gameWorld,
 }
 
 void GraphicsController::draw() {
+    drawMainWindow();
+}
+
+void GraphicsController::drawMainWindow() {
     for(int i = 0; i < NUMBER_OF_NODES_IN_A_COLUMN; i++) {
         for(int j = 0; j < NUMBER_OF_NODES_IN_A_ROW; j++) {
             Node* node = gameWorld->getBlockGraph()->getNodeFromPosition(j,i);
@@ -20,12 +24,12 @@ void GraphicsController::draw() {
                 if(factor < 2.0f)
                     color = sf::Color::White;
                 else if(factor < 10.0f)
-                    color = sf::Color(100, std::max(255.0f, factor*200.0f), 100);
+                    color = grassColor;
                 else
-                    color = sf::Color(0, 191, 255);
+                    color = waterColor;
             }
             else {
-                color = sf::Color(150, 150, 150);
+                color = wallColor;
             }
 
             draw(x, y, color);
