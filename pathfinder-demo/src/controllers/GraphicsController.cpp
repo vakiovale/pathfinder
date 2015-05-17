@@ -13,26 +13,9 @@ void GraphicsController::draw() {
 void GraphicsController::drawMainWindow() {
     for(int i = 0; i < NUMBER_OF_NODES_IN_A_COLUMN; i++) {
         for(int j = 0; j < NUMBER_OF_NODES_IN_A_ROW; j++) {
-            Node* node = gameWorld->getBlockGraph()->getNodeFromPosition(j,i);
-            int x = node->getX();
-            int y = node->getY();
-
-            sf::Color color;
-
-            if(node->isAccessible()) {
-                float factor = node->getMovementCostFactor();
-                if(factor < 2.0f)
-                    color = sf::Color::White;
-                else if(factor < 10.0f)
-                    color = grassColor;
-                else
-                    color = waterColor;
-            }
-            else {
-                color = wallColor;
-            }
-
-            draw(x, y, color);
+            drawTerrainBlock(gameWorld->
+                             getBlockGraph()->
+                             getTerrainBlockInPosition(j,i));
         }
     }
 
@@ -48,6 +31,32 @@ void GraphicsController::drawMainWindow() {
 
     draw(start.getX(), start.getY(), sf::Color::Red);
     draw(end.getX(), end.getY(), sf::Color::Blue);
+}
+
+void GraphicsController::drawTerrainBlock(const TerrainBlock* terrainBlock) {
+    int x = terrainBlock->getPoint().getX();
+    int y = terrainBlock->getPoint().getY();
+    Terrain terrain = terrainBlock->getTerrain();
+    sf::Color color;
+
+    switch(terrain) {
+        case WALL:
+            color = wallColor;
+            break;
+        case PLAIN:
+            color = sf::Color::White;
+            break;
+        case GRASS:
+            color = grassColor;
+            break;
+        case WATER:
+            color = waterColor;
+            break;
+        default:
+            color = sf::Color::White;
+            break;
+    }
+    draw(x, y, color);
 }
 
 void GraphicsController::draw(int x, int y, sf::Color color) {

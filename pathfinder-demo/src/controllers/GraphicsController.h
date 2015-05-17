@@ -20,6 +20,8 @@ class GraphicsController {
 
         void drawMainWindow();
 
+        void drawTerrainBlock(const TerrainBlock* terrainBlock);
+
         void draw(int x, int y, sf::Color color);
 
         void drawCircle(int x, int y, sf::Color color);
