@@ -5,7 +5,7 @@ Demo program for visualizing path finding
 * <a href="#building-pathfinder-demo">Building PathFinder demo</a>
 * <a href="#installing-sfml">Installing SFML</a>
 * <a href="#playing-pathfinder-demo">Playing PathFinder Demo</a>
-* 
+
 ## How to play
 
 PathFinder demo starts with start (RED) and end (BLUE) points in opposite corners of the grid. 
