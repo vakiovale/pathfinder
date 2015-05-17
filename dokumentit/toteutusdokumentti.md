@@ -11,7 +11,7 @@ Ohjelma koostuu kahdesta eri osasta:
 ## PathFinder-kirjasto
 
 PathFinder-kirjasto koostuu useista eri luokista, joista tärkein on AStarPathFinder-luokka, jonka tehtävänä on etsiä verkon kahden solmun välillä lyhin polku. Kirjasto pitää sisällään myös apuluokat solmuille sekä verkoille. Kirjastoa
-on mahdollisuus käyttää myös ilman A\*-algoritmia, mutta sen verkot ja solmut on tarkoituksenmukaisesti luotu sopimaan juuri A*-algoritmin käytön kanssa.
+on mahdollista käyttää myös ilman A\*-algoritmia, mutta sen verkot ja solmut on tarkoituksenmukaisesti luotu sopimaan juuri A*-algoritmin käytön kanssa.
 
 Kirjasto voidaan asentaa <code>./install</code> komennolla, joka kopioi tarvittavat tiedostot <code>libPathFinder/</code>-hakemistoon.
 
