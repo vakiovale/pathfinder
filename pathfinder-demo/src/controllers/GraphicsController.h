@@ -28,7 +28,7 @@ class GraphicsController {
 
         sf::Color wallColor = sf::Color(150, 150, 150);
 
-        sf::Color grassColor = sf::Color(100, 150, 100);
+        sf::Color grassColor = sf::Color(0, 200, 0);
 
         sf::Color waterColor = sf::Color(0, 191, 255);
 };
