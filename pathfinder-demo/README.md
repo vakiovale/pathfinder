@@ -25,11 +25,11 @@ You can change different tools with these keys:
 
 Key   | Tool
 ------| -----------------
-1     | Wall (add/remove)
-2     | Grass (add/remove)
-3     | Water (add/remove)
-S     | Move start point
-E     | Move end point
+**1**     | Wall (add/remove)
+**2**     | Grass (add/remove)
+**3**     | Water (add/remove)
+**S**     | Move start point
+**E**     | Move end point
 
 Clicking or holding left mouse button will execute tool's action.
 
@@ -37,12 +37,12 @@ Point movement can be controlled with these keys:
 
 Key         | Action
 ------------| -------------------
-SPACE       | Start/stop moving
-PageUp      | Increase movement speed
-PageDown    | Decrease movement speed
-+           | Increase movement speed
--           | Decrease movement speed
-Mouse wheel | Increase/decrease movement speed
+**SPACE**       | Start/stop moving
+**PageUp**      | Increase movement speed
+**PageDown**    | Decrease movement speed
+**+**           | Increase movement speed
+**-**           | Decrease movement speed
+**Mouse wheel** | Increase/decrease movement speed
 
 ## Building PathFinder demo
 
