@@ -18,7 +18,7 @@ GraphicsController* graphicsController;
 InputController* inputController;
 
 sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT),
-                        "Pathfinder");
+                        "Pathfinder", sf::Style::Close);
 
 int main();
 
