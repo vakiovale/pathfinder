@@ -10,7 +10,13 @@ Demo program for visualizing path finding
 
 PathFinder demo starts with start (RED) and end (BLUE) points in opposite corners of the grid. 
 Yellow circles will show the shortest path between start and end points. 
-Pathfinder is constantly trying to find the shortest path. 
+Pathfinder is constantly trying to find the shortest path. Grid can have different kind of terrains with
+different cost factors. By default, cost factors are:
+
+- Plain (*white*) = **1.0**
+- Grass (*green*) = **2.0**
+- Water (*blue*) = **10.0**
+- Wall (*gray*) = **not accessible**
 
 <img src="https://github.com/valtteripyyhtia/pathfinder/blob/master/dokumentit/images/pathfinder-basic-01.png?raw=true" alt="Finding shortest path" width="400px" />
 
