@@ -61,10 +61,12 @@ void InputController::pollEvent(sf::Event& event) {
     }
 
     if(event.type == sf::Event::KeyReleased) {
-        if(event.key.code == sf::Keyboard::Add) {
+        if(event.key.code == sf::Keyboard::Add ||
+           event.key.code == sf::Keyboard::PageUp) {
             gameWorld->increaseMovementSpeed();
         }
-        if(event.key.code == sf::Keyboard::Subtract) {
+        if(event.key.code == sf::Keyboard::Subtract ||
+           event.key.code == sf::Keyboard::PageDown) {
             gameWorld->decreaseMovementSpeed();
         }
     }
