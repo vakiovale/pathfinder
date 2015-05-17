@@ -5,14 +5,14 @@ Demo program for visualizing path finding
 * <a href="#building-pathfinder-demo">Building PathFinder demo</a>
 * <a href="#installing-sfml">Installing SFML</a>
 * <a href="#playing-pathfinder-demo">Playing PathFinder Demo</a>
-
-<img src="https://github.com/valtteripyyhtia/pathfinder/blob/master/dokumentit/images/pathfinder-basic-01.png?raw=true" alt="Finding shortest path" width="400px" />
-
+* 
 ## How to play
 
 PathFinder demo starts with start (RED) and end (BLUE) points in opposite corners of the grid. 
 Yellow circles will show the shortest path between start and end points. 
 Pathfinder is constantly trying to find the shortest path. 
+
+<img src="https://github.com/valtteripyyhtia/pathfinder/blob/master/dokumentit/images/pathfinder-basic-01.png?raw=true" alt="Finding shortest path" width="400px" />
 
 Grid can be modified with different kind of tools.
 You can change different tools with these keys:
