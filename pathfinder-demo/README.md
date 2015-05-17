@@ -1,11 +1,48 @@
 # pathfinder demo
 Demo program for visualizing path finding
 
+* <a href="#how-to-play">How to play</a>
 * <a href="#building-pathfinder-demo">Building PathFinder demo</a>
 * <a href="#installing-sfml">Installing SFML</a>
 * <a href="#playing-pathfinder-demo">Playing PathFinder Demo</a>
 
+## How to play
+
+PathFinder demo starts with start (RED) and end (BLUE) points in opposite corners of the grid. 
+Yellow circles will show the shortest path between start and end points. 
+Pathfinder is constantly trying to find the shortest path. Grid can have different kind of terrains with
+different cost factors. By default, cost factors for different terrains are:
+
+- Plain (*white*) = **1.0**
+- Grass (*green*) = **2.0**
+- Water (*blue*) = **10.0**
+- Wall (*gray*) = **not accessible**
+
 <img src="https://github.com/valtteripyyhtia/pathfinder/blob/master/dokumentit/images/pathfinder-basic-01.png?raw=true" alt="Finding shortest path" width="400px" />
+
+Grid can be modified with different kind of tools.
+You can change different tools with these keys:
+
+Key   | Tool
+------| -----------------
+1     | Wall (add/remove)
+2     | Grass (add/remove)
+3     | Water (add/remove)
+S     | Move start point
+E     | Move end point
+
+Clicking or holding left mouse button will execute tool's action.
+
+Point movement can be controlled with these keys:
+
+Key         | Action
+------------| -------------------
+SPACE       | Start/stop moving
+PageUp      | Increase movement speed
+PageDown    | Decrease movement speed
++           | Increase movement speed
+-           | Decrease movement speed
+Mouse wheel | Increase/decrease movement speed
 
 ## Building PathFinder demo
 
