@@ -4,6 +4,7 @@
 #include "DemoConfigurations.h"
 #include "GameWorld.h"
 #include "ToolController.h"
+#include <Point.h>
 #include <SFML/Graphics.hpp>
 
 class InputController {
@@ -18,6 +19,8 @@ class InputController {
 
         ToolController toolController;
 
+        Point lastMousePosition = Point(0,0);
+
         void mouseMoved(int x, int y);
 
         void leftMouseButtonPressed();
@@ -28,6 +31,8 @@ class InputController {
 
         void rightMouseButtonReleased();
 
+        const Point getCurrentPointMouseIsOnTheMap(int xMousePosition,
+                                                   int yMousePosition) const;
 };
 
 #endif

@@ -1,7 +1,8 @@
 #include "BuildTool.h"
 
-BuildTool::BuildTool(GameWorld* gameWorld) {
+BuildTool::BuildTool(GameWorld* gameWorld, const Point& currentPosition) {
     this->gameWorld = gameWorld;
+    this->lastPosition = currentPosition;
     terrainToUse = PLAIN;
 }
 
@@ -56,5 +57,6 @@ void BuildTool::changeTerrainTool(Terrain terrain) {
 
 Terrain BuildTool::getTerrainToolIsOn() const {
     BlockGraph* blockGraph = this->gameWorld->getBlockGraph();
+    blockGraph->nodeExistsInPosition(this->lastPosition.getX(), this->lastPosition.getY());
     return blockGraph->getTerrainInPosition(this->lastPosition);
 }

@@ -2,10 +2,7 @@
 
 ToolController::ToolController(GameWorld* gameWorld) {
     this->gameWorld = gameWorld;
-    tool = new BuildTool(gameWorld);
-
-    BuildTool* buildTool = dynamic_cast<BuildTool*>(tool);
-    buildTool->changeTerrainTool(WALL);
+    tool = new StartPointMover(gameWorld, Point(0,0));
 }
 
 ToolController::~ToolController() {
@@ -16,22 +13,23 @@ void ToolController::update() {
     tool->execute();
 }
 
-void ToolController::changeBuildTool(Terrain terrain) {
+void ToolController::changeBuildTool(Terrain terrain,
+                                     const Point& currentPosition) {
     delete tool;
-    tool = new BuildTool(gameWorld);
+    tool = new BuildTool(gameWorld, currentPosition);
     BuildTool* buildTool;
     buildTool = dynamic_cast<BuildTool*>(tool);
     buildTool->changeTerrainTool(terrain);
 }
 
-void ToolController::changeStartPointMoverTool() {
+void ToolController::changeStartPointMoverTool(const Point& currentPosition) {
     delete tool;
-    tool = new StartPointMover(gameWorld);
+    tool = new StartPointMover(gameWorld, currentPosition);
 }
 
-void ToolController::changeEndPointMoverTool() {
+void ToolController::changeEndPointMoverTool(const Point& currentPosition) {
     delete tool;
-    tool = new EndPointMover(gameWorld);
+    tool = new EndPointMover(gameWorld, currentPosition);
 }
 
 void ToolController::mouseMoved(const Point& point) {

@@ -1,7 +1,6 @@
 #ifndef TOOL_H
 #define TOOL_H
 
-#include <iostream>
 #include <Point.h>
 
 using namespace pathfinder;

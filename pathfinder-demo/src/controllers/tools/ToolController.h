@@ -18,11 +18,11 @@ class ToolController {
 
         void update();
 
-        void changeBuildTool(Terrain terrain);
+        void changeBuildTool(Terrain terrain, const Point& currentPosition);
 
-        void changeStartPointMoverTool();
+        void changeStartPointMoverTool(const Point& currentPosition);
 
-        void changeEndPointMoverTool();
+        void changeEndPointMoverTool(const Point& currentPosition);
 
         void mouseMoved(const Point& point);
 

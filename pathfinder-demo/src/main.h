@@ -9,6 +9,8 @@
 #include "GraphicsController.h"
 #include "InputController.h"
 
+#include "GameTimer.h"
+
 using namespace pathfinder;
 
 GameWorld* gameWorld;

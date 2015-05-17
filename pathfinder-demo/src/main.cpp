@@ -9,6 +9,7 @@ int main() {
         gameWorld->createRandomWalls();
     }
 
+    GameTimer gameTimer;
     while(window.isOpen()) {
 
         sf::Event event;
@@ -26,6 +27,8 @@ int main() {
         graphicsController->draw();
 
         window.display();
+
+        gameTimer.sleep();
     }
 
     delete inputController;

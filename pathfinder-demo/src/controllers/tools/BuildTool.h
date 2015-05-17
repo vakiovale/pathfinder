@@ -9,7 +9,7 @@
 class BuildTool : public Tool {
 
     public:
-        BuildTool(GameWorld* gameWorld);
+        BuildTool(GameWorld* gameWorld, const Point& currentPosition);
 
         /**
          * @brief Execute tool action

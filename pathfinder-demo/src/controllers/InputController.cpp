@@ -6,6 +6,8 @@ InputController::InputController(GameWorld *gameWorld) :
 }
 
 void InputController::pollEvent(sf::Event& event) {
+    toolController.update();
+
     if(event.type == sf::Event::MouseMoved) {
         mouseMoved(event.mouseMove.x, event.mouseMove.y);
     }
@@ -30,32 +32,29 @@ void InputController::pollEvent(sf::Event& event) {
 
     if(event.type == sf::Event::KeyPressed) {
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) {
-            toolController.changeBuildTool(WALL);
+            toolController.changeBuildTool(WALL, lastMousePosition);
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)) {
-            toolController.changeBuildTool(GRASS);
+            toolController.changeBuildTool(GRASS, lastMousePosition);
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)) {
-            toolController.changeBuildTool(WATER);
+            toolController.changeBuildTool(WATER, lastMousePosition);
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
             gameWorld->toggleMoving();
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-            toolController.changeStartPointMoverTool();
+            toolController.changeStartPointMoverTool(lastMousePosition);
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
-            toolController.changeEndPointMoverTool();
+            toolController.changeEndPointMoverTool(lastMousePosition);
         }
     }
-
-    toolController.update();
 }
 
 void InputController::mouseMoved(int x, int y) {
-    int xBlock = x / (WINDOW_WIDTH / (float)NUMBER_OF_NODES_IN_A_ROW);
-    int yBlock = y / (WINDOW_HEIGHT / (float)NUMBER_OF_NODES_IN_A_COLUMN);
-    toolController.mouseMoved(Point(xBlock, yBlock));
+    lastMousePosition = getCurrentPointMouseIsOnTheMap(x, y);
+    toolController.mouseMoved(lastMousePosition);
 }
 
 void InputController::leftMouseButtonPressed() {
@@ -72,4 +71,12 @@ void InputController::leftMouseButtonReleased() {
 
 void InputController::rightMouseButtonReleased() {
     // right mouse button released
+}
+
+const Point InputController::getCurrentPointMouseIsOnTheMap(int xMousePosition,
+                                                            int yMousePosition) const {
+    int xBlock = xMousePosition / (WINDOW_WIDTH / (float)NUMBER_OF_NODES_IN_A_ROW);
+    int yBlock = yMousePosition / (WINDOW_HEIGHT / (float)NUMBER_OF_NODES_IN_A_COLUMN);
+    Point point(xBlock, yBlock);
+    return point;
 }

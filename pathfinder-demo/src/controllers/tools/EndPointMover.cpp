@@ -1,7 +1,8 @@
 #include "EndPointMover.h"
 
-EndPointMover::EndPointMover(GameWorld *gameWorld) : gameWorld(gameWorld) {
-    // do nothing
+EndPointMover::EndPointMover(GameWorld *gameWorld, const Point& currentPosition)
+    : gameWorld(gameWorld) {
+    lastPosition = currentPosition;
 }
 
 void EndPointMover::subExecute() {
