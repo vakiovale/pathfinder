@@ -45,3 +45,9 @@ Tilanne   | A*-algoritmin suoritusaika (mikrosekunti)
 ## Puutteet ja parannusehdotukset
 
 Jotta tuloksilla tekisi jotain, olisi hyödyllistä, jos A*-algoritmia verrattaisiin muihin polunetsintäalgoritmeihin. Graafinen käyttölittymä mahdollistaa onneksi helpon tavan vaihtaa algoritmia "lennosta", joten algoritmien vertailu samassa ympäristössä olisi helppoa. Hyvänä lisänä voisi olla myös lisätä useampi lähtöpiste, jotka voisivat käyttää eri algoritmeja ja näin nähdä reaaliajassa kumpi algoritemista löytää reitin nopeammin.
+
+## Erityishuomio
+
+Algoritmi suoriutui myös Tiralabrasta ennätysnopeasti:
+
+<img src="https://github.com/valtteripyyhtia/pathfinder/blob/master/dokumentit/images/pathfindingtiralab.png?raw=true" width="400px" />
