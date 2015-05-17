@@ -42,8 +42,4 @@ Tilanne   | A*-algoritmin suoritusaika (mikrosekunti)
 
 ## Puutteet ja parannusehdotukset
 
-TODO: puutteet ja parannusehdotukset
-
-## Lähteet
-
-TODO: lähteet
+Jotta tuloksilla tekisi jotain, olisi hyödyllistä, jos A*-algoritmia verrattaisiin muihin polunetsintäalgoritmeihin. Graafinen käyttölittymä mahdollistaa onneksi helpon tavan vaihtaa algoritmia "lennosta", joten algoritmien vertailu samassa ympäristössä olisi helppoa.
