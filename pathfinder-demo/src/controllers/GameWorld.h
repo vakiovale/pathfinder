@@ -106,6 +106,8 @@ class GameWorld : public Updateable {
         Path* finalPath;
 
         bool movingEnabled;
+
+        void findShortestPath();
 };
 
 #endif

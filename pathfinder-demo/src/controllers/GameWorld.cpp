@@ -27,19 +27,23 @@ void GameWorld::update() {
     if(graph->nodeExistsInPosition(start.getX(), start.getY()) &&
        graph->nodeExistsInPosition(end.getX(), end.getY())) {
 
-        delete finalPath;
+        findShortestPath();
 
-        Node startNode(start.getX(), start.getY());
-        Node endNode(end.getX(), end.getY());
-
-        finalPath = new Path(pathFinder->findAndGetShortestPath(startNode, endNode));
         if(movingEnabled && finalPath->getPathLength() > 1) {
             int x = (*finalPath)[1].getX();
             int y = (*finalPath)[1].getY();
             const Node* node = graph->getNodeFromPosition(x, y);
-            start = Point(node->getX(), node->getY());
+            if(node->isAccessible())
+                start = Point(node->getX(), node->getY());
         }
     }
+}
+
+void GameWorld::findShortestPath() {
+    delete finalPath;
+    Node startNode(start.getX(), start.getY());
+    Node endNode(end.getX(), end.getY());
+    finalPath = new Path(pathFinder->findAndGetShortestPath(startNode, endNode));
 }
 
 void GameWorld::useAStarAlgorithm() {
