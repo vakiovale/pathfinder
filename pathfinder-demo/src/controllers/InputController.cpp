@@ -40,13 +40,16 @@ void InputController::pollEvent(sf::Event& event) {
     }
 
     if(event.type == sf::Event::KeyPressed) {
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) {
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) ||
+           sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad1)) {
             toolController.changeBuildTool(WALL, lastMousePosition);
         }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)) {
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2) ||
+           sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad2)) {
             toolController.changeBuildTool(GRASS, lastMousePosition);
         }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)) {
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num3) ||
+           sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad3)) {
             toolController.changeBuildTool(WATER, lastMousePosition);
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
@@ -66,7 +69,8 @@ void InputController::pollEvent(sf::Event& event) {
             gameWorld->increaseMovementSpeed();
         }
         if(event.key.code == sf::Keyboard::Subtract ||
-           event.key.code == sf::Keyboard::PageDown) {
+           event.key.code == sf::Keyboard::PageDown ||
+           event.key.code == sf::Keyboard::Dash) {
             gameWorld->decreaseMovementSpeed();
         }
     }
