@@ -19,6 +19,8 @@ Kirjasto voidaan asentaa <code>./install</code> komennolla, joka kopioi tarvitta
 
 Graafinen käyttöliittymä on erillinen ohjelma, joka käyttää SFML-kirjastoa. Demo käyttää PathFinder-kirjastoa visualisoimaan polunetsintää A*-algoritmin kanssa.
 
+Polunetsintä onnistuu myös liikkuvan kohteen kanssa. Graafisessa käyttöliittymässä on mahdollisuus laittaa lähtöpiste kulkemaan lyhintä polkua pitkin kohti maalia. Myös pisteen liikkumisnopeutta pystyy säätämään. Algoritmi etsii jatkuvasti lyhintä polkua, joten ohjelmassa on helppo seurata, kuinka polku muuttuu, kun päätepistettä liikutetaan.
+
 ## Suorituskyky
 
 Suorituskykyä testattiin useissa erilaisissa verkoissa:
@@ -42,4 +44,4 @@ Tilanne   | A*-algoritmin suoritusaika (mikrosekunti)
 
 ## Puutteet ja parannusehdotukset
 
-Jotta tuloksilla tekisi jotain, olisi hyödyllistä, jos A*-algoritmia verrattaisiin muihin polunetsintäalgoritmeihin. Graafinen käyttölittymä mahdollistaa onneksi helpon tavan vaihtaa algoritmia "lennosta", joten algoritmien vertailu samassa ympäristössä olisi helppoa.
+Jotta tuloksilla tekisi jotain, olisi hyödyllistä, jos A*-algoritmia verrattaisiin muihin polunetsintäalgoritmeihin. Graafinen käyttölittymä mahdollistaa onneksi helpon tavan vaihtaa algoritmia "lennosta", joten algoritmien vertailu samassa ympäristössä olisi helppoa. Hyvänä lisänä voisi olla myös lisätä useampi lähtöpiste, jotka voisivat käyttää eri algoritmeja ja näin nähdä reaaliajassa kumpi algoritemista löytää reitin nopeammin.
