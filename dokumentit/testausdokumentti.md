@@ -16,7 +16,7 @@ Projektin juurikansiosta lötyy skripti <code>test</code>, jonka avulla on mahdo
 
 ## Algoritmien testaus
 
-A*-algoritmin testaus on tehty testaamalla mahdollisimman täydellisesti jokainen erillinen osa ja funktio, jota algoritmi käyttää. Vasta viimeisimpänä kirjoitin testit, jotka tarkistivat onko haettu reitti oikeasti lyhin. Tälllä tavoin työskennellessä monimutkaisten kokonaisuuksien testaaminen osoittautu lopulta helpoksi, kun yksinkertaiset palikat toimivat halutulla tavalla.
+A*-algoritmin testaus on tehty testaamalla mahdollisimman täydellisesti jokainen erillinen osa ja funktio, jota algoritmi käyttää. Vasta viimeisimpänä kirjoitin testit, jotka tarkistivat onko haettu reitti oikeasti lyhin. Tälllä tavoin työskennellessä monimutkaisten kokonaisuuksien testaaminen osoittautui lopulta helpoksi, kun yksinkertaisimmat palikat oli ensiksi testattu riittävän kattavasti.
 
 ## Testaus graafisessa käyttöliittymässä
 
