@@ -3,6 +3,7 @@
 ToolController::ToolController(GameWorld* gameWorld) {
     this->gameWorld = gameWorld;
     tool = new StartPointMover(gameWorld, Point(0,0));
+    tool->reset();
 }
 
 ToolController::~ToolController() {
