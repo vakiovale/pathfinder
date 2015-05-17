@@ -4,7 +4,6 @@
 #include <SFML/System/Clock.hpp>
 #include <chrono>
 #include <thread>
-#include <iostream>
 
 class GameTimer {
 

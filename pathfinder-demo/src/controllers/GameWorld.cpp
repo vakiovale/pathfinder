@@ -24,19 +24,19 @@ GameWorld::~GameWorld() {
 }
 
 void GameWorld::update() {
-    if(graph->nodeExistsInPosition(start.getX(), start.getY()) &&
-       graph->nodeExistsInPosition(end.getX(), end.getY())) {
+    if(startAndEndNodesExistInGraph()) {
 
         findShortestPath();
 
         if(movingEnabled && finalPath->getPathLength() > 1) {
-            int x = (*finalPath)[1].getX();
-            int y = (*finalPath)[1].getY();
-            const Node* node = graph->getNodeFromPosition(x, y);
-            if(node->isAccessible())
-                start = Point(node->getX(), node->getY());
+            moveAlongThePathIfNodeIsAccessible();
         }
     }
+}
+
+bool GameWorld::startAndEndNodesExistInGraph() const {
+    return graph->nodeExistsInPosition(start.getX(), start.getY()) &&
+            graph->nodeExistsInPosition(end.getX(), end.getY());
 }
 
 void GameWorld::findShortestPath() {
@@ -44,6 +44,14 @@ void GameWorld::findShortestPath() {
     Node startNode(start.getX(), start.getY());
     Node endNode(end.getX(), end.getY());
     finalPath = new Path(pathFinder->findAndGetShortestPath(startNode, endNode));
+}
+
+void GameWorld::moveAlongThePathIfNodeIsAccessible() {
+    int x = (*finalPath)[1].getX();
+    int y = (*finalPath)[1].getY();
+    const Node* node = graph->getNodeFromPosition(x, y);
+    if(node->isAccessible())
+        start = Point(node->getX(), node->getY());
 }
 
 void GameWorld::useAStarAlgorithm() {

@@ -107,7 +107,11 @@ class GameWorld : public Updateable {
 
         bool movingEnabled;
 
+        bool startAndEndNodesExistInGraph() const;
+
         void findShortestPath();
+
+        void moveAlongThePathIfNodeIsAccessible();
 };
 
 #endif

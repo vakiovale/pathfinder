@@ -11,8 +11,8 @@ int GameTimer::getDeltaTime() {
 
 void GameTimer::sleep() {
     int timeSinceLastFrame = getDeltaTime();
-    if(timeSinceLastFrame < 30) {
-        int deltaTime = 30 - timeSinceLastFrame;
+    if(timeSinceLastFrame < 60) {
+        int deltaTime = 60 - timeSinceLastFrame;
         std::this_thread::sleep_for(std::chrono::milliseconds(deltaTime));
     }
 }
