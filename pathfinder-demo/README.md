@@ -20,8 +20,12 @@ different cost factors. By default, cost factors for different terrains are:
 
 <img src="https://github.com/valtteripyyhtia/pathfinder/blob/master/dokumentit/images/pathfinder-basic-01.png?raw=true" alt="Finding shortest path" width="400px" />
 
-Grid can be modified with different kind of tools.
-You can change different tools with these keys:
+### Controls
+
+There's different controls for changing build tools and moving start/end points.
+
+#### Build tools
+
 
 Key   | Tool
 ------| -----------------
@@ -31,18 +35,28 @@ Key   | Tool
 **S**     | Move start point
 **E**     | Move end point
 
-Clicking or holding left mouse button will execute tool's action.
+Clicking or holding **left mouse button** will execute tool's action.
 
-Point movement can be controlled with these keys:
+#### Start point controls
 
-Key         | Action
-------------| -------------------
+Key             | Action
+----------------|--------------------
 **SPACE**       | Start/stop moving
 **PageUp**      | Increase movement speed
 **PageDown**    | Decrease movement speed
 **+**           | Increase movement speed
 **-**           | Decrease movement speed
 **Mouse wheel** | Increase/decrease movement speed
+
+#### End point controls
+
+Key             | Action
+----------------|--------------------
+**Up**          | Move up 
+**Down**        | Move down
+**Left**        | Move left
+**Right**       | Move right
+**Left ctrl**   | Use build tool
 
 ## Building PathFinder demo
 
