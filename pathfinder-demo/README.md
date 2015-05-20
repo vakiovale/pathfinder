@@ -26,6 +26,8 @@ There's different controls for changing build tools and moving start/end points.
 
 #### Build tools
 
+Grid can be modified with different kind of tools. Selecting a build tool and 
+clicking or holding **left mouse button** will execute tool's action.
 
 Key   | Tool
 ------| -----------------
@@ -35,9 +37,9 @@ Key   | Tool
 **S**     | Move start point
 **E**     | Move end point
 
-Clicking or holding **left mouse button** will execute tool's action.
-
 #### Start point controls
+
+Start point will try to hunt down the end point. Start point's movement can be controlled.
 
 Key             | Action
 ----------------|--------------------
@@ -49,6 +51,8 @@ Key             | Action
 **Mouse wheel** | Increase/decrease movement speed
 
 #### End point controls
+
+End point is being hunted by start point. End point can be controlled by using keyboard.
 
 Key             | Action
 ----------------|--------------------
