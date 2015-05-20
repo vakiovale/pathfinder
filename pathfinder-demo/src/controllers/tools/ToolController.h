@@ -34,6 +34,8 @@ class ToolController {
 
         void rightMouseButtonReleased();
 
+        void makeBuildActionToPosition(const Point& position);
+
     private:
         GameWorld* gameWorld;
 

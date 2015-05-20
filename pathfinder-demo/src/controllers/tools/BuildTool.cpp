@@ -26,8 +26,12 @@ bool BuildTool::toolIsOnSameTerrainAsTerrainToUse() {
 }
 
 void BuildTool::paint() {
+    paintToPosition(this->lastPosition);
+}
+
+void BuildTool::paintToPosition(const Point& position) {
     this->gameWorld->getBlockGraph()->
-            changeBlockTerrainInPoint(this->lastPosition, this->terrainToUse);
+            changeBlockTerrainInPoint(position, this->terrainToUse);
 }
 
 void BuildTool::leftMouseAction() {

@@ -27,6 +27,12 @@ class BuildTool : public Tool {
         void rightMouseAction();
 
         /**
+         * @brief Paints to specific position with this tool
+         * @param position to build to
+         */
+        void paintToPosition(const Point& position);
+
+        /**
          * @brief Change tool to use new terrain
          * @param terrain to use with this BuildTool
          */

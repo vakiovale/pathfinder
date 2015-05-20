@@ -73,6 +73,9 @@ void InputController::pollEvent(sf::Event& event) {
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
             moveEndPointRight();
         }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)) {
+            toolController.makeBuildActionToPosition(gameWorld->getEndPoint());
+        }
     }
 
     if(event.type == sf::Event::KeyReleased) {

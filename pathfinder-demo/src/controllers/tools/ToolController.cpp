@@ -57,3 +57,11 @@ void ToolController::leftMouseButtonReleased() {
 void ToolController::rightMouseButtonReleased() {
     tool->releaseRightMouseButton();
 }
+
+void ToolController::makeBuildActionToPosition(const Point& position) {
+    BuildTool* buildTool;
+    buildTool = dynamic_cast<BuildTool*>(tool);
+    if(buildTool) {
+        buildTool->paintToPosition(position);
+    }
+}
