@@ -28,7 +28,7 @@ GameWorld::~GameWorld() {
 void GameWorld::update() {
     if(startAndEndNodesExistInGraph()) {
 
-        findShortestPath();
+        findAndCleanShortestPath();
 
         --movingSpeed;
         if(movingSpeed < 1 && movingEnabled && finalPath->getPathLength() > 1) {
@@ -43,11 +43,23 @@ bool GameWorld::startAndEndNodesExistInGraph() const {
             graph->nodeExistsInPosition(end.getX(), end.getY());
 }
 
-void GameWorld::findShortestPath() {
+void GameWorld::findAndCleanShortestPath() {
     delete finalPath;
     Node startNode(start.getX(), start.getY());
     Node endNode(end.getX(), end.getY());
-    finalPath = new Path(pathFinder->findAndGetShortestPath(startNode, endNode));
+    findShortestPath(startNode, endNode);
+}
+
+void GameWorld::findShortestPath(const Node& startNode, const Node& endNode) {
+    if(PRINT_PATH_FINDER_TIME) {
+        gameTimer.getAndUpdateDeltaTime();
+    }
+
+    finalPath = new Path(pathFinder->findAndGetShortestPath(startNode,
+                                                            endNode));
+    if(PRINT_PATH_FINDER_TIME) {
+        std::cout << gameTimer.getDeltaTimeMicroSeconds() << std::endl;
+    }
 }
 
 void GameWorld::moveAlongThePathIfNodeIsAccessible() {

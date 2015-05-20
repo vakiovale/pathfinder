@@ -10,7 +10,9 @@ class GameTimer {
     public:
         GameTimer();
 
-        int getDeltaTime();
+        int getAndUpdateDeltaTime();
+
+        long getDeltaTimeMicroSeconds() const;
 
         void sleep();
 

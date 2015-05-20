@@ -13,6 +13,7 @@
 
 #include <random>
 #include <cmath>
+#include <iostream>
 
 #include <Node.h>
 #include <Point.h>
@@ -20,6 +21,7 @@
 #include <PathFinder.h>
 #include <AStarPathFinder.h>
 #include "DemoConfigurations.h"
+#include "GameTimer.h"
 
 using namespace pathfinder;
 
@@ -123,6 +125,8 @@ class GameWorld : public Updateable {
     private:
         BlockGraph* graph;
 
+        GameTimer gameTimer;
+
         int startMovingSpeed = START_MOVING_SPEED;
 
         int movingSpeed;
@@ -143,7 +147,9 @@ class GameWorld : public Updateable {
 
         bool startAndEndNodesExistInGraph() const;
 
-        void findShortestPath();
+        void findAndCleanShortestPath();
+
+        void findShortestPath(const Node& startNode, const Node& endNode);
 
         void moveAlongThePathIfNodeIsAccessible();
 };
