@@ -36,8 +36,9 @@ namespace pathfinder {
              * @param element to be pushed to the priority queue
              */
             void push(const T& element) {
+                length = priorityQueue.size();
                 priorityQueue.push_back(element);
-                std::push_heap(priorityQueue.begin(), priorityQueue.end());
+                checkHeapRuleBetweenIndexAndParent(length);
             }
 
             /**
@@ -46,8 +47,13 @@ namespace pathfinder {
              * Removes an element from the priority queue
              */
             void pop() {
-                std::pop_heap(priorityQueue.begin(), priorityQueue.end());
-                priorityQueue.pop_back();
+                length = priorityQueue.size();
+
+                if(length > 0) {
+                    priorityQueue[0] = priorityQueue[length-1];
+                    priorityQueue.pop_back();
+                    checkHeapRuleBetweenIndexAndChildren(0);
+                }
             }
 
             /**
@@ -64,11 +70,87 @@ namespace pathfinder {
              * Fixes priority queue by reorganizing its elements
              */
             void update() {
-                std::make_heap(priorityQueue.begin(), priorityQueue.end());
+                heapify();
             }
 
         private:
             std::vector<T> priorityQueue;
+
+            int length;
+            int leftChild;
+            int rightChild;
+
+            void checkHeapRuleBetweenIndexAndParent(int index) {
+                if(index == 0) return;
+                int parentIndex = getParentIndex(index);
+
+                if(priorityQueue[parentIndex] < priorityQueue[index]) {
+                    swap(parentIndex, index);
+                    checkHeapRuleBetweenIndexAndParent(parentIndex);
+                }
+            }
+
+            int getParentIndex(int index) {
+                return (index-1)/2;
+            }
+
+            void swap(int index1, int index2) {
+                T tmp = priorityQueue[index1];
+                priorityQueue[index1] = priorityQueue[index2];
+                priorityQueue[index2] = tmp;
+            }
+
+            void checkHeapRuleBetweenIndexAndChildren(int index) {
+                updateSizeAndChildIndexes(index);
+
+                if(leftChildIsOutOfBounds()) return;
+
+                int greaterChildIndex = getIndexOfGreaterValue(index, leftChild);
+
+                if(!rightChildIsOutOfBounds()) {
+                    greaterChildIndex =
+                            getIndexOfGreaterValue(greaterChildIndex,
+                                                   rightChild);
+                }
+
+                if(greaterChildIndex != index) {
+                    swap(index, greaterChildIndex);
+                    checkHeapRuleBetweenIndexAndChildren(greaterChildIndex);
+                }
+            }
+
+            void updateSizeAndChildIndexes(int index) {
+                length = priorityQueue.size();
+                leftChild = getLeftChildIndex(index);
+                rightChild = getRightChildIndex(index);
+            }
+
+            bool leftChildIsOutOfBounds() const {
+                return leftChild >= length;
+            }
+
+            bool rightChildIsOutOfBounds() const {
+                return rightChild >= length;
+            }
+
+            int getLeftChildIndex(int index) {
+                return 2*index + 1;
+            }
+
+            int getRightChildIndex(int index) {
+                return 2*index + 2;
+            }
+
+            int getIndexOfGreaterValue(int index1, int index2) {
+                return priorityQueue[index1] < priorityQueue[index2] ?
+                            index2 : index1;
+            }
+
+            void heapify() {
+                for(int i = priorityQueue.size()-1; i >= 0; i--) {
+                    checkHeapRuleBetweenIndexAndChildren(i);
+                }
+            }
 
     };
 
