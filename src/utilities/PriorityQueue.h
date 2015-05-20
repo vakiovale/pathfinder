@@ -10,7 +10,6 @@
 #define PRIORITY_QUEUE_H
 
 #include <vector>
-#include <algorithm>
 
 namespace pathfinder {
 
