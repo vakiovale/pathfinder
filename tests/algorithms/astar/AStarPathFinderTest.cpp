@@ -135,7 +135,7 @@ SCENARIO("Pathfinder finds shortest paths", "[pathfinder][astar]") {
                 REQUIRE(shortestPath.getPathLength() == 5);
                 REQUIRE(shortestPath[0] == start);
                 REQUIRE(shortestPath[1] == pathfinder::Node(1,1));
-                REQUIRE(shortestPath[2] == pathfinder::Node(2,2));
+                REQUIRE(shortestPath[2] == pathfinder::Node(2,1));
                 REQUIRE(shortestPath[3] == pathfinder::Node(3,2));
                 REQUIRE(shortestPath[4] == end);
 
@@ -192,9 +192,9 @@ SCENARIO("Pathfinder finds shortest paths", "[pathfinder][astar]") {
 
                 REQUIRE(shortestPath.getPathLength() == 5);
                 REQUIRE(shortestPath[0] == start);
-                REQUIRE(shortestPath[1] == pathfinder::Node(1,1));
-                REQUIRE(shortestPath[2] == pathfinder::Node(2,1));
-                REQUIRE(shortestPath[3] == pathfinder::Node(3,1));
+                REQUIRE(shortestPath[1] == pathfinder::Node(1,3));
+                REQUIRE(shortestPath[2] == pathfinder::Node(2,3));
+                REQUIRE(shortestPath[3] == pathfinder::Node(3,3));
                 REQUIRE(shortestPath[4] == end);
             }
         }
@@ -306,7 +306,7 @@ SCENARIO("Pathfinder finds shortest when used multiple times", "[pathfinder][ast
                         REQUIRE(shortestPath2.getPathLength() == 5);
                         REQUIRE(shortestPath2[0] == start2);
                         REQUIRE(shortestPath2[1] == pathfinder::Node(1,1));
-                        REQUIRE(shortestPath2[2] == pathfinder::Node(2,2));
+                        REQUIRE(shortestPath2[2] == pathfinder::Node(2,1));
                         REQUIRE(shortestPath2[3] == pathfinder::Node(3,2));
                         REQUIRE(shortestPath2[4] == end2);
 
