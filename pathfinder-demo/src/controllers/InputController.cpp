@@ -73,6 +73,18 @@ void InputController::pollEvent(sf::Event& event) {
            event.key.code == sf::Keyboard::Dash) {
             gameWorld->decreaseMovementSpeed();
         }
+        if(event.key.code == sf::Keyboard::Up) {
+            moveEndPointUp();
+        }
+        if(event.key.code == sf::Keyboard::Down) {
+            moveEndPointDown();
+        }
+        if(event.key.code == sf::Keyboard::Left) {
+            moveEndPointLeft();
+        }
+        if(event.key.code == sf::Keyboard::Right) {
+            moveEndPointRight();
+        }
     }
 }
 
@@ -103,4 +115,46 @@ const Point InputController::getCurrentPointMouseIsOnTheMap(int xMousePosition,
     int yBlock = yMousePosition / (WINDOW_HEIGHT / (float)NUMBER_OF_NODES_IN_A_COLUMN);
     Point point(xBlock, yBlock);
     return point;
+}
+
+void InputController::moveEndPointUp() {
+    const Point& point = gameWorld->getEndPoint();
+    int newX = point.getX();
+    int newY = point.getY()-1;
+    Point newPoint(newX, newY);
+    moveToPointIfAccessible(newPoint);
+}
+
+void InputController::moveEndPointDown() {
+    const Point& point = gameWorld->getEndPoint();
+    int newX = point.getX();
+    int newY = point.getY()+1;
+    Point newPoint(newX, newY);
+    moveToPointIfAccessible(newPoint);
+}
+
+void InputController::moveEndPointLeft() {
+    const Point& point = gameWorld->getEndPoint();
+    int newX = point.getX()-1;
+    int newY = point.getY();
+    Point newPoint(newX, newY);
+    moveToPointIfAccessible(newPoint);
+}
+
+void InputController::moveEndPointRight() {
+    const Point& point = gameWorld->getEndPoint();
+    int newX = point.getX()+1;
+    int newY = point.getY();
+    Point newPoint(newX, newY);
+    moveToPointIfAccessible(newPoint);
+}
+
+void InputController::moveToPointIfAccessible(Point& newPoint) {
+    int newX = newPoint.getX();
+    int newY = newPoint.getY();
+    if(gameWorld->getBlockGraph()->nodeExistsInPosition(newX, newY)) {
+        if(gameWorld->getBlockGraph()->getNodeFromPosition(newX, newY)->isAccessible()) {
+            gameWorld->moveEndTo(Point(newX, newY));
+        }
+    }
 }

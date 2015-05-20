@@ -31,6 +31,16 @@ class InputController {
 
         void rightMouseButtonReleased();
 
+        void moveEndPointUp();
+
+        void moveEndPointDown();
+
+        void moveEndPointLeft();
+
+        void moveEndPointRight();
+
+        void moveToPointIfAccessible(Point& newPoint);
+
         const Point getCurrentPointMouseIsOnTheMap(int xMousePosition,
                                                    int yMousePosition) const;
 };
