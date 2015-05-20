@@ -1,7 +1,7 @@
 #ifndef DEMO_CONFIGURATIONS_H
 #define DEMO_CONFIGURATIONS_H
 
-const int NUMBER_OF_NODES_IN_A_ROW = 35;
+const int NUMBER_OF_NODES_IN_A_ROW = 50;
 
 const int NUMBER_OF_NODES_IN_A_COLUMN = NUMBER_OF_NODES_IN_A_ROW;
 
@@ -17,6 +17,6 @@ const bool RANDOM_WALLS = false;
 
 const int START_MOVING_SPEED = 5;
 
-const bool PRINT_PATH_FINDER_TIME = true;
+const bool PRINT_PATH_FINDER_TIME = false;
 
 #endif
