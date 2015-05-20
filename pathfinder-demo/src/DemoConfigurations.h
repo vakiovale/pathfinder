@@ -9,6 +9,7 @@ const bool RANDOM_WALLS = false;
 const int START_MOVING_SPEED = 5;
 const bool PRINT_PATH_FINDER_TIME = false;
 const bool DISPLAY_PATH = true;
+const bool SLOW_DOWN_MOVEMENT_BY_COST_FACTOR = false;
 /** ************** */
 
 /** PLEASE, DON'T TOUCH HERE */

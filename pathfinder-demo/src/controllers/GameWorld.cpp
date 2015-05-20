@@ -33,7 +33,7 @@ void GameWorld::update() {
         --movingSpeed;
         if(movingSpeed < 1 && movingEnabled && finalPath->getPathLength() > 1) {
             moveAlongThePathIfNodeIsAccessible();
-            movingSpeed = startMovingSpeed;
+            resetMovingSpeed();
         }
     }
 }
@@ -68,6 +68,22 @@ void GameWorld::moveAlongThePathIfNodeIsAccessible() {
     const Node* node = graph->getNodeFromPosition(x, y);
     if(node->isAccessible())
         start = Point(node->getX(), node->getY());
+}
+
+void GameWorld::resetMovingSpeed() {
+    if(SLOW_DOWN_MOVEMENT_BY_COST_FACTOR) {
+        float costFactor = getCostFactorFromStartPointsNode();
+        movingSpeed = startMovingSpeed * costFactor;
+    }
+    else {
+        movingSpeed = startMovingSpeed;
+    }
+}
+
+float GameWorld::getCostFactorFromStartPointsNode() {
+    const Node* node = graph->getNodeFromPosition(start.getX(),
+                                                  start.getY());
+    return node->getMovementCostFactor();
 }
 
 void GameWorld::increaseMovementSpeed() {

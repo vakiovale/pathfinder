@@ -152,6 +152,10 @@ class GameWorld : public Updateable {
         void findShortestPath(const Node& startNode, const Node& endNode);
 
         void moveAlongThePathIfNodeIsAccessible();
+
+        void resetMovingSpeed();
+
+        float getCostFactorFromStartPointsNode();
 };
 
 #endif
