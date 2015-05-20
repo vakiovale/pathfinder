@@ -29,13 +29,14 @@ There's different controls for changing build tools and moving start/end points.
 Grid can be modified with different kind of tools. Selecting a build tool and 
 clicking or holding **left mouse button** will execute tool's action.
 
-Key   | Tool
-------| -----------------
-**1**     | Wall (add/remove)
-**2**     | Grass (add/remove)
-**3**     | Water (add/remove)
-**S**     | Move start point
-**E**     | Move end point
+Key                   | Tool
+----------------------| -----------------
+**1**                 | Wall (add/remove)
+**2**                 | Grass (add/remove)
+**3**                 | Water (add/remove)
+**S**                 | Move start point
+**E**                 | Move end point
+**Left mouse button** | Execute action
 
 #### Start point controls
 
