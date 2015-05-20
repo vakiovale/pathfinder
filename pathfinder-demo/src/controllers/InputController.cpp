@@ -61,6 +61,18 @@ void InputController::pollEvent(sf::Event& event) {
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
             toolController.changeEndPointMoverTool(lastMousePosition);
         }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+            moveEndPointUp();
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+            moveEndPointDown();
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+            moveEndPointLeft();
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+            moveEndPointRight();
+        }
     }
 
     if(event.type == sf::Event::KeyReleased) {
@@ -72,18 +84,6 @@ void InputController::pollEvent(sf::Event& event) {
            event.key.code == sf::Keyboard::PageDown ||
            event.key.code == sf::Keyboard::Dash) {
             gameWorld->decreaseMovementSpeed();
-        }
-        if(event.key.code == sf::Keyboard::Up) {
-            moveEndPointUp();
-        }
-        if(event.key.code == sf::Keyboard::Down) {
-            moveEndPointDown();
-        }
-        if(event.key.code == sf::Keyboard::Left) {
-            moveEndPointLeft();
-        }
-        if(event.key.code == sf::Keyboard::Right) {
-            moveEndPointRight();
         }
     }
 }
