@@ -24,6 +24,8 @@ class GraphicsController {
 
         void draw(int x, int y, sf::Color color);
 
+        void drawPath();
+
         void drawCircle(int x, int y, sf::Color color);
 
         sf::Color wallColor = sf::Color(150, 150, 150);
